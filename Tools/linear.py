@@ -9,7 +9,9 @@ def trace(A):
     return sum( [ A[i][i] for i in range(len(A)) ] )
     
 def isprojector(pi,machine_eps):
-    diffMat = proj.dot(proj) - proj
+    # print("pi=\n",pi)
+    # print("pi.pi=\n", pi.dot(pi), "\n")
+    diffMat = pi.dot(pi) - pi
     diffList = [entry for row in diffMat for entry in row]
     
     n = len(pi)
