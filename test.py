@@ -2,6 +2,7 @@ import numpy as np
 import Tools.RepClass as rep
 import Tools.linear as lin
 import InvarianceCertificate as inv
+import IrreducibilityCertificate as irr
 import string
 import math
 import pprint
@@ -145,17 +146,30 @@ if test_type == 's3':
     
     invSpaces = []
     
+    noiseLevel = 10**(-14)
+    
     pi1 = h.oplus(np.diag([1,1]),np.zeros((10,10)))
-    noise = machine_eps*np.random.rand(dim,dim)
+    noise = noiseLevel*np.random.rand(dim,dim)
     noisySpace = pi1 + noise
     
-    for r in range(40):
-        epsilon = 10**(-5-0.4*r)
-        print("\nepsilon = ",epsilon)
-        if inv.inv_cert(R,pi1,epsilon):
-            print("Invariant!\n\n-------------------")
-        else:
-            print("Dont know!\n\n-------------------")
+
+    epsilon = 10**(-12)
+    error_p = 10**(-4)
+    t_max = 100
+    print("\nepsilon = ",epsilon)
+    if inv.inv_cert(R,noisySpace,epsilon):
+        print("Invariant!\n\n-------------------")
+        for t in range(1,t_max):
+            aux = 2*math.log(error_p**(-1))
+            aux*= int(np.trace(noisySpace))**2 + h.dt(R,epsilon,2*t)
+            m = int(3*aux)
+            if irr.irr_cert(R,noisySpace,m,t,epsilon,error_p):
+                print("Irreducible!\n\n-------------------\n")
+                break
+            else:
+                print("Don't know for t = ",t,"\n")
+    else:
+        print("Dont know!\n\n-------------------")
     
                 
                 

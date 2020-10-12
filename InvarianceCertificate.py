@@ -36,7 +36,7 @@ def inv_cert(repr,proj,epsilon):
     #eps=machine epsilon = largest gap in [1,2) between floats (2^-52 for double precision).
     eps = 2**(-52)
     #returns true if proj is epsilon-close to invariant-projector in frob norm
-    assert t.linear.isprojector(proj,eps), "Projector input is not close to a projector."
+    # assert t.linear.isprojector(proj,eps), "Projector input is not close to a projector."
     assert isinstance(repr,t.RepClass.rep_by_generators), "Representation input is not a rep_by_generators object."
     
     return quality(repr,proj,eps) <= epsilon

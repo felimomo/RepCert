@@ -85,16 +85,16 @@ def c1(repr,epsilon):
     return x
 
 def c2(repr,epsilon):
-    c1 = c1(repr,epsilon)
-    return 2*c1*(1+c1)
+    const1 = c1(repr,epsilon)
+    return 2*const1*(1+const1)
 
 def dt(repr,epsilon,t):
-    c1 = c1(repr,epsilon)
-    return (1+c1)**t - 1
+    const1 = c1(repr,epsilon)
+    return (1+const1)**t - 1
 
 def et(repr,epsilon,t,proj):
-    c2 = c2(repr,epsilon)
-    aux  = (1+c2)**(2*t) - 1
+    const2 = c2(repr,epsilon)
+    aux  = (1+const2)**(2*t) - 1
     dim = int(np.trace(proj))
     return aux * (dim**2 + dt(repr,epsilon,2*t))
     
