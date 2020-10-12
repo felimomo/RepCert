@@ -3,10 +3,11 @@ import Tools.RepClass as rep
 import Tools.linear as lin
 import InvarianceCertificate as inv
 import string
+import math
 import pprint
 import helperFns as h
 
-test_type = input("Which test would you like?\n(Opts: Simple Pauli, Large Pauli)\n").lower()
+test_type = input("Which test would you like? (Opts: small pauli, larger pauli, s3).\n")
 
 machine_eps = 2**(-52)
 
@@ -44,10 +45,8 @@ if test_type == "simple pauli":
             print("Invariant!\n\n-------------------")
         else:
             print("Dont know!\n\n-------------------")
-                
-                
-                
-if test_type == 'large pauli':
+                                
+if test_type == 'larger pauli':
     n = int(input("n = ")) 
     dens = (0,2*n)
     qb = 0
@@ -109,10 +108,54 @@ if test_type == 'large pauli':
         else:
             print("Dont know!\n\n-------------------")
     
+if test_type == 's3':
+    t = rep.group_element(name='12')
+    c = rep.group_element(name='123')
     
+    def two_d_rep(g):
+        if g.name == '12':
+            return np.array([[2**(-1), math.sqrt(2)*3**(-1)],
+                            [math.sqrt(2)*3**(-1), -2**(-1)]])
+        if g.name == '123':
+            return np.array([[-2**(-1), -math.sqrt(2)*3**(-1)],
+                            [math.sqrt(2)*3**(-1), -2**(-1)]])
+    def triv_rep(g):
+        return np.array([[1]])
     
+    def sign_rep(g):
+        if g.name == '12':
+            return np.array([[-1]])
+        if g.name == '123':
+            return np.array([[1]])
     
+    im_t = h.image_constructor(t,two_d_rep,3,triv_rep,3,sign_rep,3)
+    im_c = h.image_constructor(c,two_d_rep,3,triv_rep,3,sign_rep,3)
     
+    generators = [t,c]
+    images = [im_t,im_c]
+    listify = [list(row) for row in im_t]
+    # pprint.pprint(listify)
+    
+    dim = 12
+    delta = 0
+    k = 9
+    q = 0
+    
+    R=rep.rep_by_generators(dim,generators,images,density=(delta,k),q=q)
+    
+    invSpaces = []
+    
+    pi1 = h.oplus(np.diag([1,1]),np.zeros((10,10)))
+    noise = machine_eps*np.random.rand(dim,dim)
+    noisySpace = pi1 + noise
+    
+    for r in range(40):
+        epsilon = 10**(-5-0.4*r)
+        print("\nepsilon = ",epsilon)
+        if inv.inv_cert(R,pi1,epsilon):
+            print("Invariant!\n\n-------------------")
+        else:
+            print("Dont know!\n\n-------------------")
     
                 
                 

@@ -42,6 +42,13 @@ def direct_sum(*argv):
     for arg in argv[1:]:
         outMat = oplus(outMat,arg)
     return outMat
+    
+def direct_sum_list(l):
+    assert len(l)>0,'At least one argument needed for the direct sum.'
+    outMat = l[0]
+    for mat in l[1:]:
+        outMat = oplus(outMat,mat)
+    return outMat
 
 def direct_multiple(A,m):
     #direct sum of A with itself m times
@@ -50,11 +57,50 @@ def direct_multiple(A,m):
         outMat = oplus(outMat,A)
     return outMat
     
+def image_constructor(g,*argv):
+    # the arguments are a set of functions that produce images
+    # of a group element g under certain pre-defined representations.
+    # 
+    # Syntax: fn1, multiplicity1, fn2, multiplicity2, etc
+    assert len(argv)%2==0,'image_constructor args are: repFn1, multiplicty 1, repFn2, multiplicity 2, ...'
     
+    multi  = []
+    repFns = []
+    for i in range(len(argv)):
+        if i%2==0:
+            repFns.append(argv[i])
+        if i%2==1:
+            multi.append(argv[i])
+    imageList = [direct_multiple(repFns[i](g),multi[i]) for i in range(len(repFns))]
+    return direct_sum_list(imageList)
     
-    
-    
+#
+# What follows are the constants as defined on section V.B of the paper
+#
 
+def c1(repr,epsilon):
+    fl = 2**(-52)
+    x = 2*(epsilon+repr.dimension*fl)*(1+epsilon+repr.dimension*fl)
+    x+= repr.dimension*fl*(1+epsilon+repr.dimension*fl)**2
+    return x
+
+def c2(repr,epsilon):
+    c1 = c1(repr,epsilon)
+    return 2*c1*(1+c1)
+
+def dt(repr,epsilon,t):
+    c1 = c1(repr,epsilon)
+    return (1+c1)**t - 1
+
+def et(repr,epsilon,t,proj):
+    c2 = c2(repr,epsilon)
+    aux  = (1+c2)**(2*t) - 1
+    dim = int(np.trace(proj))
+    return aux * (dim**2 + dt(repr,epsilon,2*t))
+    
+#
+# Done with constants
+#
 
 
 
