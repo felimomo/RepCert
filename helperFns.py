@@ -95,7 +95,7 @@ def dt(repr,epsilon,t):
 def et(repr,epsilon,t,proj):
     const2 = c2(repr,epsilon)
     aux  = (1+const2)**(2*t) - 1
-    dim = int(np.trace(proj))
+    dim = int(np.trace(proj).real)
     return aux * (dim**2 + dt(repr,epsilon,2*t))
     
 #

@@ -28,7 +28,7 @@ def quality(repr,proj,eps):
     n = repr.dimension
     C = largestComm_in_Group(repr,proj,eps)+ 2*n*eps
     partialResult = C * (1-C)**(-1)
-    partialResult*= math.sqrt(round(t.linear.trace(proj)))
+    partialResult*= math.sqrt(round(t.linear.trace(proj).real))
     partialResult*= math.pi * math.sqrt(2**(-1))
     return partialResult
     
