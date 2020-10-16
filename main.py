@@ -29,7 +29,7 @@ def subrep_tester(repr,proj):
         if irr.irr_cert(repr,proj,t,epsilon,error_p):
             print("Irreducible!\n")
             return True
-    print("Not irreducible!\n")
+    print("Dont know if irreducible!\n")
     return False
     
     
