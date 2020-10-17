@@ -4,8 +4,8 @@ import string
 
 class group_element:
     #element of a group with its name
-    def __init__(self, g=None, name=None):
-        self.element = g
+    def __init__(self, element=None, name=None):
+        self.element = element
         if name == None:
             #generate random name if not provided
             self.name = ''.join(random.choice(string.ascii_lowercase) for i in range(8))

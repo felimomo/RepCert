@@ -5,6 +5,7 @@ import InvarianceCertificate as inv
 import IrreducibilityCertificate as irr
 import string
 import math
+import cmath
 import pprint
 import helperFns as h
 import main
@@ -164,7 +165,51 @@ if test_type == 's4':
     main.subrep_tester(R,noisySpace)            
                 
                 
+if test_type == 'cyclic':
+    order = int(input("Order of the cyclic group = "))
+    root = cmath.exp(2 * math.pi * 1.j * order**(-1))
+    
+    wt1 = random.choice([i for i in range(order)])
+    wt2 = random.choice([i for i in range(order)])
+    wt3 = random.choice([i for i in range(order)])
+    
+    print(wt1,"\n")
+    
+    generator = rep.group_element(1,'1')
                 
+    def irrep(g_element, wt_and_order):
+        wt = wt_and_order[0]
+        order = wt_and_order[1]
+        #returns 1x1 matrix
+        return [[cmath.exp(2 * cmath.pi * wt * g_element.element * 1.j * order**(-1))]]             
                 
-                
-                
+    genRep = h.image_constructor(generator, irrep, 2, irrep, 3, irrep, 3, 
+                                 arguments = [[wt1,order], [wt2,order], [wt3,order]]
+                                 )
+    print("generator = \n", genRep, "\n")
+    
+    dim = 8            
+    delta = 0
+    k = order
+    q=0
+    
+    repr = rep.rep_by_generators(dim,[generator],[genRep],density=(delta,k),q=q)            
+    
+    noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
+    noiseLevel = 10**(-noiseExponent)
+    
+    InvSpaces = [   np.diag(2*[1]+6*[0]).astype(complex), 
+                    np.diag(2*[0]+3*[1]+3*[0]).astype(complex), 
+                    np.diag(5*[0]+3*[1]).astype(complex)
+                    ]           
+    noisySpace = random.choice( [proj+noiseLevel*np.random.rand(dim,dim) for proj in InvSpaces] )
+    
+    main.subrep_tester(repr,noisySpace) 
+    
+    
+    
+    
+    
+    
+    
+    

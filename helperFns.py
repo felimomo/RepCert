@@ -57,11 +57,16 @@ def direct_multiple(A,m):
         outMat = oplus(outMat,A)
     return outMat
     
-def image_constructor(g,*argv):
+def image_constructor(g,*argv,**kwargs):
     # the arguments are a set of functions that produce images
     # of a group element g under certain pre-defined representations.
     # 
-    # Syntax: fn1, multiplicity1, fn2, multiplicity2, etc
+    # Syntax: 
+    #
+    # * argv's are fn1, multiplicity1, fn2, multiplicity2, ..., fnk, multiplicityk
+    # * kwargs are 
+    #      arguments     = list of lists, the i-th row are the extra parameters
+    #                      passed to fni. 
     assert len(argv)%2==0,'image_constructor args are: repFn1, multiplicty 1, repFn2, multiplicity 2, ...'
     
     multi  = []
@@ -71,7 +76,16 @@ def image_constructor(g,*argv):
             repFns.append(argv[i])
         if i%2==1:
             multi.append(argv[i])
-    imageList = [direct_multiple(repFns[i](g),multi[i]) for i in range(len(repFns))]
+    
+    arguments = kwargs['arguments'] # list of lists
+    
+    if arguments is None:
+        imageList = [direct_multiple( repFns[i](g) ,  multi[i]) for i in range(len(repFns))]
+        return direct_sum_list(imageList)
+    
+    assert len(arguments) == len(repFns), "There must be one sublist of arguments per function in the image constructor."    
+    
+    imageList = [direct_multiple( repFns[i](g,arguments[i]) ,  multi[i]) for i in range(len(repFns))]
     return direct_sum_list(imageList)
     
 #
