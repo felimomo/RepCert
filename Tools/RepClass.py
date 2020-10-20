@@ -76,6 +76,7 @@ class rep_by_generators(generators):
         assert isinstance(element,group_element)
         self.Images.update({element.name : repImage})
         self.generatorList.append(element)
+        self.nGens += 1
     
     def image_list(self):
         return [self.Images[g.name] for g in self.generatorList]

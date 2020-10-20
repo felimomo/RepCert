@@ -149,7 +149,10 @@ if test_type == 's4':
     dim = len(im_t)
     
     delta = 0
-    k = 16
+    k = 5*(4**2)-5*2 
+        # According to Shuo Tan, ON THE DIAMETER OF CAYLEY GRAPHS OF FINITE GROUPS,
+        # the diameter w/r to transposition and full cyclic permutation of S_n is 
+        # 5n^2 - 5n
     q = 0
     
     R = rep.rep_by_generators(dim,[t,c],[im_t,im_c],density=(delta,k),q=q) 

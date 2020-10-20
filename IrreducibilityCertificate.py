@@ -35,14 +35,15 @@ def irr_cert(repr,proj,t,epsilon,error_p):
     
     if et >=2 or m <= aux:
         return False
-        
-    continueAns = input("Number of samples needed is "+str(m)+". Would you like to continue? (Y/N) ")
     
-    while continueAns not in ["N","n","No","no","Nope","nope","Y","y","Yes","yes","Yep","yep"]:
-        continueAns = input("I didnt understand you. Would you like to continue? (Y/N) ")
+    if m > 10**8:  
+        continueAns = input("Number of samples needed is "+str(m)+". Would you like to continue? (Y/N) ")
+    
+        while continueAns not in ["N","n","No","no","Nope","nope","Y","y","Yes","yes","Yep","yep"]:
+            continueAns = input("I didnt understand you. Would you like to continue? (Y/N) ")
         
-    if continueAns in ["N","n","No","no","Nope","nope"]:
-        return False
+        if continueAns in ["N","n","No","no","Nope","nope"]:
+            return False
         
     
     theta = math.sqrt(aux * (m*(2-et))**(-1))

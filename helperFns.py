@@ -77,12 +77,12 @@ def image_constructor(g,*argv,**kwargs):
         if i%2==1:
             multi.append(argv[i])
     
-    arguments = kwargs['arguments'] # list of lists
-    
-    if arguments is None:
+
+    if len(kwargs)==0:
         imageList = [direct_multiple( repFns[i](g) ,  multi[i]) for i in range(len(repFns))]
         return direct_sum_list(imageList)
-    
+
+    arguments = kwargs['arguments'] # list of lists
     assert len(arguments) == len(repFns), "There must be one sublist of arguments per function in the image constructor."    
     
     imageList = [direct_multiple( repFns[i](g,arguments[i]) ,  multi[i]) for i in range(len(repFns))]
