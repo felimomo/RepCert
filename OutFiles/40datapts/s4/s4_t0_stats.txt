@@ -1,4 +1,3 @@
-
 # Group = s4
 # random walks from t_min to t_min+0
 # samples = 3 * minimum number of samples
@@ -20,6 +19,6 @@
 5.5, 0.7500000000000003
 5.0, 0.6000000000000002
 4.5, 0.4000000000000001
-
-
+#
+#
 # Avg dimension = 55.6515625
