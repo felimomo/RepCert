@@ -38,7 +38,7 @@ generators = [t,c]
 
 datapts = 40
 min_noiseExp=30
-for noiseDoubleExponent in range(10,min_noiseExp-6):
+for noiseDoubleExponent in range(6,min_noiseExp-6):
     noiseLevel = 10**(-0.5*(min_noiseExp - noiseDoubleExponent))
     detectedFrac = 0.
     f=open("OutFiles/"+group_name+"_stats.txt","a")
