@@ -56,6 +56,7 @@ def rr_invSpaces(group_name,multi):
              +i*[0] + [1] +(multi[2]-i-1)*[0]
             for i in range(multi[2])
             ]
+        return part1 + part2 + part3
     if group_name == 's4':
         part1 = [
             i*[0,0,0] + [1,1,1] + (multi[0]-i-1)*[0,0,0] 
@@ -88,5 +89,5 @@ def rr_invSpaces(group_name,multi):
             for i in range(multi[4])
             ]
             
-    return part1 + part2 + part3 + part4 + part5
+        return part1 + part2 + part3 + part4 + part5
     

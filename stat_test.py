@@ -42,10 +42,10 @@ datapts = 40
 min_noiseExp=30
 t_surplus = 10 #random walks up to length 2(t_min + t_surplus)
 
-f = open("OutFiles/"+group_name+"_t"+str(t_surplus)+"stats.txt", "w+")
+f = open("OutFiles/"+group_name+"_t"+str(t_surplus)+"_stats.txt", "w+")
 f.write(#
 f"""
-# Group = +{group_name}+\n
+# Group = {group_name}
 # random walks from t_min to t_min+{t_surplus}
 # samples = 3 * minimum number of samples
 #
