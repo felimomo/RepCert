@@ -41,11 +41,11 @@ min_noiseExp=30
 for noiseDoubleExponent in range(10,min_noiseExp-6):
     noiseLevel = 10**(-0.5*(min_noiseExp - noiseDoubleExponent))
     detectedFrac = 0.
-    f=open("OutFiles/s3_stats.txt","a")
+    f=open("OutFiles/"+group_name+"_stats.txt","a")
     
     for i in range(datapts):
-        print("    ",end='\r')
-        print(i,end='\r')
+        print("                                             ",end='\r')
+        print(0.5*(min_noiseExp - noiseDoubleExponent)," ",i,end='\r')
         multi = randRep.rr_multiplicities(group_name)
         images = randRep.rr_images(group_name,t,c,multi) #[im_t, im_c]
         dim = len(images[0])
