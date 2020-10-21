@@ -21,6 +21,7 @@ import random
 f = open("OutFiles/s3_stats.txt","w+")
 f.write("# Generators: (12), (123)\n---------------------------\n")
 f.write("# Noise Exp(x for noise 10^-x), Frac of correctly recognized irreps\n\n")
+f.close()
 
 t = rep.group_element(name='12')
 c = rep.group_element(name='123')
@@ -28,11 +29,13 @@ generators = [t,c]
 
 datapts = 50
 min_noiseExp=30
-for noiseDoubleExponent in range(10,min_noiseExp-2):
+for noiseDoubleExponent in range(10,min_noiseExp-6):
     noiseLevel = 10**(-0.5*(min_noiseExp - noiseDoubleExponent))
     detectedFrac = 0.
+    f.open("OutFiles/s3_stats.txt")
     
     for i in range(datapts):
+        print("    ")
         print(i,end='\r')
         multi = randRep.rr_multiplicities('s3')
         images = randRep.rr_images('s3',t,c,multi) #[im_t, im_c]
@@ -57,6 +60,6 @@ for noiseDoubleExponent in range(10,min_noiseExp-2):
             detectedFrac += datapts**(-1)
     
     # noise level, detected frac
-    f.write(str(0.5*noiseDoubleExponent)+", "+str(detectedFrac)+"\n")
+    f.write(str(0.5*(min_noiseExp - noiseDoubleExponent))+", "+str(detectedFrac)+"\n")
+    f.close()
 
-f.close()

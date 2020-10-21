@@ -18,4 +18,4 @@ def sign_rep(g):
         return np.array([[1]])
         
 def parameters():
-    return [0,9,0] #[delta, k, q]
+    return [0,2,0] #[delta, k, q]

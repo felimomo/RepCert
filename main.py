@@ -25,7 +25,7 @@ def subrep_tester(repr,proj):
     t_min = 0.5 * math.log(repr.dimension-1) 
     t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
     t_min = int(t_min)
-    t_max = t_min + 10
+    t_max = t_min + 12
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,proj)
