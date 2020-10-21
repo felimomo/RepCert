@@ -58,7 +58,7 @@ f.close()
 iteration_counter=0
 dimension_adder=0
 
-for noiseDoubleExponent in range(6,min_noiseExp-6):
+for noiseDoubleExponent in range(6,min_noiseExp-8):
     noiseLevel = 10**(-0.5*(min_noiseExp - noiseDoubleExponent))
     detectedFrac = 0.
     f=open("OutFiles/"+group_name+"_t"+str(t_surplus)+"stats.txt","a")
