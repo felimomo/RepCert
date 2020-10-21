@@ -32,7 +32,7 @@ def subrep_tester(repr,proj):
     if epsilon==1:
         # print("Not invariant!\n")
         return False
-    # print("Invariant with precision "+str(epsilon)+"\n")
+    print("       Invariant with precision "+str(epsilon))
     
     #Irreducibility test:
     for t in range(1,t_max+1):

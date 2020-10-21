@@ -6,7 +6,6 @@ import IrreducibilityCertificate as irr
 import string
 import math
 import cmath
-import pprint
 import helperFns as h
 import main
 import random

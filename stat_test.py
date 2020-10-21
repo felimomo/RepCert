@@ -8,7 +8,6 @@ import randRep
 import string
 import math
 import cmath
-import pprint
 import helperFns as h
 import main
 import random
@@ -32,9 +31,9 @@ for noiseDoubleExponent in range(2,5):
     noiseLevel = 10**(-0.5*noiseDoubleExponent)
     detectedFrac = 0.
     
-    print(noiseDoubleExponent,end='\r')
     for i in range(datapts):
-
+        
+        print(i,end='\r')
         multi = randRep.rr_multiplicities('s3')
         images = randRep.rr_images('s3',t,c,multi) #[im_t, im_c]
         dim = len(images[0])
