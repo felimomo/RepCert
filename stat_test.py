@@ -38,7 +38,7 @@ if group_name == 's4':
 
 generators = [t,c]
 
-datapts = 100
+datapts = 40
 min_noiseExp=30
 t_surplus = eval(input("surplus random walk length = ")) #random walks up to length 2(t_min + t_surplus)
 
