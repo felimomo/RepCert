@@ -23,20 +23,20 @@ def rr_invSpaces(group_name,multi):
     assert group_name in ['s3'], 'Inv Space error: Group '+str(group_name)+' not supported.'
     
     part1 = [
-            [ i*[0,0] + [1,1] + (multi[0]-i-1)*[0,0] 
+            i*[0,0] + [1,1] + (multi[0]-i-1)*[0,0] 
               +(multi[1]+multi[2])*[0]
-            ] 
+            
             for i in range(multi[0])]
     part2 = [
-            [ multi[0]*[0,0]
+             multi[0]*[0,0]
              +i*[0] + [1] +(multi[1]-i-1)*[0]
              +multi[2]*[0]
-            ] 
+             
             for i in range(multi[1])]
     part3 = [
-            [ multi[0]*[0,0] + multi[1]*[0]
+             multi[0]*[0,0] + multi[1]*[0]
              +i*[0] + [1] +(multi[2]-i-1)*[0]
-            ] 
+             
             for i in range(multi[2])]
             
     return part1 + part2 + part3

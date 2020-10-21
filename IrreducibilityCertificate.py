@@ -12,6 +12,7 @@ def repRandWalk(repr,t,proj):
 
 def repRandWalkEstimator(repr,proj,m,t):
     #estimator for random walk of length 2t
+    # print("random walk length = ",2*t)
     est = 0
     for i in range(m):
         est += abs(np.trace(repRandWalk(repr,t,proj)))**2 * m**(-1)

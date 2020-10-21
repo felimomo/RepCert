@@ -21,21 +21,21 @@ def subrep_tester(repr,proj):
     # error_p = eval(input("error p threshold = "))
     # t_max = int(eval(input("use random walks of length (t) at most = ")))
     
-    error_p = 2**(-50) #crypto standard of security
+    error_p = 0.0001 #some ad hoc small number
     t_min = 0.5 * math.log(repr.dimension-1) 
     t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
     t_min = int(t_min)
-    t_max = t_min + 20
+    t_max = t_min + 10
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,proj)
     if epsilon==1:
         # print("Not invariant!\n")
         return False
-    print("       Invariant with precision "+str(epsilon))
+    # print("       Invariant with precision "+str(epsilon))
     
     #Irreducibility test:
-    for t in range(1,t_max+1):
+    for t in range(t_min,t_max+1):
         if irr.irr_cert(repr,proj,t,epsilon,error_p):
             # print("Irreducible!\n")
             return True
