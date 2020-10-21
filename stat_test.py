@@ -27,7 +27,7 @@ t = rep.group_element(name='12')
 c = rep.group_element(name='123')
 generators = [t,c]
 
-datapts = 50
+datapts = 100
 min_noiseExp=30
 for noiseDoubleExponent in range(10,min_noiseExp-6):
     noiseLevel = 10**(-0.5*(min_noiseExp - noiseDoubleExponent))
