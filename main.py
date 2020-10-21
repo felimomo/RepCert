@@ -17,7 +17,7 @@ def best_invariance_certificate(repr,proj):
         epsilon = 10**(-x)
     return 10**(-smallest_exponent)
     
-def subrep_tester(repr,proj):
+def subrep_tester(repr,proj,t_surplus):
     # error_p = eval(input("error p threshold = "))
     # t_max = int(eval(input("use random walks of length (t) at most = ")))
     
