@@ -4,7 +4,8 @@ from Groups import s3
 
 def rr_multiplicities(group_name):
     assert group_name in ['s3'], 'RandRep Multipl. error: Group '+str(group_name)+' not supported.'
-    return [random.randint(1,10),random.randint(1,10),random.randint(1,10)]
+    scale = 20
+    return [random.randint(1,scale),random.randint(1,scale),random.randint(1,scale)]
 
 def rr_images(group_name,t,c,multi):
     assert group_name in ['s3'], 'RandRep Images error: Group '+str(group_name)+' not supported.'
