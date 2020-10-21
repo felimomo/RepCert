@@ -40,7 +40,7 @@ generators = [t,c]
 
 datapts = 40
 min_noiseExp=30
-t_surplus = 10 #random walks up to length 2(t_min + t_surplus)
+t_surplus = eval(input("surplus random walk length = ")) #random walks up to length 2(t_min + t_surplus)
 
 f = open("OutFiles/"+group_name+"_t"+str(t_surplus)+"_stats.txt", "w+")
 f.write(#
