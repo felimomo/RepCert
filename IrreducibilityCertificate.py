@@ -23,7 +23,7 @@ def number_samples(repr,proj,epsilon,error_p,t):
     minimum = 2*math.log(error_p**(-1))
     dt = h.dt(repr,epsilon,2*t)
     minimum*= dim**2 + dt #Minimum m such that irr_cert doesnt abort
-    extra_factor = 3 #To be sure that we have enough samples
+    extra_factor = 2 #To be sure that we have enough samples
     return int(extra_factor*minimum)
     
 def irr_cert(repr,proj,t,epsilon,error_p):

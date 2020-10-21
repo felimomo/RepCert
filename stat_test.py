@@ -36,7 +36,7 @@ if group_name == 's4':
     # problems since q=0 for all finite groups
 generators = [t,c]
 
-datapts = 70
+datapts = 40
 min_noiseExp=30
 for noiseDoubleExponent in range(10,min_noiseExp-6):
     noiseLevel = 10**(-0.5*(min_noiseExp - noiseDoubleExponent))
