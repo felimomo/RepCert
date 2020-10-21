@@ -61,7 +61,7 @@ dimension_adder=0
 for noiseDoubleExponent in range(6,min_noiseExp-8):
     noiseLevel = 10**(-0.5*(min_noiseExp - noiseDoubleExponent))
     detectedFrac = 0.
-    f=open("OutFiles/"+group_name+"_t"+str(t_surplus)+"stats.txt","a")
+    f=open("OutFiles/"+group_name+"_t"+str(t_surplus)+"_stats.txt","a")
     
     for i in range(datapts):
         print("                                             ",end='\r')
@@ -96,6 +96,6 @@ for noiseDoubleExponent in range(6,min_noiseExp-8):
 
 avg_dimension = float(dimension_adder)/iteration_counter
 
-f=open("OutFiles/"+group_name+"_t"+str(t_surplus)+"stats.txt","a")
+f=open("OutFiles/"+group_name+"_t"+str(t_surplus)+"_stats.txt","a")
 f.write(f"\n\n# Avg dimension = {avg_dimension}")
 f.close()
