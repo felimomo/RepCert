@@ -18,7 +18,7 @@ def largestComm_in_Group(repr,proj,eps):
     
     partialResult = k*largestComm_in_Gens(repr,proj) 
     partialResult+= 2*k*n*eps*(n*eps+1)
-    partialResult+= q*delta*math.exp(q*delta)
+    partialResult+= 2*q*delta*math.exp(q*delta)
     
     return partialResult
     
