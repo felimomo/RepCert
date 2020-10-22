@@ -9,7 +9,7 @@ def rr_multiplicities(group_name):
         scale = 20
         return [random.randint(1,scale),random.randint(1,scale),random.randint(1,scale)]
     if group_name == 's4':
-        scale = 35
+        scale = 50
         return [random.randint(1,scale),random.randint(1,scale),random.randint(1,scale),random.randint(1,scale),random.randint(1,scale)]
 
 def rr_images(group_name,t,c,multi):
