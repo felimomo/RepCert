@@ -1,11 +1,11 @@
 import numpy as np
-import Classes.RepClass as rep
-import Certificates.BundleCertificate as cert
-import Certificates.IrreducibilityCertificate as irr
-import Certificates.Tools as tls
+from Certificates.Classes import RepClass as rep
+from Certificates import BundleCertificate as cert
+from Certificates import IrreducibilityCertificate as irr
+from Certificates import Tools as tls
 from ForTesting.Groups import s3, s4
-import ForTesting.randRep as rr
-import ForTesting.helperFns as hlp
+from ForTesting import randRep as rr
+from ForTesting import helperFns as hlp
 import fileManager as flm
 
 import string
