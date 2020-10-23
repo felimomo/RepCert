@@ -1,32 +1,7 @@
 import numpy as np
 import random
 import string
-
-class group_element:
-    #element of a group with its name
-    def __init__(self, element=None, name=None):
-        self.element = element
-        if name == None:
-            #generate random name if not provided
-            self.name = ''.join(random.choice(string.ascii_lowercase) for i in range(8))
-        else:
-            self.name = name
-
-class group_element_image(group_element):
-    #representation image of a group element
-    def __init__(self,g,im):
-        assert isinstance(g,group_element), "First argument should be a group_element object."
-        self.element = g
-        self.Image = {self.element.name:im}
     
-    def setImage(self,im):
-        assert isinstance(im,list) and isinstance(im[0],list), "Image not a matrix."
-        assert all([len(im)==len(im[i]) for i in range(len(im))]), "Image not a square matrix."
-        self.Image[self.element.name] = im
-        self.dimension = len(im)
-    
-        
-
 class generators:
     #set of generators of a group
     def __init__(self,generators=None):
@@ -90,6 +65,32 @@ class rep_by_generators(generators):
 
         
         
+#
+# Old unused classes:
+#
         
+        
+# class group_element:
+#     #element of a group with its name
+#     def __init__(self, element=None, name=None):
+#         self.element = element
+#         if name == None:
+#             #generate random name if not provided
+#             self.name = ''.join(random.choice(string.ascii_lowercase) for i in range(8))
+#         else:
+#             self.name = name
+# 
+# class group_element_image(group_element):
+#     #representation image of a group element
+#     def __init__(self,g,im):
+#         assert isinstance(g,group_element), "First argument should be a group_element object."
+#         self.element = g
+#         self.Image = {self.element.name:im}
+# 
+#     def setImage(self,im):
+#         assert isinstance(im,list) and isinstance(im[0],list), "Image not a matrix."
+#         assert all([len(im)==len(im[i]) for i in range(len(im))]), "Image not a square matrix."
+#         self.Image[self.element.name] = im
+#         self.dimension = len(im)
         
     
