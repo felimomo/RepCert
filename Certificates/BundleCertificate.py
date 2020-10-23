@@ -17,14 +17,17 @@ def best_invariance_certificate(repr,proj):
         epsilon = 10**(-x)
     return 10**(-smallest_exponent)
     
-def subrep_tester(repr,proj,t_surplus):
-    # error_p = eval(input("error p threshold = "))
-    # t_max = int(eval(input("use random walks of length (t) at most = ")))
-    
-    error_p = 0.0001 #some ad hoc small number
+def minimum_t(repr):
     t_min = 0.5 * math.log(repr.dimension-1) 
     t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
     t_min = int(t_min)
+    return t_min
+    
+def subrep_tester(repr,proj,t_surplus,error_p):
+    # error_p = eval(input("error p threshold = "))
+    # t_max = int(eval(input("use random walks of length (t) at most = ")))
+    
+    t_min = minimum_t(repr)
     t_max = t_min + 10 #just some arbitrary extra amount, to be benchmarked
     
     #Invariance test:

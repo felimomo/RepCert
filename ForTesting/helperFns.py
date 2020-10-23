@@ -1,5 +1,7 @@
 import numpy as np
 
+# functions that are useful for constructing explicit representation examples
+
 def right_pad(A,k):
     #pad each row of the matrix A with k zeroes to the right
     B = []
