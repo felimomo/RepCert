@@ -60,6 +60,11 @@ min_noiseExp=16
 data = []
 iteration_counter=0
 dimension_adder=0
+print(" ")
+print("-----------------------")
+print(" noise, frac,    samp")
+print("-----------------------")
+print(" ")
 
 for noiseDoubleExponent in range(0,min_noiseExp-10):
     x = 0.5*(min_noiseExp - noiseDoubleExponent)
@@ -68,7 +73,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
     avg_samples = 0.
     
     for i in range(datapts):
-        dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv(group,generators,noiseLevel)
+        dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv(group,generators,noiseLevel,scale=scale)
         
         R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
         
@@ -93,7 +98,9 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         avg_samples += datapts**(-1) * samples_used       
     
     data += [[x, detectedFrac, avg_samples]]
-    print("noise, frac, samp = ", x, detectedFrac, avg_samples, "(avg dim = ", float(dimension_adder)/iteration_counter,")")
+    print("{:.2f}".format(x), ", " , "{:.2f}".format(detectedFrac), ", " ,# 
+    "{:.2f}".format(avg_samples), ", " , "(avg dim = ", #
+    "{:.2f}".format(float(dimension_adder)/iteration_counter),")")
 
 avg_dim = float(dimension_adder)/iteration_counter
 
