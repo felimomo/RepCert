@@ -10,7 +10,7 @@ def dirName(group_name,avg_dim):
     
 def genDir(name):
     # if the directory is not there, generate directory
-    subname = name.split("/dim")[0]
+    subname = name.split("/dim")[0] #the easy but unelegant way to get the full path created.
     if not path.exists(subname):
         mkdir(subname)
         mkdir(name)
@@ -56,7 +56,7 @@ def writeFile(**kwargs):
 #           * frac = fraction of irreps correctly identified, 
 #           * samp = avg total number of samples used.
 
-    """#
+"""#
     )
     
     for datum in results:
