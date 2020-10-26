@@ -1,12 +1,12 @@
-import Tools as tls
-import Classes.RepClass as rep
+from Certificates.Tools import lin, const, rwalk
+import Certificates.Classes.RepClass as rep
 import numpy as np
 import math
 
 def largestComm_in_Gens(repr,proj):
     #largest commutator with the reps
     assert isinstance(repr,rep.rep_by_generators), "Argument for largestCommutator isnt rep_by_generators"
-    return max( (np.linalg.norm(tls.lin.commutator(proj,im), ord='fro') for im in repr.image_list()) )
+    return max( (np.linalg.norm(lin.commutator(proj,im), ord='fro') for im in repr.image_list()) )
 
 def largestComm_in_Group(repr,proj,eps):
     assert hasattr(repr,'density'), "Representation has no specified density of generators."
@@ -29,7 +29,7 @@ def quality(repr,proj,eps):
     n = repr.dimension
     C = largestComm_in_Group(repr,proj,eps)+ 2*n*eps
     partialResult = C * (1-C)**(-1)
-    partialResult*= math.sqrt(round(tls.lin.trace(proj).real))
+    partialResult*= math.sqrt(round(lin.trace(proj).real))
     partialResult*= math.pi * math.sqrt(2**(-1))
     return partialResult
     

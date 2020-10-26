@@ -1,6 +1,7 @@
 import random
-import helperFns as h
-from Groups import s3, s4
+import numpy as np
+import ForTesting.helperFns as h
+from ForTesting.Groups import s3, s4
 
 def rr_multiplicities(group_name,scale=20):
     assert group_name in ['s3','s4'], 'RandRep Multipl. error: Group '+str(group_name)+' not supported.'
@@ -92,11 +93,11 @@ def rr_invSpaces(group_name,multi):
             
         return part1 + part2 + part3 + part4 + part5
 
-def rr_repAndInv(group,generators): 
+def rr_repAndInv(group_name,generators,noiseLevel): 
     #group stuff:
-    if group=='s3':
+    if group_name=='s3':
         well_cond = s3.parameters() #[delta, k ,q]
-    if group=='s4':
+    if group_name=='s4':
         well_cond = s4.parameters() #[delta, k ,q]
        
     #representation stuff:

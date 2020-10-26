@@ -6,12 +6,11 @@ from Certificates import Tools as tls
 from ForTesting.Groups import s3, s4
 from ForTesting import randRep as rr
 from ForTesting import helperFns as hlp
-import fileManager as flm
+import ForTesting.fileManager as flm
 
 import string
 import math
 import cmath
-import main
 import random
 
 
@@ -44,7 +43,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
     avg_samples = 0.
     
     for i in range(datapts):
-        dim, generators, images, well_cond, noisySpace = rr_repAndInv(group,generators)
+        dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv(group,generators,noiseLevel)
         
         R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
         

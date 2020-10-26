@@ -1,5 +1,5 @@
-import IrreducibilityCertificate as irr
-import InvarianceCertificate as inv
+import Certificates.IrreducibilityCertificate as irr
+import Certificates.InvarianceCertificate as inv
 import math
 
 

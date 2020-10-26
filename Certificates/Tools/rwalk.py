@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import math
+import Certificates.Tools.const as const
 
 def repRandWalk(repr,t,proj):
     P = np.asmatrix(proj)
@@ -20,7 +21,7 @@ def repRandWalkEstimator(repr,proj,m,t):
 def number_samples(repr,proj,epsilon,error_p,t):
     dim = int(np.trace(proj).real)
     minimum = 2*math.log(error_p**(-1))
-    dt = h.dt(repr,epsilon,2*t)
+    dt = const.dt(repr,epsilon,2*t)
     minimum*= dim**2 + dt #Minimum m such that irr_cert doesnt abort
     extra_factor = 3 #To be sure that we have enough samples
     return int(extra_factor*minimum)

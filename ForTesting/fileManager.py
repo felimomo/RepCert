@@ -11,11 +11,11 @@ def dirName(group_name,avg_dim):
 def genDir(name):
     # if the directory is not there, generate directory
     if not path.exists(name):
-        os.mkdir(name)
+        mkdir(name)
 
 def fileName():
     # generates random file name for an output file 
-    fname = ''.join(random.choice(string.ascii_lowercase)) for i in range(8)
+    fname = ''.join([random.choice(string.ascii_lowercase) for i in range(8)])
     fname+= '.txt'
     return fname
 
@@ -43,15 +43,15 @@ def writeFile(**kwargs):
     f = open(full,'w+')
     f.write(#
     f"""# Group = {group}
-    # random walks of length at most {maxt}
-    # avg dimension = {avgd}
-    # number of random representations averaged over = {data_pts}
-    #
-    # x, frac, samp : 
-    #           * noise strength = 10^-x, 
-    #           * frac = fraction of irreps correctly identified, 
-    #           * samp = avg total number of samples used.
-    
+# random walks of length at most {maxt}
+# avg dimension = {avgd}
+# number of random representations averaged over = {datapts}
+#
+# x, frac, samp : 
+#           * noise strength = 10^-x, 
+#           * frac = fraction of irreps correctly identified, 
+#           * samp = avg total number of samples used.
+
     """#
     )
     

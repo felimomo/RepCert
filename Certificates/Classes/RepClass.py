@@ -1,6 +1,16 @@
 import numpy as np
 import random
 import string
+
+class group_element:
+    #element of a group with its name
+    def __init__(self, element=None, name=None):
+        self.element = element
+        if name == None:
+            #generate random name if not provided
+            self.name = ''.join(random.choice(string.ascii_lowercase) for i in range(8))
+        else:
+            self.name = name
     
 class generators:
     #set of generators of a group
@@ -69,16 +79,7 @@ class rep_by_generators(generators):
 # Old unused classes:
 #
         
-        
-# class group_element:
-#     #element of a group with its name
-#     def __init__(self, element=None, name=None):
-#         self.element = element
-#         if name == None:
-#             #generate random name if not provided
-#             self.name = ''.join(random.choice(string.ascii_lowercase) for i in range(8))
-#         else:
-#             self.name = name
+
 # 
 # class group_element_image(group_element):
 #     #representation image of a group element

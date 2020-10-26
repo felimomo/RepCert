@@ -1,13 +1,13 @@
 import numpy as np
 import math
 import random
-import Tools as tls
+from Certificates.Tools import lin, const, rwalk
     
 def irr_cert(repr,proj,t,epsilon,error_p):
     #the one and only: yours truly, the certificate
-    m = tls.rwalk.number_samples(repr,proj,epsilon,error_p,t)
-    et = tls.const.et(repr,epsilon,t,proj)
-    dt = tls.const.dt(repr,epsilon,t)
+    m = rwalk.number_samples(repr,proj,epsilon,error_p,t)
+    et = const.et(repr,epsilon,t,proj)
+    dt = const.dt(repr,epsilon,t)
     aux = int(np.trace(proj).real)**2+dt
     aux*= 2*math.log(error_p**(-1))
     
@@ -24,7 +24,7 @@ def irr_cert(repr,proj,t,epsilon,error_p):
             return False    
     
     theta = math.sqrt(aux * (m*(2-et))**(-1))
-    E = et + tls.rwalk.repRandWalkEstimator(repr,proj,m,t)
+    E = et + rwalk.repRandWalkEstimator(repr,proj,m,t)
     if E < 2*(1-theta):
         return True
     return False
