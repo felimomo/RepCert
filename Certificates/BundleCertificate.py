@@ -1,5 +1,6 @@
-import Certificates.IrreducibilityCertificate as irr
-import Certificates.InvarianceCertificate as inv
+from Certificates import IrreducibilityCertificate as irr
+from Certificates import InvarianceCertificate as inv
+from Certificates.Tools import rwalk
 import math
 
 
@@ -23,19 +24,24 @@ def minimum_t(repr):
     t_min = int(t_min)
     return t_min
     
-def subrep_tester(repr,proj,t_surplus,error_p):
+def subrep_tester(repr,proj,t_surplus,error_p,prnt=False):
     # error_p = eval(input("error p threshold = "))
     # t_max = int(eval(input("use random walks of length (t) at most = ")))
+    # prnt : if true, then print the minimal epsilon of the invariance certificate
     
     t_min = minimum_t(repr)
-    t_max = t_min + 10 #just some arbitrary extra amount, to be benchmarked
+    t_max = t_min + t_surplus #just some arbitrary extra amount, to be benchmarked
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,proj)
+    if prnt:
+        print("Invariant at precision ",epsilon)
+        print("Minimal rand walk length = ", 2*t_min)
+        nsamp = rwalk.number_samples(repr,proj,epsilon,error_p,t_max)
+        print("Max number of samples required for irreducibility: ", nsamp)
+        
     if epsilon==1:
-        # print("Not invariant!\n")
         return False
-    # print("       Invariant with precision "+str(epsilon))
     
     #Irreducibility test:
     for t in range(t_min,t_max+1):

@@ -1,18 +1,22 @@
+from Certificates.Classes import RepClass as rep
+from Certificates.Tools import lin
+from Certificates import InvarianceCertificate as inv
+from Certificates import IrreducibilityCertificate as irr
+from Certificates import BundleCertificate as cert
+from ForTesting import helperFns as h
+
 import numpy as np
-import Tools.RepClass as rep
-import Tools.linear as lin
-import InvarianceCertificate as inv
-import IrreducibilityCertificate as irr
 import string
 import math
 import cmath
-import helperFns as h
-import main
 import random
+import time
 
 test_type = input("Which test would you like? (Opts: pauli, s3, s4).\n")
 
 machine_eps = 2**(-52)
+t_surplus = 0
+error_p = eval(input("Threshold false positive probability = "))
                                 
 if test_type == 'pauli':
     n = int(input("n = ")) 
@@ -63,7 +67,12 @@ if test_type == 'pauli':
     dim = len(invSpaces[0])
     noiseList = [noiseLevel*np.random.rand(dim,dim) for i in range(len(invSpaces))]
     noisyInvSpaces = invSpaces + np.array(noiseList)
-    main.subrep_tester(R,random.choice(noisyInvSpaces))
+    
+    start_time = time.time()
+    
+    if cert.subrep_tester(R,random.choice(noisyInvSpaces),t_surplus,error_p,prnt=True):
+        print("Irreducible!\n")
+        print("Computation time = ", time.time() - start_time)
     
 if test_type == 's3':
     t = rep.group_element(name='12')
@@ -108,7 +117,11 @@ if test_type == 's3':
     noise = noiseLevel*np.random.rand(dim,dim)
     noisySpace = pi1 + noise
     
-    main.subrep_tester(R,noisySpace)
+    start_time = time.time()
+    
+    if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
+        print("Irreducible!\n")
+        print("Computation time = ", time.time() - start_time)
 
 if test_type == 's4':
     t = rep.group_element(name='12')
@@ -164,8 +177,12 @@ if test_type == 's4':
                     ]           
     noisySpace = random.choice( [proj+noiseLevel*np.random.rand(dim,dim) for proj in InvSpaces] )
       
-    main.subrep_tester(R,noisySpace)            
-                
+    start_time = time.time()  
+      
+    if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
+        print("Irreducible!\n") 
+        print("Computation time = ", time.time() - start_time)          
+            
                 
 if test_type == 'cyclic':
     order = int(input("Order of the cyclic group = "))
@@ -206,8 +223,11 @@ if test_type == 'cyclic':
                     ]           
     noisySpace = random.choice( [proj+noiseLevel*np.random.rand(dim,dim) for proj in InvSpaces] )
     
-    main.subrep_tester(repr,noisySpace) 
+    start_time = time.time()
     
+    if cert.subrep_tester(repr,noisySpace,t_surplus,error_p,prnt=True):
+        print("Irreducible!\n")  
+        print("Computation time = ", time.time() - start_time)
     
     
     
