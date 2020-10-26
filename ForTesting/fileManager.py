@@ -10,7 +10,7 @@ def dirName(group_name,avg_dim):
     
 def genDir(name):
     # if the directory is not there, generate directory
-    subname = name.split("/dim")
+    subname = name.split("/dim")[0]
     if not path.exists(subname):
         mkdir(subname)
         mkdir(name)
