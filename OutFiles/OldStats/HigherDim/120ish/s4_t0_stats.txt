@@ -1,0 +1,17 @@
+
+# Group = s4
+# random walks from t_min to t_min+0
+# samples = 3 * minimum number of samples
+#
+# x, frac : noise strength = 10^-x, frac = fraction of irreps correctly identified
+9.0, 1.0000000000000004
+8.5, 1.0000000000000004
+8.0, 1.0000000000000004
+7.5, 1.0000000000000004
+7.0, 1.0000000000000004
+6.5, 1.0000000000000004
+6.0, 0.9250000000000005
+5.5, 0.4000000000000001
+
+
+# Avg dimension = 127.825
