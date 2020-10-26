@@ -93,7 +93,7 @@ def rr_invSpaces(group_name,multi):
             
         return part1 + part2 + part3 + part4 + part5
 
-def rr_repAndInv(group_name,generators,noiseLevel): 
+def rr_repAndInv(group_name,generators,noiseLevel,scale=20): 
     #group stuff:
     if group_name=='s3':
         well_cond = s3.parameters() #[delta, k ,q]
@@ -101,7 +101,7 @@ def rr_repAndInv(group_name,generators,noiseLevel):
         well_cond = s4.parameters() #[delta, k ,q]
        
     #representation stuff:
-    multi = rr_multiplicities(group_name)
+    multi = rr_multiplicities(group_name,scale)
     images = rr_images(group_name,generators,multi) #[im_t, im_c]
     dim = len(images[0])
     

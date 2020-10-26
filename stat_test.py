@@ -13,6 +13,32 @@ import math
 import cmath
 import random
 
+# important input data that is fixed:
+error_p = 0.000001 
+datapts = 10
+
+print(#
+f"""
+-o-o-o-o-o-o-o-o-o-o-
+  Statistical Test 
+-o-o-o-o-o-o-o-o-o-o-
+
+Test to see the dependence of false negatives on the dimension of the 
+representation, the magnitude of the error in the projector onto an irrep (noise 
+strength). Furthermore, it keeps track of the average number of samples required 
+to test irreducibility.
+
+For each 'noise strength,' {datapts} random representations are sampled (where 
+multiplicities are sampled at a given user-set scale). For each of these samples, 
+a random irreducible subrep is chosen and corrupted with a random matrix whose 
+elements have size 'noise strength'. A noise strength of x means that these
+entries have size at most 10^-x.
+
+The fraction of samples for which the certificate correctly outputs 'invariant and 
+irreducible' is recorded. 
+
+"""
+)
 
 group = input('Group to be tested (s3/s4):   ')
 scale = eval(input('Scale at which the multiplicities are sampled: '))
@@ -28,7 +54,6 @@ if group == 's4':
 generators = [t,c]
 
 # constants:
-datapts = 10
 min_noiseExp=16
 
 # initialize dynamic stuff:
@@ -54,7 +79,6 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         epsilon = cert.best_invariance_certificate(R,noisySpace)
         
         #irreducibility:
-        error_p = 0.0001 #some ad hoc small number
         samples_used = 0
         t_min = cert.minimum_t(R)
         t_surplus = 0
@@ -69,7 +93,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         avg_samples += datapts**(-1) * samples_used       
     
     data += [[x, detectedFrac, avg_samples]]
-    print("noise, frac, samp = ", x, detectedFrac, avg_samples, "avg dim = ", float(dimension_adder)/iteration_counter)
+    print("noise, frac, samp = ", x, detectedFrac, avg_samples, "(avg dim = ", float(dimension_adder)/iteration_counter,")")
 
 avg_dim = float(dimension_adder)/iteration_counter
 
