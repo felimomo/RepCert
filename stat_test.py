@@ -91,6 +91,8 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         samples_used = 0
         t_min = cert.minimum_t(R)
         t_surplus = 0
+        if group=='s5':
+            t_surplus = 15
         t_max = t_min + t_surplus
         for t in range(t_min,t_max+1):
             samples_used += tls.rwalk.number_samples(R,noisySpace,epsilon,error_p,t)
