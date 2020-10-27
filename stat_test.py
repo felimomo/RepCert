@@ -14,7 +14,7 @@ import cmath
 import random
 
 # important input data that is fixed:
-error_p = 0.000001 
+error_p = 0.0001 
 datapts = 10
 
 print(#
@@ -50,11 +50,15 @@ if group == 's3':
 if group == 's4':
     t = rep.group_element(name='12')
     c = rep.group_element(name='1234')
+    
+if group == 's5':
+    t = rep.group_element(name='12')
+    c = rep.group_element(name='12345')
 
 generators = [t,c]
 
 # constants:
-min_noiseExp=16
+min_noiseExp=30
 
 # initialize dynamic stuff:
 data = []

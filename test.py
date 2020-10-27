@@ -133,62 +133,26 @@ if test_type == 's4':
         print("Irreducible!\n")
         print("Computation time = ", time.time() - start_time, "s")
     
-    # def triv_rep(g):
-    #     return np.array([[1]])
-    # 
-    # def sign_rep(g):
-    #     # Actually both generators get mapped to -1 here
-    #     # (huh, a cyclic permutation of even order having
-    #     # negative sign... that's sketchy but oh well
-    #     return np.array([[-1]])
-    # 
-    # def twoD_rep(g):
-    #     if g.name == '1234':
-    #         #E3 = math.exp(2*math.pi*1.j/3.)
-    #         E3 = -0.5 + math.sqrt(3)*2**(-1)*1.j
-    #         return np.array([[0,E3**2],[E3,0]])
-    #     if g.name == '12':
-    #         return np.array([[0,1],[1,0]])
-    # 
-    # def aThreeD_rep(g):
-    #     if g.name == '1234':
-    #         return np.array([ [ -1, 0, 0 ], [ 0, 0, 1 ], [ 0, -1, 0 ] ])
-    #     if g.name == '12':
-    #         return np.array([ [ 0, -1, 0 ], [ -1, 0, 0 ], [ 0, 0, 1 ] ])    
-    # 
-    # def bThreeD_rep(g):
-    #     if g.name == '1234':
-    #         return np.array([ [ 1, 0, 0 ], [ 0, 0, -1 ], [ 0, 1, 0 ] ])
-    #     if g.name == '12':
-    #         return np.array([ [ 0, 1, 0 ], [ 1, 0, 0 ], [ 0, 0, -1 ] ])
-    # 
-    # im_t = h.image_constructor(t,aThreeD_rep,1,bThreeD_rep,1,twoD_rep,1)
-    # im_c = h.image_constructor(c,aThreeD_rep,1,bThreeD_rep,1,twoD_rep,1)
-    # dim = len(im_t)
-    # 
-    # delta = 0
-    # k = 5*(4**2)-5*2 
-    #     # According to Shuo Tan, ON THE DIAMETER OF CAYLEY GRAPHS OF FINITE GROUPS,
-    #     # the diameter w/r to transposition and full cyclic permutation of S_n is 
-    #     # 5n^2 - 5n
-    # q = 0
-    # 
-    # R = rep.rep_by_generators(dim,[t,c],[im_t,im_c],density=(delta,k),q=q) 
-    # 
-    # noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
-    # noiseLevel = 10**(-noiseExponent)
-    # InvSpaces = [   np.diag(3*[1]+5*[0]).astype(complex), 
-    #                 np.diag(3*[0]+3*[1]+2*[0]).astype(complex), 
-    #                 np.diag(6*[0]+2*[1]).astype(complex)
-    #                 ]           
-    # noisySpace = random.choice( [proj+noiseLevel*np.random.rand(dim,dim) for proj in InvSpaces] )
-    # 
-    # start_time = time.time()  
-    # 
-    # if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
-    #     print("Irreducible!\n") 
-    #     print("Computation time = ", time.time() - start_time)          
-            
+if test_type == 's5':
+    t = rep.group_element(name='12')
+    c = rep.group_element(name='12345')
+    generators = [t,c]
+    
+    noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
+    noiseLevel = 10**(-noiseExponent)
+    scale = eval(input("Scale at which multiplicities are sampled = "))
+    
+    dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv('s5',generators,noiseLevel,scale=scale)
+    
+    print("Dimension = ", dim)
+    
+    R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
+    
+    start_time = time.time()
+    
+    if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
+        print("Irreducible!\n")
+        print("Computation time = ", time.time() - start_time, "s")
                 
 if test_type == 'cyclic':
     order = int(input("Order of the cyclic group = "))
