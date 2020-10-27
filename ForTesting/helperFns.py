@@ -54,6 +54,8 @@ def direct_sum_list(l):
 
 def direct_multiple(A,m):
     #direct sum of A with itself m times
+    if m==0:
+        return np.array([[]])
     outMat = A
     for i in range(m-1):
         outMat = oplus(outMat,A)
@@ -81,13 +83,13 @@ def image_constructor(g,*argv,**kwargs):
     
 
     if len(kwargs)==0:
-        imageList = [direct_multiple( repFns[i](g) ,  multi[i]) for i in range(len(repFns))]
+        imageList = [direct_multiple( repFns[i](g) ,  multi[i]) for i in range(len(repFns)) if multi[i] is not 0]
         return direct_sum_list(imageList)
 
     arguments = kwargs['arguments'] # list of lists
     assert len(arguments) == len(repFns), "There must be one sublist of arguments per function in the image constructor."    
     
-    imageList = [direct_multiple( repFns[i](g,arguments[i]) ,  multi[i]) for i in range(len(repFns))]
+    imageList = [direct_multiple( repFns[i](g,arguments[i]) ,  multi[i]) for i in range(len(repFns)) if multi[i] is not 0]
     return direct_sum_list(imageList)
     
 

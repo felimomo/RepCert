@@ -92,7 +92,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         #irreducibility:
         samples_used = 0
         t_min = cert.minimum_t(R)
-        if hasattr(R, 'order'):
+        if hasattr(R, 'order') and R.order < t_min:
             t_min = R.order
         t_surplus = 0
         if group=='s5':

@@ -30,6 +30,8 @@ def subrep_tester(repr,proj,t_surplus,error_p,prnt=False):
     # prnt : if true, then print the minimal epsilon of the invariance certificate
     
     t_min = minimum_t(repr)
+    if hasattr(repr, 'order') and repr.order < t_min:
+        t_min = repr.order
     t_max = t_min + t_surplus #just some arbitrary extra amount, to be benchmarked
     
     #Invariance test:

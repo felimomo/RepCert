@@ -147,11 +147,15 @@ if test_type == 's5':
     print("Dimension = ", dim)
     
     R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
+    R.set_groupOrder(120) # computed with GAP
     
     start_time = time.time()
     
     if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
         print("Irreducible!\n")
+        print("Computation time = ", time.time() - start_time, "s")
+    else:
+        print("Dont know if irrep!\n")
         print("Computation time = ", time.time() - start_time, "s")
                 
 if test_type == 'cyclic':
