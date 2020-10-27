@@ -24,4 +24,4 @@ def number_samples(repr,proj,epsilon,error_p,t):
     dt = const.dt(repr,epsilon,2*t)
     minimum*= dim**2 + dt #Minimum m such that irr_cert doesnt abort
     extra_factor = 3 #To be sure that we have enough samples
-    return int(extra_factor*minimum)
+    return int(extra_factor*minimum)+10
