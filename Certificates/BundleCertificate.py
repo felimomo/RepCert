@@ -8,7 +8,7 @@ def best_invariance_certificate(repr,proj):
     # largest_exponent = int(input("Largest epsilon = 10^(-x), (x int > 0), x = "))
     # smallest_exponent = int(input("Smallest epsilon = 10^(-x), (x int > 0), x = "))
     largest_exponent = 1
-    smallest_exponent = 15
+    smallest_exponent = 25
     epsilon = 10**(-largest_exponent)
     if not inv.inv_cert(repr,proj,epsilon):
         return 1
@@ -16,7 +16,7 @@ def best_invariance_certificate(repr,proj):
         if not inv.inv_cert(repr,proj,epsilon):
             return epsilon
         epsilon = 10**(-x)
-    return 10**(-smallest_exponent)
+    return epsilon
     
 def minimum_t(repr):
     t_min = 0.5 * math.log(repr.dimension-1) 
@@ -28,6 +28,9 @@ def subrep_tester(repr,proj,t_surplus,error_p,prnt=False):
     # error_p = eval(input("error p threshold = "))
     # t_max = int(eval(input("use random walks of length (t) at most = ")))
     # prnt : if true, then print the minimal epsilon of the invariance certificate
+    
+    if repr.dimension==1:
+        return True
     
     t_min = minimum_t(repr)
     if hasattr(repr, 'order') and repr.order < t_min:
@@ -46,7 +49,7 @@ def subrep_tester(repr,proj,t_surplus,error_p,prnt=False):
         return False
     
     #Irreducibility test:
-    for t in range(t_min,t_max+1):
+    for t in range(t_min,t_max):
         if irr.irr_cert(repr,proj,t,epsilon,error_p):
             # print("Irreducible!\n")
             return True

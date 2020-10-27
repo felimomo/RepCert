@@ -131,7 +131,7 @@ def rr_invSpaces(group_name,multi):
             return [i*zeros[j] + ones[j] + (multi[j]-1-i)*zeros[j] for i in range(multi[j])]
             
         leftzeros(3,multi)
-        invS = [[leftzeros(j,multi) + blckrow + rightzeros(j,multi)] for j in range(len(multi)) for blckrow in blck(j,multi)]
+        invS = [leftzeros(j,multi) + blckrow + rightzeros(j,multi) for j in range(len(multi)) for blckrow in blck(j,multi)]
         
         return invS
         
@@ -161,7 +161,9 @@ def rr_repAndInv(group_name,generators,noiseLevel,scale=20):
     #invariant subspace stuff:
     invSpaces = rr_invSpaces(group_name,multi)
     rand_invSpaceList = random.choice(invSpaces)
+    # print("Inv space list =\n", rand_invSpaceList)
     rand_invSpace = np.diag(rand_invSpaceList)
+    # print("\nInv space =\n",rand_invSpace,"\n")
     noise = noiseLevel*np.random.rand(dim,dim)
     noisySpace = rand_invSpace+noise
 

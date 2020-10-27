@@ -22,6 +22,7 @@ def number_samples(repr,proj,epsilon,error_p,t):
     dim = int(np.trace(proj).real)
     minimum = 2*math.log(error_p**(-1))
     dt = const.dt(repr,epsilon,2*t)
+    # print("\n\ndt = ",dt,"\n\n")
     minimum*= dim**2 + dt #Minimum m such that irr_cert doesnt abort
-    extra_factor = 5 #To be sure that we have enough samples
+    extra_factor = 16 #To be sure that we have enough samples
     return int(extra_factor*minimum)+10

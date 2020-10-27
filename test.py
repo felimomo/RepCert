@@ -137,6 +137,7 @@ if test_type == 's5':
     t = rep.group_element(name='12')
     c = rep.group_element(name='12345')
     generators = [t,c]
+    t_surplus = 50
     
     noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
     noiseLevel = 10**(-noiseExponent)

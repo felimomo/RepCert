@@ -30,6 +30,7 @@ def quality(repr,proj,eps):
     C = largestComm_in_Group(repr,proj,eps)+ 2*n*eps
     partialResult = C * (1-C)**(-1)
     partialResult*= math.sqrt(round(lin.trace(proj).real))
+    # print("\n\n Projector =\n", proj,"\n\n")
     partialResult*= math.pi * math.sqrt(2**(-1))
     return partialResult
     
