@@ -71,6 +71,9 @@ class rep_by_generators(generators):
     
     def set_density(self,density):
         self.density = density
+    
+    def set_groupOrder(self,ord):
+        self.order = ord
         
 
         

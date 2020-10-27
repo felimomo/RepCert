@@ -80,6 +80,8 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv(group,generators,noiseLevel,scale=scale)
         
         R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
+        if group=='s5':
+            R.set_groupOrder(120)
         
         iteration_counter += 1
         dimension_adder += dim
@@ -90,6 +92,8 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         #irreducibility:
         samples_used = 0
         t_min = cert.minimum_t(R)
+        if hasattr(R, 'order'):
+            t_min = R.order
         t_surplus = 0
         if group=='s5':
             t_surplus = 15

@@ -9,11 +9,20 @@ def rr_multiplicities(group_name,scale=20):
     assert group_name in ['s3','s4','s5'], 'RandRep Multipl. error: Group '+str(group_name)+' not supported.'
     
     if group_name == 's3':
-        return [random.randint(1,scale),random.randint(1,scale),random.randint(1,scale)]
+        multis = [random.randint(0,scale) for i in range(3)]
+        while sum(multis)==0:
+            multis = [random.randint(0,scale) for i in range(3)]
+        return multis
     if group_name == 's4':
-        return [random.randint(1,scale),random.randint(1,scale),random.randint(1,scale),random.randint(1,scale),random.randint(1,scale)]
+        multis = [random.randint(0,scale) for i in range(5)]
+        while sum(multis)==0:
+            multis = [random.randint(0,scale) for i in range(5)]
+        return multis
     if group_name == 's5':
-        return [random.randint(1,scale) for i in range(5)]
+        multis = [random.randint(0,scale) for i in range(5)]
+        while sum(multis)==0:
+            multis = [random.randint(0,scale) for i in range(5)]
+        return multis
 
 def rr_images(group_name,gens,multi):
     assert group_name in ['s3','s4','s5'], 'RandRep Images error: Group '+str(group_name)+' not supported.'
