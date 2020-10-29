@@ -26,14 +26,26 @@ standard basis, but the multiplicities are chosen randomly. An irreducible subre
 at random and its projector is corrupted by a given small random matrix. This approximate
 projector is run through the invariance and irreducibility certificates.
 
+The automatic test sets the group, threshold false-positive prob, and noise level at some
+predefined values (see source: test.py).
+
 """
 )
-
-test_type = input("Which test would you like? (Opts: s3, s4, s5).\n")
-
 machine_eps = 2**(-52)
 t_surplus = 100
-error_p = eval(input("Threshold false positive probability = "))
+automatic = input("Want to automatize? (y/n)")
+
+if automatic=='n':
+    test_type = input("Which test would you like? (Opts: s3, s4, s5).\n")
+    error_p = eval(input("Threshold false positive probability = "))
+    noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
+    noiseLevel = 10**(-noiseExponent)
+elif automatic=='y':
+    test_type = 's5'
+    error_p = 0.0000001
+    noiseLevel = 10**(-12)
+
+scale = eval(input("Scale at which multiplicities are sampled = "))
                                 
 if test_type == 'pauli':
     n = int(input("n = ")) 
@@ -96,9 +108,7 @@ if test_type == 's3' :
     c = rep.group_element(name='123')
     generators = [t,c]
     
-    noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
-    noiseLevel = 10**(-noiseExponent)
-    scale = eval(input("Scale at which multiplicities are sampled = "))
+
     
     dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv('s3',generators,noiseLevel,scale=scale)
     
@@ -121,10 +131,6 @@ if test_type == 's4':
     c = rep.group_element(name='1234')
     generators = [t,c]
     
-    noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
-    noiseLevel = 10**(-noiseExponent)
-    scale = eval(input("Scale at which multiplicities are sampled = "))
-    
     dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv('s4',generators,noiseLevel,scale=scale)
     
     print("Dimension = ", dim)
@@ -145,10 +151,6 @@ if test_type == 's5':
     t = rep.group_element(name='12')
     c = rep.group_element(name='12345')
     generators = [t,c]
-    
-    noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
-    noiseLevel = 10**(-noiseExponent)
-    scale = eval(input("Scale at which multiplicities are sampled = "))
     
     dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv('s5',generators,noiseLevel,scale=scale)
     
