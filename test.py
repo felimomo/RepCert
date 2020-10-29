@@ -29,10 +29,10 @@ projector is run through the invariance and irreducibility certificates.
 """
 )
 
-test_type = input("Which test would you like? (Opts: s3, s4).\n")
+test_type = input("Which test would you like? (Opts: s3, s4, s5).\n")
 
 machine_eps = 2**(-52)
-t_surplus = 0
+t_surplus = 100
 error_p = eval(input("Threshold false positive probability = "))
                                 
 if test_type == 'pauli':
@@ -105,11 +105,15 @@ if test_type == 's3' :
     print("Dimension = ", dim)
     
     R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
+    R.set_groupOrder(6)
     
     start_time = time.time()
     
     if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
         print("Irreducible!\n")
+        print("Computation time = ", time.time() - start_time, "s")
+    else:
+        print("Dont know if irrep!\n")
         print("Computation time = ", time.time() - start_time, "s")
 
 if test_type == 's4':
@@ -126,18 +130,21 @@ if test_type == 's4':
     print("Dimension = ", dim)
     
     R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
+    R.set_groupOrder(24)
     
     start_time = time.time()
     
     if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
         print("Irreducible!\n")
         print("Computation time = ", time.time() - start_time, "s")
+    else:
+        print("Dont know if irrep!\n")
+        print("Computation time = ", time.time() - start_time, "s")
     
 if test_type == 's5':
     t = rep.group_element(name='12')
     c = rep.group_element(name='12345')
     generators = [t,c]
-    t_surplus = 50
     
     noiseExponent = int(input("Noise level will be 10^(-x), x int, x = "))
     noiseLevel = 10**(-noiseExponent)
@@ -148,7 +155,7 @@ if test_type == 's5':
     print("Dimension = ", dim)
     
     R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
-    R.set_groupOrder(120) # computed with GAP
+    R.set_groupOrder(120)
     
     start_time = time.time()
     

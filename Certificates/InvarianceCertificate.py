@@ -25,20 +25,17 @@ def largestComm_in_Group(repr,proj,eps):
     
 
 def quality(repr,proj,eps):
-    #eps=machine epsilon.
     n = repr.dimension
     C = largestComm_in_Group(repr,proj,eps)+ 2*n*eps
     partialResult = C * (1-C)**(-1)
     partialResult*= math.sqrt(round(lin.trace(proj).real))
-    # print("\n\n Projector =\n", proj,"\n\n")
     partialResult*= math.pi * math.sqrt(2**(-1))
     return partialResult
     
 def inv_cert(repr,proj,epsilon):
-    #eps=machine epsilon = largest gap in [1,2) between floats (2^-52 for double precision).
-    eps = 2**(-52)
-    #returns true if proj is epsilon-close to invariant-projector in frob norm
-    # assert linear.isprojector(proj,eps), "Projector input is not close to a projector."
+    #invariance certificate: is proj close to being invariant in Frob norm?
+    
+    eps = 2**(-52) #eps=machine epsilon = largest gap in [1,2) between floats (here use double precision).
     assert isinstance(repr,rep.rep_by_generators), "Representation input is not a rep_by_generators object."
     
     return quality(repr,proj,eps) <= epsilon

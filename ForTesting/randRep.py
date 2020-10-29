@@ -10,18 +10,20 @@ def rr_multiplicities(group_name,scale=20):
     
     if group_name == 's3':
         multis = [random.randint(0,scale) for i in range(3)]
-        while sum(multis)==0:
+        while sum(multis)==0: #don't want a zero-dim representation
             multis = [random.randint(0,scale) for i in range(3)]
         return multis
+        
     if group_name == 's4':
         multis = [random.randint(0,scale) for i in range(5)]
-        while sum(multis)==0:
+        while sum(multis)==0: #don't want a zero-dim representation
             multis = [random.randint(0,scale) for i in range(5)]
         return multis
+        
     if group_name == 's5':
         multis = [random.randint(0,scale) for i in range(5)]
-        while sum(multis)==0:
-            multis = [random.randint(0,scale) for i in range(5)]
+        while sum(multis)==0: #don't want a zero-dim representation
+            multis = [random.randint(0,scale) for i in range(5)] #only included 5 irreps for simplicity.
         return multis
 
 def rr_images(group_name,gens,multi):
@@ -122,26 +124,17 @@ def rr_invSpaces(group_name,multi):
         zeros= [[0], [0], 4*[0], 5*[0], 6*[0]]
         
         def leftzeros(j,multi):
-            # print([zeros[i]*multi[i] for i in range(j)])
             return sum([zeros[i]*multi[i] for i in range(j)], [])
+            
         def rightzeros(j,multi):
-            # print([zeros[i]*multi[i] for i in range(j+1,len(zeros))])
             return sum([zeros[i]*multi[i] for i in range(j+1,len(zeros))], [])
+            
         def blck(j,multi):
             return [i*zeros[j] + ones[j] + (multi[j]-1-i)*zeros[j] for i in range(multi[j])]
             
-        leftzeros(3,multi)
         invS = [leftzeros(j,multi) + blckrow + rightzeros(j,multi) for j in range(len(multi)) for blckrow in blck(j,multi)]
         
         return invS
-        
-        # prelim =    [#
-        #             [j, [i*zeros[j] + ones[j] + (multi[j]-i)*zeros[j]]] #
-        #             for j in range(6) for i in range(multi[j]) ]
-        # invS = prelim[:][1:]
-        # for l in range(len(invS)):
-        #     for row in prelim:
-        #         if row[0] > prelim[l][0]:
         
 
 def rr_repAndInv(group_name,generators,noiseLevel,scale=20): 
@@ -161,14 +154,10 @@ def rr_repAndInv(group_name,generators,noiseLevel,scale=20):
     #invariant subspace stuff:
     invSpaces = rr_invSpaces(group_name,multi)
     rand_invSpaceList = random.choice(invSpaces)
-    # print("Inv space list =\n", rand_invSpaceList)
     rand_invSpace = np.diag(rand_invSpaceList)
-    # print("\nInv space =\n",rand_invSpace,"\n")
     noise = noiseLevel*np.random.rand(dim,dim)
     noisySpace = rand_invSpace+noise
-
-    # R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
-
+    
     return dim, generators, images, well_cond, noisySpace
 
 

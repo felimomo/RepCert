@@ -2,6 +2,7 @@ from Certificates import IrreducibilityCertificate as irr
 from Certificates import InvarianceCertificate as inv
 from Certificates.Tools import rwalk
 import math
+import numpy as np
 
 
 def best_invariance_certificate(repr,proj):
@@ -22,38 +23,39 @@ def minimum_t(repr):
     t_min = 0.5 * math.log(repr.dimension-1) 
     t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
     t_min = int(t_min)
+    if hasattr(repr, 'order'):
+        # in practice the above value of t_min seems too large for small finite groups.
+        # replace it by an ad-hoc value of t_min here, given by twice the Cayley diam.
+        t_min = 2*repr.density[1]
     return t_min
     
 def subrep_tester(repr,proj,t_surplus,error_p,prnt=False):
-    # error_p = eval(input("error p threshold = "))
-    # t_max = int(eval(input("use random walks of length (t) at most = ")))
-    # prnt : if true, then print the minimal epsilon of the invariance certificate
     
     if repr.dimension==1:
         return True
     
     t_min = minimum_t(repr)
-    if hasattr(repr, 'order') and repr.order < t_min:
-        t_min = repr.order
-    t_max = t_min + t_surplus #just some arbitrary extra amount, to be benchmarked
+    t_max = t_min + t_surplus
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,proj)
     if prnt:
         print("Invariant at precision ",epsilon)
         print("Minimal rand walk length = ", 2*t_min)
-        nsamp = rwalk.number_samples(repr,proj,epsilon,error_p,t_max)
-        print("Max number of samples required for irreducibility: ", nsamp)
+        print("Max number of samples required for irreducibility: ", 
+                rwalk.number_samples(repr,proj,epsilon,error_p,t_max)
+                )
+        print("Dimension of irrep being tested = ", int(np.trace(proj).real))
         
     if epsilon==1:
         return False
     
     #Irreducibility test:
-    for t in range(t_min,t_max):
-        if irr.irr_cert(repr,proj,t,epsilon,error_p):
-            # print("Irreducible!\n")
+    for t in range(t_min,t_max+1):
+        irrep = irr.irr_cert(repr,proj,t,epsilon,error_p)
+        print("t, irr_cert = ", t, irrep)
+        if irrep:
             return True
-    # print("Dont know if irreducible!\n")
     return False
     
     

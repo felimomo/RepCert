@@ -14,8 +14,9 @@ import cmath
 import random
 
 # important input data that is fixed:
-error_p = 0.0001 
+error_p = 0.0000001 
 datapts = 10
+t_surplus = 100
 
 print(#
 f"""
@@ -80,8 +81,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv(group,generators,noiseLevel,scale=scale)
         
         R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
-        if group=='s5':
-            R.set_groupOrder(120)
+        R.set_groupOrder('finite')
         
         iteration_counter += 1
         dimension_adder += dim
@@ -92,11 +92,6 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
         #irreducibility:
         samples_used = 0
         t_min = cert.minimum_t(R)
-        if hasattr(R, 'order') and R.order < t_min:
-            t_min = R.order
-        t_surplus = 0
-        if group=='s5':
-            t_surplus = 15
         t_max = t_min + t_surplus
         for t in range(t_min,t_max+1):
             samples_used += tls.rwalk.number_samples(R,noisySpace,epsilon,error_p,t)
@@ -114,7 +109,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-10):
 
 avg_dim = float(dimension_adder)/iteration_counter
 
-flm.writeFile(group=group, avg_dim=avg_dim, max_t=t_max, data_pts=datapts, results=data)
+flm.writeFile(group=group, avg_dim=avg_dim, max_t=t_max, data_pts=datapts, results=data, error_p=error_p)
 
 # f=open(file,"a")
 # f.write(f"\n\n# Avg dimension = {avg_dimension}")

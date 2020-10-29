@@ -30,6 +30,7 @@ def writeFile(**kwargs):
     maxt    = 2*kwargs['max_t'] #maximal length of random walk
     results =   kwargs['results']
     datapts =   kwargs['data_pts']
+    error_p =   kwargs['error_p']
     #
     # syntax: [[x1,y1,z1], [x2,y2,z2], ... ] where xi are noise strengths,
     # yi are detected fractions of irreps, and zi are the average number of 
@@ -50,6 +51,7 @@ def writeFile(**kwargs):
 # random walks of length at most {maxt}
 # avg dimension = {avgd}
 # number of random representations averaged over = {datapts}
+# threshold probability of false positive = {error_p}
 #
 # x, frac, samp : 
 #           * noise strength = 10^-x, 
@@ -60,7 +62,10 @@ def writeFile(**kwargs):
     )
     
     for datum in results:
-        f.write(str(datum[0])+', '+str(datum[1])+','+str(datum[2])+'\n')
+        f.write(
+              str("{:.2f}".format(datum[0])) + ', '
+            + str("{:.2f}".format(datum[1])) + ', '
+            + str("{:.2f}".format(datum[2])) + '\n')
     f.close()
 
     

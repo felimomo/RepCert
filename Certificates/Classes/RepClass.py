@@ -74,6 +74,8 @@ class rep_by_generators(generators):
     
     def set_groupOrder(self,ord):
         self.order = ord
+        # for finite groups.
+        # could be an actual number, or simply 'finite'
         
 
         

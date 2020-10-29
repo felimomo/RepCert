@@ -8,21 +8,17 @@ def repRandWalk(repr,t,proj):
     w = np.eye(repr.dimension).astype(complex)
     for i in range(t):
         w *= P*np.asmatrix(random.choice(repr.image_list()))*P.H
-    return w
+    return abs(np.trace(w))**2
 
 def repRandWalkEstimator(repr,proj,m,t):
-    #estimator for random walk of length 2t
+    # estimator for random walk of length 2t
     # print("random walk length = ",2*t)
-    est = 0
-    for i in range(m):
-        est += abs(np.trace(repRandWalk(repr,t,proj)))**2 * m**(-1)
-    return est
+    est = (repRandWalk(repr,t,proj) * m**(-1) for i in range(m))
+    return sum(est)
     
-def number_samples(repr,proj,epsilon,error_p,t):
+def number_samples(repr,proj,epsilon,error_p,t,extra_factor=16):
     dim = int(np.trace(proj).real)
     minimum = 2*math.log(error_p**(-1))
     dt = const.dt(repr,epsilon,2*t)
-    # print("\n\ndt = ",dt,"\n\n")
     minimum*= dim**2 + dt #Minimum m such that irr_cert doesnt abort
-    extra_factor = 16 #To be sure that we have enough samples
-    return int(extra_factor*minimum)+10
+    return int(extra_factor*minimum)

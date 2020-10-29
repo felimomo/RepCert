@@ -19,7 +19,7 @@ def sign_rep(g):
 #
 # The following reps are obtained using GAP's
 # IrreducibleRepresentationsDixon(SymmetricGroup(5):unitary); command.
-# They're pretty ugly so I'll just include a couple
+# They're pretty ugly so I'll just include 5, instead of all 7.
 #
 
 def d4_rep(g):
