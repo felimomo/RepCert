@@ -52,9 +52,7 @@ def subrep_tester(repr,proj,t_surplus,error_p,prnt=False):
     
     #Irreducibility test:
     for t in range(t_min,t_max+1):
-        irrep = irr.irr_cert(repr,proj,t,epsilon,error_p)
-        print("t, irr_cert = ", t, irrep)
-        if irrep:
+        if irr.irr_cert(repr,proj,t,epsilon,error_p):
             return True
     return False
     
