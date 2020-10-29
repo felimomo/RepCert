@@ -71,7 +71,7 @@ print(" noise, frac,    samp")
 print("-----------------------")
 print(" ")
 
-for noiseDoubleExponent in range(0,min_noiseExp-10):
+for noiseDoubleExponent in range(0,min_noiseExp-21):
     x = 0.5*(min_noiseExp - noiseDoubleExponent)
     noiseLevel = 10**(-x)
     detectedFrac = 0.
