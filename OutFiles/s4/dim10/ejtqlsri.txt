@@ -1,0 +1,16 @@
+# Group = s4
+# random walks of length at most 256
+# avg dimension = 14.733333333333333
+# number of random representations averaged over = 10
+#
+# x, frac, samp : 
+#           * noise strength = 10^-x, 
+#           * frac = fraction of irreps correctly identified, 
+#           * samp = avg total number of samples used.
+
+8.0, 0.9999999999999999,331.0
+7.5, 0.9999999999999999,289.49999999999994
+7.0, 0.9999999999999999,489.1000000000001
+6.5, 0.8999999999999999,357.4000000000001
+6.0, 0.7999999999999999,360.1000000000001
+5.5, 0.7,274.9

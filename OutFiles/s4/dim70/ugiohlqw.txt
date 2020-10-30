@@ -1,0 +1,20 @@
+# Group = s4
+# random walks of length at most 228
+# avg dimension = 79.95555555555555
+# number of random representations averaged over = 10
+# threshold probability of false positive = 1e-07
+#
+# x, frac, samp : 
+#           * noise strength = 10^-x, 
+#           * frac = fraction of irreps correctly identified, 
+#           * samp = avg total number of samples used.
+
+15.00, 1.00, 2475.40
+14.50, 1.00, 2578.50
+14.00, 1.00, 2475.40
+13.50, 1.00, 2785.00
+13.00, 1.00, 1804.80
+12.50, 1.00, 2062.70
+12.00, 1.00, 2630.20
+11.50, 1.00, 3558.70
+11.00, 1.00, 2475.40
