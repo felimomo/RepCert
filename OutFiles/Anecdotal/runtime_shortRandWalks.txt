@@ -27,26 +27,26 @@ Testing a 6-dim subrep is associated to 18k samples, testing a
 subrep is associated to 8252 samples, and testing a 1-dim
 subrep is trivial.
 
-Cert  Dim   Samples         Comp Time
--------------------------------------
-Yes   20    18568           7s
-Yes   20    12894           5s
-Yes   24    18568           8s
-Yes   29    12894           8s
-Yes   29    18568           11s
-Yes   42    8252            8s
-Yes   57    18568           27s
-Yes   62    18568           33s
-Yes   83    12894           34s
-Yes   89    12894           42s
-Yes   114   8252            70s    (1 min)
-Yes   118   18568           167s   (3 min)
-Yes   143   8252            114s   (2 min)
-Yes   152   8252            131s   (2 min)
-Yes   189   8252            180s   (3 min)
-Yes   224   8252            270s   (5 min)
-Yes   277   12894           751s   (8 min) 
-Yes   294   12894           880s   (15 min)
-Yes   306   8252            610s   (10 min)
-Yes   340   12894           1212s  (20 min)
-Yes   689   12894           8386s  (2h20 min) 
+Cert  Dim   irr dim	Samples         Comp Time
+---------------------------------------------------
+Yes   20    6		18568           7s
+Yes   20    5		12894           5s
+Yes   24    6		18568           8s
+Yes   29    5		12894           8s
+Yes   29    6		18568           11s
+Yes   42    4		8252            8s
+Yes   57    6		18568           27s
+Yes   62    6		18568           33s
+Yes   83    5		12894           34s
+Yes   89    5		12894           42s
+Yes   114   4		8252            70s    (1 min)
+Yes   118   6		18568           167s   (3 min)
+Yes   143   4		8252            114s   (2 min)
+Yes   152   4		8252            131s   (2 min)
+Yes   189   4		8252            180s   (3 min)
+Yes   224   4		8252            270s   (5 min)
+Yes   277   5		12894           751s   (8 min) 
+Yes   294   5		12894           880s   (15 min)
+Yes   306   4		8252            610s   (10 min)
+Yes   340   5		12894           1212s  (20 min)
+Yes   689   5		12894           8386s  (2h20 min) 

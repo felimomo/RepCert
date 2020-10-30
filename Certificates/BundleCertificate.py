@@ -26,7 +26,10 @@ def minimum_t(repr):
     if hasattr(repr, 'order'):
         # in practice the above value of t_min seems too large for small finite groups.
         # replace it by an ad-hoc value of t_min here, given by twice the Cayley diam.
-        t_min = 2*repr.density[1]
+        # t_min = 2*repr.density[1]
+        
+        # let's try something outrageous
+        t_min = math.ceil(0.5*repr.density[1])
     return t_min
     
 def subrep_tester(repr,proj,t_surplus,error_p,prnt=False):
