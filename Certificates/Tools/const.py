@@ -17,9 +17,16 @@ def c2(repr,epsilon):
 def dt(repr,epsilon,t):
     const1 = c1(repr,epsilon)
     return (1+const1)**t - 1
-
-def et(repr,epsilon,t,proj):
+    
+def et(repr,epsilon,t,dim):
     const2 = c2(repr,epsilon)
     aux  = (1+const2)**(2*t) - 1
-    dim = int(np.trace(proj).real)
     return aux * (dim**2 + dt(repr,epsilon,2*t))
+
+# previous version with the projector as input
+#
+# def et(repr,epsilon,t,proj):
+#     const2 = c2(repr,epsilon)
+#     aux  = (1+const2)**(2*t) - 1
+#     dim = int(np.trace(proj).real)
+#     return aux * (dim**2 + dt(repr,epsilon,2*t))
