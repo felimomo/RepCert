@@ -23,14 +23,14 @@ def single_row_mat(vec):
 
 def ketbra(vec):
     # takes a vector and produces a projector onto its span
-    mat_v = single_row_mat(v)
+    mat_v = single_row_mat(vec)
     mat_v = np.linalg.norm(mat_v)**(-1) * mat_v # normalize
-    return np.transpose(mat_v).dot(mat_v)   # column*row = | > < |
+    return mat_v.conjugate().transpose().dot(mat_v)   # column*row = | > < |
     
 def check_ortho(v1,v2,thr=10**(-12)):
     # checks whether v1 is orthogonal to v2
-    mat_v1 = single_row_mat(v1); mat_v2 = single_row_mat(v2)
-    return abs(mat_v1.conjugate.dot(mat_v2)) < thr
+    mat_v1 = single_row_mat(v1); mat_v2 = single_row_mat(v2).conjugate().transpose()
+    return abs(mat_v1.dot(mat_v2)[0][0]) < thr
     
 def check_ortho_basis(basis,thr=10**(-12)):
     # checks whether basis is orthonormal
@@ -41,7 +41,7 @@ def check_ortho_basis(basis,thr=10**(-12)):
 def toproj(basis):
     # takes basis = [ basis element 1, basis element 2, ... ] and
     # creates a projector onto their span (assuming they're orthogonal).
-    assert all((len(elem)=len(basis[0]) for elem in basis)), "All basis elements must have same dimension."
+    assert all((len(elem)==len(basis[0]) for elem in basis)), "All basis elements must have same dimension."
     assert check_ortho_basis(basis), "Basis is not orthogonal."
     
     return sum((ketbra(elem) for elem in basis))
