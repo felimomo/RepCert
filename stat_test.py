@@ -42,7 +42,7 @@ irreducible' is recorded.
 """
 )
 
-group = input('Group to be tested (s3/s4):   ')
+group = input('Group to be tested (s3/s4/s5):   ')
 scale = eval(input('Scale at which the multiplicities are sampled: '))
 
 if group == 's3':
