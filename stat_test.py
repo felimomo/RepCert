@@ -67,9 +67,9 @@ data = []
 iteration_counter=0
 dimension_adder=0
 print(" ")
-print("-----------------------")
-print(" noise, frac,    samp")
-print("-----------------------")
+print("-----------------------------------")
+print(" noise, frac,    samp,      runtime")
+print("-----------------------------------")
 print(" ")
 
 for noiseDoubleExponent in range(0,min_noiseExp-21):
@@ -77,7 +77,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-21):
     noiseLevel = 10**(-x)
     detectedFrac = 0.
     avg_samples = 0.
-    avg_runtime = 0.
+    avg_time = 0.
     
     for i in range(datapts):
         dim, generators, images, well_cond, noisyBasis = rr.rr_repAndInv(group,generators,noiseLevel,scale=scale)
@@ -98,7 +98,7 @@ for noiseDoubleExponent in range(0,min_noiseExp-21):
         t_min = cert.minimum_t(R)
         t_max = t_min + t_surplus
         for t in range(t_min,t_max+1):
-            samples_used += tls.rwalk.number_samples(R,noisyBasis,epsilon,error_p,t)
+            samples_used += tls.rwalk.number_samples(R,len(noisyBasis),epsilon,error_p,t)
             
             if irr.irr_cert(R,noisyBasis,t,epsilon,error_p):
                 detectedFrac += datapts**(-1)

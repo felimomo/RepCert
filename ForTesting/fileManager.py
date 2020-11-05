@@ -31,9 +31,9 @@ def writeFile(**kwargs):
     results =   kwargs['results']
     datapts =   kwargs['data_pts']
     error_p =   kwargs['error_p']
-    avg_time=   kwargs['avg_time']
+    
     #
-    # syntax: [[x1,y1,z1], [x2,y2,z2], ... ] where xi are noise strengths,
+    # data syntax: [[x1,y1,z1], [x2,y2,z2], ... ] where xi are noise strengths,
     # yi are detected fractions of irreps, and zi are the average number of 
     # samples used for this . (This depends on the maximal t required).
     #
