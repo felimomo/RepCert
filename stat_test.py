@@ -16,7 +16,7 @@ import time
 
 # important input data that is fixed:
 error_p = 0.0000001 
-datapts = 10
+datapts = 25
 t_surplus = 100
 
 print(#
@@ -72,7 +72,7 @@ print(" noise, frac,    samp,      runtime")
 print("-----------------------------------")
 print(" ")
 
-for noiseDoubleExponent in range(0,min_noiseExp-21):
+for noiseDoubleExponent in range(0,min_noiseExp-8):
     x = 0.5*(min_noiseExp - noiseDoubleExponent)
     noiseLevel = 10**(-x)
     detectedFrac = 0.
