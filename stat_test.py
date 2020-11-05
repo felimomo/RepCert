@@ -12,6 +12,7 @@ import string
 import math
 import cmath
 import random
+import time
 
 # important input data that is fixed:
 error_p = 0.0000001 
@@ -76,9 +77,10 @@ for noiseDoubleExponent in range(0,min_noiseExp-21):
     noiseLevel = 10**(-x)
     detectedFrac = 0.
     avg_samples = 0.
+    avg_runtime = 0.
     
     for i in range(datapts):
-        dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv(group,generators,noiseLevel,scale=scale)
+        dim, generators, images, well_cond, noisyBasis = rr.rr_repAndInv(group,generators,noiseLevel,scale=scale)
         
         R=rep.rep_by_generators(dim,generators,images,density=(well_cond[0],well_cond[1]),q=well_cond[2])
         R.set_groupOrder('finite')
@@ -86,30 +88,37 @@ for noiseDoubleExponent in range(0,min_noiseExp-21):
         iteration_counter += 1
         dimension_adder += dim
         
+        start_time = time.time()
+        
         #invariance:
-        epsilon = cert.best_invariance_certificate(R,noisySpace)
+        epsilon = cert.best_invariance_certificate(R,noisyBasis)
         
         #irreducibility:
         samples_used = 0
         t_min = cert.minimum_t(R)
         t_max = t_min + t_surplus
         for t in range(t_min,t_max+1):
-            samples_used += tls.rwalk.number_samples(R,noisySpace,epsilon,error_p,t)
+            samples_used += tls.rwalk.number_samples(R,noisyBasis,epsilon,error_p,t)
             
-            if irr.irr_cert(R,noisySpace,t,epsilon,error_p):
+            if irr.irr_cert(R,noisyBasis,t,epsilon,error_p):
                 detectedFrac += datapts**(-1)
                 break
+        end_time = time.time()
+        
+        avg_time += datapts**(-1) * (end_time-start_time)
         
         avg_samples += datapts**(-1) * samples_used       
     
-    data += [[x, detectedFrac, avg_samples]]
+    data += [[x, detectedFrac, avg_samples, avg_time]]
     print("{:.2f}".format(x), ", " , "{:.2f}".format(detectedFrac), ", " ,# 
-    "{:.2f}".format(avg_samples), ", " , "(avg dim = ", #
+    "{:.2f}".format(avg_samples), ", ",
+    "{:.2f}".format(avg_time),
+    "(avg dim = ", #
     "{:.2f}".format(float(dimension_adder)/iteration_counter),")")
 
 avg_dim = float(dimension_adder)/iteration_counter
 
-flm.writeFile(group=group, avg_dim=avg_dim, max_t=t_max, data_pts=datapts, results=data, error_p=error_p)
+flm.writeFile(group=group, avg_dim=avg_dim, max_t=t_max, data_pts=datapts, results=data, error_p=error_p, avg_time=avg_time)
 
 # f=open(file,"a")
 # f.write(f"\n\n# Avg dimension = {avg_dimension}")

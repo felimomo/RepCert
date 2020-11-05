@@ -51,10 +51,8 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
         dim = len(basis)
         print("Invariant at precision ",epsilon)
         print("Minimal rand walk length = ", 2*t_min)
-        print("Max number of samples required for irreducibility: ", 
-                rwalk.number_samples(repr,dim,epsilon,error_p,t_max)
-                )
-        print("Dimension of irrep being tested = ", dim))
+        print("Max number of samples required for irreducibility: ", rwalk.number_samples(repr,dim,epsilon,error_p,t_max))
+        print("Dimension of irrep being tested = ", dim)
         
     if epsilon==1:
         return False

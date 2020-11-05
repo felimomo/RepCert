@@ -131,7 +131,7 @@ if test_type == 's4':
     c = rep.group_element(name='1234')
     generators = [t,c]
     
-    dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv('s4',generators,noiseLevel,scale=scale)
+    dim, generators, images, well_cond, noisyBasis = rr.rr_repAndInv('s4',generators,noiseLevel,scale=scale)
     
     print("Dimension = ", dim)
     
@@ -140,7 +140,7 @@ if test_type == 's4':
     
     start_time = time.time()
     
-    if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
+    if cert.subrep_tester(R,noisyBasis,t_surplus,error_p,prnt=True):
         print("Irreducible!\n")
         print("Computation time = ", time.time() - start_time, "s")
     else:
@@ -152,7 +152,7 @@ if test_type == 's5':
     c = rep.group_element(name='12345')
     generators = [t,c]
     
-    dim, generators, images, well_cond, noisySpace = rr.rr_repAndInv('s5',generators,noiseLevel,scale=scale)
+    dim, generators, images, well_cond, noisyBasis = rr.rr_repAndInv('s5',generators,noiseLevel,scale=scale)
     
     print("Dimension = ", dim)
     
@@ -161,7 +161,7 @@ if test_type == 's5':
     
     start_time = time.time()
     
-    if cert.subrep_tester(R,noisySpace,t_surplus,error_p,prnt=True):
+    if cert.subrep_tester(R,noisyBasis,t_surplus,error_p,prnt=True):
         print("Irreducible!\n")
         print("Computation time = ", time.time() - start_time, "s")
     else:

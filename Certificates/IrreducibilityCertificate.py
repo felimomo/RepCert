@@ -1,8 +1,8 @@
 import numpy as np
 import math
 import random
-from Tools import lin, const, rwalk
-from Classes import RepClass as rep
+from Certificates.Tools import lin, const, rwalk
+from Certificates.Classes import RepClass as rep
 
 def restrict_to_subrep(repr,basis):
     new_ims = [lin.restrict(im,basis) for im in repr.image_list()]

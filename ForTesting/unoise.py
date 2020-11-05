@@ -41,7 +41,7 @@ def basis_noise(basis,noise_level):
     assert all((len(b_elem)==dim for b_elem in basis)), "Basis vectors must have the same dimension."
     # unitary sampled from aforementioned ensemble:
     U = unitary_noise(dim,noise_level)
-    
+    # basis rotated with U:
     return [U.dot(b_elem) for b_elem in basis]
     
 # check that things work:

@@ -31,6 +31,7 @@ def writeFile(**kwargs):
     results =   kwargs['results']
     datapts =   kwargs['data_pts']
     error_p =   kwargs['error_p']
+    avg_time=   kwargs['avg_time']
     #
     # syntax: [[x1,y1,z1], [x2,y2,z2], ... ] where xi are noise strengths,
     # yi are detected fractions of irreps, and zi are the average number of 
@@ -53,10 +54,11 @@ def writeFile(**kwargs):
 # number of random representations averaged over = {datapts}
 # threshold probability of false positive = {error_p}
 #
-# x, frac, samp : 
+# x, frac, samp, time : 
 #           * noise strength = 10^-x, 
 #           * frac = fraction of irreps correctly identified, 
-#           * samp = avg total number of samples used.
+#           * samp = avg total number of samples used
+#           * time = avg time per sample required by certificates.
 
 """#
     )

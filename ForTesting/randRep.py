@@ -1,6 +1,7 @@
 import random
 import numpy as np
-import ForTesting.helperFns as h
+from ForTesting import helperFns as h
+from ForTesting import unoise as un
 from ForTesting.Groups import s3, s4, s5
 # from Groups import s3, s4, s5
 # import helperFns as h
@@ -161,14 +162,41 @@ def rr_repAndInv(group_name,generators,noiseLevel,scale=20):
     images = rr_images(group_name,generators,multi) #[im_t, im_c]
     dim = len(images[0])
     
-    #invariant subspace stuff:
+    #invariant subspace stuff: --> now will be basis:
     invSpaces = rr_invSpaces(group_name,multi)
+    #   returns list of lists, where each list is [0,0,...,1,1,1...,1,0,0,...,0]
+    #   representing the diagonal of the projector onto that invariant subspace.
     rand_invSpaceList = random.choice(invSpaces)
-    rand_invSpace = np.diag(rand_invSpaceList)
-    noise = noiseLevel*np.random.rand(dim,dim)
-    noisySpace = rand_invSpace+noise
     
-    return dim, generators, images, well_cond, noisySpace
+    # now produce the basis [[0,0,...,1,0,0,...,0,0,...,0]
+    #                        [0,0,...,0,1,0,...,0,0,...,0]
+    #                                   ...               
+    #                        [0,0,...,0,0,0,...,1,0,...,0]]
+    
+    # amount of zeros to the left of the 1's:
+    lZeros = 0
+    index = 0
+    while rand_invSpaceList[index]==0:
+        lZeros += 1
+        index  += 1
+    # amount of zeroes to the right (just total amount of zeros after first 1,
+    # the first 1 happens at index lZeros):
+    rZeros = sum((1 for i in range(lZeros,dim) if rand_invSpaceList[i]==0))
+    # amount of ones (dimension of the space):
+    nOnes = sum(rand_invSpaceList)
+    # basis of rand_invSpaceList
+    basis = [ [0]*(lZeros+i) + [1] + [0]*(nOnes -i-1 + rZeros) for i in range(nOnes)]
+    # noisy basis (here noisy model is a small rotation):
+    noisyBasis = un.basis_noise(basis,noiseLevel)
+    
+    # Old, projector-based stuff:
+    #
+    # rand_invSpace = np.diag(rand_invSpaceList)
+    # noise = noiseLevel*np.random.rand(dim,dim)
+    # noisySpace = rand_invSpace+noise
+    
+    
+    return dim, generators, images, well_cond, noisyBasis
 
 
 
