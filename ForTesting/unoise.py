@@ -29,7 +29,21 @@ def unitary_noise(dim,noise_level):
     D = diag_noise(dim,noise_level)
     U = haar_unitary(dim)
     return U.dot(D.dot(U.conjugate().transpose()))
-
+    
+def basis_noise(basis,noise_level):
+    # Takes basis and produces a slightly rotated basis using some unitary
+    # from the unitary_noise ensemble. 
+    # 
+    # Notice that if the basis starts out orthonormal, it ends orthonormal.
+    
+    # the global dimension:
+    dim = len(basis[0])
+    assert all((len(b_elem)==dim for b_elem in basis)), "Basis vectors must have the same dimension."
+    # unitary sampled from aforementioned ensemble:
+    U = unitary_noise(dim,noise_level)
+    
+    return [U.dot(b_elem) for b_elem in basis]
+    
 # check that things work:
 #    
 # sample = unitary_noise(2,10**(-5))
