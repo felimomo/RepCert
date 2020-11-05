@@ -5,6 +5,16 @@ from ForTesting.Groups import s3, s4, s5
 # from Groups import s3, s4, s5
 # import helperFns as h
 
+# Sampling a random unitary
+#
+# X = self.parent.sample;             
+# [Q, R] = qr(X);            
+#     R = diag(diag(R)./abs(diag(R)));             
+#     X = Q*R; 
+#
+# scipy: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.unitary_group.html
+#
+
 def rr_multiplicities(group_name,scale=20):
     assert group_name in ['s3','s4','s5'], 'RandRep Multipl. error: Group '+str(group_name)+' not supported.'
     
