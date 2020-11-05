@@ -67,7 +67,8 @@ def writeFile(**kwargs):
         f.write(
               str("{:.2f}".format(datum[0])) + ', '
             + str("{:.2f}".format(datum[1])) + ', '
-            + str("{:.2f}".format(datum[2])) + '\n')
+            + str("{:.2f}".format(datum[2])) + ', '
+            + str("{:.2f}".format(datum[3])) + '\n')
     f.close()
 
     

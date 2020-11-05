@@ -110,15 +110,16 @@ for noiseDoubleExponent in range(0,min_noiseExp-21):
         avg_samples += datapts**(-1) * samples_used       
     
     data += [[x, detectedFrac, avg_samples, avg_time]]
-    print("{:.2f}".format(x), ", " , "{:.2f}".format(detectedFrac), ", " ,# 
-    "{:.2f}".format(avg_samples), ", ",
-    "{:.2f}".format(avg_time),
-    "(avg dim = ", #
+    print("{:.2f}".format(x), ", " , 
+    "{:.2f}".format(detectedFrac), ", " ,
+    "{:.2f}".format(avg_samples), ", " ,
+    "{:.2f}".format(avg_time), ", " ,
+    "(avg dim = ",
     "{:.2f}".format(float(dimension_adder)/iteration_counter),")")
 
 avg_dim = float(dimension_adder)/iteration_counter
 
-flm.writeFile(group=group, avg_dim=avg_dim, max_t=t_max, data_pts=datapts, results=data, error_p=error_p, avg_time=avg_time)
+flm.writeFile(group=group, avg_dim=avg_dim, max_t=t_max, data_pts=datapts, results=data, error_p=error_p)
 
 # f=open(file,"a")
 # f.write(f"\n\n# Avg dimension = {avg_dimension}")
