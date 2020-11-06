@@ -16,6 +16,14 @@ from ForTesting.Groups import s3, s4, s5
 # scipy: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.unitary_group.html
 #
 
+# Sample multiplicities ->  use them to construct representation images 
+#         |                 (block diag in standard basis): rr_images.
+#         |-------------->  use them to construct the list of invariant
+#                           subspaces of the random rep: rr_invSpaces.
+# 
+# 
+# 
+
 def rr_multiplicities(group_name,scale=20):
     assert group_name in ['s3','s4','s5'], 'RandRep Multipl. error: Group '+str(group_name)+' not supported.'
     
@@ -38,6 +46,12 @@ def rr_multiplicities(group_name,scale=20):
         return multis
 
 def rr_images(group_name,gens,multi):
+    # Returns representation images for the generators in gens in
+    # the random representation corresponding to the multiplicities
+    # multi.
+    # 
+    # Block diagonal in standard basis (cf. image_constructor).
+    
     assert group_name in ['s3','s4','s5'], 'RandRep Images error: Group '+str(group_name)+' not supported.'
     
     # gens[0] = t, gens[1] = c
@@ -76,6 +90,10 @@ def rr_images(group_name,gens,multi):
     return [im_t, im_c]
     
 def rr_invSpaces(group_name,multi):
+    # Outputs a list of lists [ list_1, ..., list_N ]. Each list_i represents
+    # the diagonal of the projector onto the i-th invariant subspace of the
+    # random representation corresponding to the multiplicities multi.
+
     assert group_name in ['s3','s4', 's5'], 'Inv Space error: Group '+str(group_name)+' not supported.'
     if group_name == 's3':
         part1 = [
@@ -131,8 +149,17 @@ def rr_invSpaces(group_name,multi):
         return part1 + part2 + part3 + part4 + part5
         
     if group_name == 's5':
-        ones = [[1], [1], 4*[1], 5*[1], 6*[1]]
-        zeros= [[0], [0], 4*[0], 5*[0], 6*[0]]
+        ones = [[1], [1], 4*[1], 5*[1], 6*[1]]  # -> represents the block sizes (corresponds
+        zeros= [[0], [0], 4*[0], 5*[0], 6*[0]]  #    to irrep dimensions, namely 1, 1, 4, 5, 6.
+        
+        # Projector will start with a bunch of zeros along the diagonal,
+        # then eventually it will have ones (along its range) and then
+        # zeros again.
+        # 
+        # leftzeros and rightzeros produce the blocks of zeros of the
+        # isotypes that do not correspond to the representation. blck
+        # corresponds to filling in the relevant isotype: it fills 
+        # one of its irreps with ones and the others with zeros.
         
         def leftzeros(j,multi):
             return sum([zeros[i]*multi[i] for i in range(j)], [])

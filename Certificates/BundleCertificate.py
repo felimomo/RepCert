@@ -33,11 +33,15 @@ def minimum_t(repr):
         # replace it by an ad-hoc value of t_min here, given by twice the Cayley diam.
         # t_min = 2*repr.density[1]
         
-        # let's try something outrageous
+        # nah, let's try something outrageous
         t_min = math.ceil(0.5*repr.density[1])
     return t_min
     
 def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
+    # Run certificate with rand walks with values of t from minimum_t(repr)
+    # to minimum_t(repr)+t_surplus.
+    # 
+    # If prnt=True, then print a bunch of relevant parameters.
     
     if repr.dimension==1:
         return True
