@@ -19,7 +19,7 @@ def best_invariance_certificate(repr,basis):
         return 1
         
     for x in range(largest_exponent+1,smallest_exponent+1):
-        if not inv.inv_cert(repr,proj,epsilon):
+        if not inv.inv_cert(repr,proj,10**(-x)):
             return epsilon
         epsilon = 10**(-x)
     return epsilon
