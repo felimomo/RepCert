@@ -1,6 +1,6 @@
 # 
 # Reads input files of a fixed form:
-#   *   Lines starting with '#' are ignored
+#   *   Lines starting with '#' are ignored (but as a convention NO COMMENTS ON FIRST LINE)
 #   *   The structure of the file is: first parameters of the rep (q, density), then 
 #       Generator images, then basis (for the space to be tested).
 #   *   the parameters of the rep are in the first line of the document, which will read as:
@@ -39,10 +39,31 @@
 #
 #   *   The basis is written right after the '..' line. The basis is presented as a block
 #       of numbers as with the generators, and each basis element is a column.
+#
+#
+# in summary, overall structure of the file is:
+#
+# dim,,(delta,k),,q
+# gen name 1
+# {{image matrix block of numbers 1}}
+# ,,
+# gen name 2
+# {{image matrix block of numbers 2}}
+# ,, 
+# gen name n
+# {{image matrix block of numbers n}}
+# ..
+# {{basis block of numbers}}
 
 from os import path
 import numpy as np
 from Certificates.Classes import RepClass as rep
+
+def erase_coments(l):
+    # input: list of strings
+    #
+    # output: list with all strings starting with '#' eliminated
+    return [s for s in l if s[0]!='#']
 
 def generate_rep_image(describing_list):
     # Input:
@@ -71,6 +92,8 @@ def get_gens(gen_string):
     # where each geni is a list of the lines defining a the generator. The first line
     # is the name of the generator, and the rest are its matrix rep.
     gen_str_list = [ gen_info.split('\n') for gen_info in gen_string.split(',,')]
+    # eliminate elements corresponding to comment lines:
+    gen_str_list = erase_comments(gen_str_list)
     
     generators = []
     images = []
@@ -100,7 +123,12 @@ def get_basis(basis_str):
     # input:    string containing a block of numbers (new lines are represented
     #           by \n of course), each column is a basis vector.
     # 
+    
+    # separate into lines:
     rows_str = basis_str.split('\n')
+    # eliminate comment lines:
+    rows_str = erase_comments(rows_str)
+    # create block of numbers as list of lists:
     rows = [[eval(ch) for ch in row.split()] for row in rows_str] 
     
     # now rows is a square array which is the transpose of what we want.
