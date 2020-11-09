@@ -33,9 +33,10 @@ def writeFile(**kwargs):
     error_p =   kwargs['error_p']
     
     #
-    # data syntax: [[x1,y1,z1], [x2,y2,z2], ... ] where xi are noise strengths,
-    # yi are detected fractions of irreps, and zi are the average number of 
-    # samples used for this . (This depends on the maximal t required).
+    # data syntax: [[x1,y1,z1,w1], [x2,y2,z2,w2], ... ] where xi are noise strengths,
+    # yi are detected fractions of irreps, zi are the average number of 
+    # samples used for this and wi is the average computation time per single-shot data point. 
+    # (This depends on the maximal t required).
     #
     
     dir = dirName(group,avgd)
