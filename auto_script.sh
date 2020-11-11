@@ -18,4 +18,4 @@ mv ../replab-0.9.0/*.mat InFiles/
 echo "Miving files done."
 #
 # Finally, run the auto repcert run:
-python auto_run.py
+python3 auto_run.py
