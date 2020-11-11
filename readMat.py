@@ -59,6 +59,7 @@ def readMatFile(automatic=False):
     # now create a list of names and list of images separately
     gen_names = [y[0] for y in generator_n_i]
     gen_images = [y[1] for y in generator_n_i]
+    print(gen_images)
     
     full = {'basis':basis, 'gen_names':gen_names, 'gen_images':gen_images}
 
