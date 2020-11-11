@@ -14,12 +14,12 @@ gen2 = [2 3 4 5 6 1];
 
 % create rep:
 nat = s6.naturalRep;
-rep = kron(nat,kron(nat,nat));
+rep = kron(nat,nat);
 % complexify (if it is real, for example):
 rep = rep.complexification;
 % Generators in that rep:
-cyclic_perm   = rep.image([2 3 4 5 6 1]);
-transposition = rep.image([2 1 3 4 5 6]);
+cyclic_perm   = rep.image([2 3 4 5 6 1])
+transposition = rep.image([2 1 3 4 5 6])
 
 % decompose rep:
 dec = rep.decomposition.nice;
