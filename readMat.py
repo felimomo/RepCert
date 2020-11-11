@@ -16,7 +16,8 @@ def readMatFile(automatic=False):
         generator_files = ['InFiles/cyclic_perm.mat', 'InFiles/transposition.mat']
     else:
         basis_file = 'InFiles/'+input('Basis file (.mat format): ')
-        generator_files = 'InFiles/'+input('Generator files (.mat format, one generator per file, file names separated by a space): ').split()
+        generator_file_names = input('Generator files (.mat format, one generator per file, file names separated by a space): ').split()
+        generator_files = ['InFiles/'+name for name in generator_file_names]
 
     assert all((name[-4:]=='.mat' for name in generator_files+[basis_file])), 'Files must be .mat!'
 
