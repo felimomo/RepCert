@@ -1,4 +1,4 @@
-from InFiles import readMat
+import readMat
 from Certificates import BundleCertificate as cert
 from Certificates.Classes import RepClass as rep
 
