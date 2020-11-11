@@ -14,8 +14,9 @@ generatorSet = list(map(lambda x: rep.group_element(name=x), rep_dict['gen_names
 
 # dimension containing the space: just measure # of components of the first basis vector
 global_dim = len(rep_dict['basis'][0])
-print(global_dim)
-
+print(rep_dict['gen_images'][0])
+print(" ")
+print(len(rep_dict['gen_images'][0]))
 
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,genImages=rep_dict['gen_images'], 
                              density=(delta,k), q=q)
