@@ -50,6 +50,7 @@ def readMatFile(automatic=False):
     # where gen_image is an np.array.
     #
     generator_n_i = list(map(lambda x: [list(x)[-1], np.array(x[list(x)[-1]])], generators_long))
+    print(generator_n_i)
 
     # now create a list of names and list of images separately
     gen_names = [y[0] for y in generator_n_i]
