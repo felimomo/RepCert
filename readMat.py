@@ -12,11 +12,11 @@ def readMatFile(automatic=False):
     # If automatic==True, I fix the generator file and basis file names to a standard.
     
     if automatic==True:
-        basis_file = 'basis.mat'
-        generator_files = ['cyclic_perm.mat', 'transposition.mat']
+        basis_file = 'InFiles/basis.mat'
+        generator_files = ['InFiles/cyclic_perm.mat', 'InFiles/transposition.mat']
     else:
-        basis_file = input('Basis file (.mat format): ')
-        generator_files = input('Generator files (.mat format, one generator per file, file names separated by a space): ').split()
+        basis_file = 'InFiles/'+input('Basis file (.mat format): ')
+        generator_files = 'InFiles/'+input('Generator files (.mat format, one generator per file, file names separated by a space): ').split()
 
     assert all((name[-4:]=='.mat' for name in generator_files+[basis_file])), 'Files must be .mat!'
 
