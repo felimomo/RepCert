@@ -9,14 +9,14 @@ s6 = replab.S(6);
 % W = s3.wreathProduct(s6)
 %
 % Set generators
-gen1 = [2 1 3 4 5 6]
-gen2 = [2 3 4 5 6 1]
+gen1 = [2 1 3 4 5 6];
+gen2 = [2 3 4 5 6 1];
 
 % create rep:
 nat = s6.naturalRep;
 rep = kron(nat,kron(nat,nat));
 % complexify (if it is real, for example):
-rep = rep.complexify;
+rep = rep.complexification;
 % Generators in that rep:
 cyclic_perm   = rep.image([2 3 4 5 6 1]);
 transposition = rep.image([2 1 3 4 5 6]);
