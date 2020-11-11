@@ -19,7 +19,7 @@ repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,genI
                              density=(delta,k), q=q)
 
 # differentiate finite groups for short RWalks.             
-if input('Is the group finite? (y/n) ')==y:
+if input('Is the group finite? (y/n) ')=='y':
     repr.set_groupOrder('finite')
                 
 # some ad-hoc number to make sure things converge             
