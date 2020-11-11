@@ -12,6 +12,8 @@ def readMatFile():
     basis_file = input('Basis file (.mat format): ')
     generator_files = input('Generator files (.mat format, one generator per file, file names separated by a space): ').split()
 
+    assert all((name[-4:]=='.mat' for name in generator_files+[basis_file])), 'Files must be .mat!'
+
     # Generates np.array such that each subarray is a basis element (the .T is
     # needed because replab outputs the basis using columns for basis elements,
     # and rows are interpreted as the subarrays). 
@@ -20,6 +22,7 @@ def readMatFile():
     # the entry of the dictionary relevant to us is the actual basis elements, 'basis'.
     #
     basis = np.array(loadmat(basis_file)['basis']).T
+    
     
     # Generates a list where each element is the result of loadmap(generator_files[i])
     # for different values of i. Each entry is a dictionary.
@@ -43,9 +46,25 @@ def readMatFile():
 
     # now create a list of names and list of images separately
     gen_names = [y[0] for y in generator_n_i]
-    gen_images = [y[1]] for y in generator_n_i]
+    gen_images = [y[1] for y in generator_n_i]
     
     full = {'basis':basis, 'gen_names':gen_names, 'gen_images':gen_images}
 
     return full
+    
+    
+def inputWellBehaved():
+    # user inputs the well-behaved parameters (denisty (delta,k) and q-boundedness).
+    # here (delta,k)-density means that words of length k in the generators approximate
+    # up to distance delta (invariant norm in the Lie algebra) any group element. 
+    #
+    # See accompanying paper for further details (TBD).
+    #
+    # For finite groups, k=cayley diameter, delta = q = 0.
+    delta = eval(input("delta density parameter: "))
+    k = eval(input("k density parameter (Cayley depth for finite case): "))
+    q = eval(input("q-boundedness of rep: "))
+    
+    return (delta, k), q
+
 
