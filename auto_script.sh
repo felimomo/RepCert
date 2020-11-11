@@ -11,9 +11,11 @@ rm InFiles/*.mat
 #
 # Now run replab:
 octave ForTesting/replab_script.m
+echo "Replab script done."
 #
 # Now move the .mat files:
 mv ../replab-0.9.0/*.mat InFiles/
+echo "Miving files done."
 #
 # Finally, run the auto repcert run:
 python auto_run.py
