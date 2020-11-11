@@ -29,6 +29,7 @@ def readMatFile(automatic=False):
     # the entry of the dictionary relevant to us is the actual basis elements, 'basis'.
     #
     basis = np.array(sio.loadmat(basis_file)['basis']).T
+    print("basis :\n",basis,"\n")
     #
     # Orthogonalize basis: QR decomposition, Q part is a (partial) unitary
     Q, R = np.linalg.qr(basis)
