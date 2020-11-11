@@ -27,5 +27,5 @@ t_surplus = 100
 # probability of false positive (by default set to 10^-7)
 p_error = 0.0000001
 
-if cert.subrep_tester(repr, basis, t_surplus, p_error, prnt=True):
+if cert.subrep_tester(repr, rep_dict['basis'], t_surplus, p_error, prnt=True):
     print("Irreducible!\n")
