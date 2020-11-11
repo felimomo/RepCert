@@ -46,7 +46,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     if repr.dimension==1:
         return True
     
-    t_min = minimum_t(repr)
+    t_min = int(minimum_t(repr))
     t_max = int(t_min + t_surplus)
     
     #Invariance test:
