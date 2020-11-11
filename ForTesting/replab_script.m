@@ -30,6 +30,6 @@ randirrep = randcomp.irrep(randi(randcomp.nIrreps));
 basis = randirrep.basis;
 
 % save files: (v7 is used so scipy can read them being octave outputs)
-save -v7 basis.mat basis;
-save -v7 cyclic_perm.mat cyclic_perm;
-save -v7 transposition.mat transposition;
+save -v7 basis.mat basis
+save -v7 cyclic_perm.mat cyclic_perm
+save -v7 transposition.mat transposition
