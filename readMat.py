@@ -39,7 +39,7 @@ def readMatFile(automatic=False):
     # for different values of i. Each entry is a dictionary.
     #
     generators_long = list(map(sio.loadmat,generator_files))
-    # print(generators_long) #--> the generator image is the FIRST element of dictionary!
+    print(generators_long) #--> the generator image is the FIRST element of dictionary!
     
     # Only the last entry of the dictionary is important to us. First we collect the
     # generator names. x is a dictionary, list(x) is a list of the dictionary words,
