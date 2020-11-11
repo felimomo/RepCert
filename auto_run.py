@@ -3,6 +3,8 @@ from Certificates import BundleCertificate as cert
 from Certificates.Classes import RepClass as rep
 import time
 
+
+read_time = time.time()
 # create dictionary { 'basis':basis, 'gen_names':gen_names, 'gen_images':gen_images}
 # by reading input file.
 rep_dict = readMat.readMatFile(automatic=True)
@@ -18,6 +20,9 @@ global_dim = len(rep_dict['basis'][0])
 # print(rep_dict['gen_images'][0])
 # print(" ")
 # print(len(rep_dict['gen_images'][0]))
+#
+eread_time = time.time()
+print("time reading .mat files: ", eread_time - read_time)
 
 rep_time = time.time()
 #
