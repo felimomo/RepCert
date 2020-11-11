@@ -10,7 +10,7 @@
 rm InFiles/*.mat
 #
 # Now run replab:
-octave ForTesting/replab_script.m
+octave replab_script.m
 echo "Replab script done."
 #
 # Now move the .mat files:

@@ -1,4 +1,4 @@
-cd ../../replab-0.9.0;
+cd ../replab-0.9.0;
 
 replab_init;
 
