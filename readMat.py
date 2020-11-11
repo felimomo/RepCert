@@ -35,22 +35,22 @@ def readMatFile(automatic=False):
     # for different values of i. Each entry is a dictionary.
     #
     generators_long = list(map(sio.loadmat,generator_files))
-    print(generators_long)
+    # print(generators_long) #--> the generator image is the FIRST element of dictionary!
     
     # Only the last entry of the dictionary is important to us. First we collect the
     # generator names. x is a dictionary, list(x) is a list of the dictionary words,
-    # the last element of the list is the generator name we're looking for.
+    # the -/last/- {Edit: NO, it's the FIRST!} element of the list is the generator name we're looking for.
     #
     # generator_names = list(map(lambda x: list(x)[-1]))
     
-    # list(x)[-1] is the generator name corresponding to the dictionary x (each dict
-    # corresponds to one generator). x[list(x)[-1]] is the corresponding image of 
-    # list(x)[-1] --this is according to the format in which Replab save -v7 works.
+    # list(x)[0] is the generator name corresponding to the dictionary x (each dict
+    # corresponds to one generator). x[list(x)[0]] is the corresponding image of 
+    # list(x)[0] --this is according to the format in which Replab save -v7 works.
     #
     # Create list where each list element is of the form [ gen_name, gen_image],
     # where gen_image is an np.array.
     #
-    generator_n_i = list(map(lambda x: [list(x)[-1], np.array(x[list(x)[-1]])], generators_long))
+    generator_n_i = list(map(lambda x: [list(x)[0], np.array(x[list(x)[0]])], generators_long))
 
     # now create a list of names and list of images separately
     gen_names = [y[0] for y in generator_n_i]
