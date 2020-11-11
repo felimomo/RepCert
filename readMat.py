@@ -32,7 +32,7 @@ def readMatFile(automatic=False):
     print("basis :\n",basis,"\nbasis element :\n",basis[0],"\n")
     #
     # Orthogonalize basis: QR decomposition, Q part is a (partial) unitary
-    Q, R = np.linalg.qr(basis)
+    Q, R = np.linalg.qr(basis.T)
     basis = Q
     
     
