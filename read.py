@@ -1,3 +1,7 @@
+# TBD:  change so that it only reads and outputs np arrays.
+#       this output can then be interpreted by the main 'run'
+#       file into RepClass objects.
+
 # 
 # Reads input files of a fixed form:
 #   *   Lines starting with '#' are ignored (but as a convention NO COMMENTS ON FIRST LINE)
