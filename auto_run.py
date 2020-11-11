@@ -1,6 +1,7 @@
 import readMat
 from Certificates import BundleCertificate as cert
 from Certificates.Classes import RepClass as rep
+import time
 
 # create dictionary { 'basis':basis, 'gen_names':gen_names, 'gen_images':gen_images}
 # by reading input file.
@@ -30,5 +31,9 @@ t_surplus = 100
 # probability of false positive (by default set to 10^-7)
 p_error = 0.0000001
 
+start_time = time.time()
+
 if cert.subrep_tester(repr, rep_dict['basis'], t_surplus, p_error, prnt=True):
+    end_time = time.time()
     print("Irreducible!\n")
+    print("Computation Time: ", end_time-start_time)
