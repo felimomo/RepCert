@@ -31,7 +31,7 @@ def readMatFile(automatic=False):
     basis = np.array(sio.loadmat(basis_file)['basis']).T
     #
     # Orthogonalize basis: QR decomposition, Q part is a (partial) unitary
-    Q, R = np.linalg.qr(basis.T)
+    Q, R = np.linalg.qr(basis)
     basis = Q
     print("basis :\n",basis,"\nbasis element :\n",basis[0],"\n")
     
