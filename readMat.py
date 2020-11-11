@@ -35,6 +35,7 @@ def readMatFile(automatic=False):
     # for different values of i. Each entry is a dictionary.
     #
     generators_long = list(map(sio.loadmat,generator_files))
+    print(generators_long)
     
     # Only the last entry of the dictionary is important to us. First we collect the
     # generator names. x is a dictionary, list(x) is a list of the dictionary words,
@@ -50,7 +51,6 @@ def readMatFile(automatic=False):
     # where gen_image is an np.array.
     #
     generator_n_i = list(map(lambda x: [list(x)[-1], np.array(x[list(x)[-1]])], generators_long))
-    print(generator_n_i)
 
     # now create a list of names and list of images separately
     gen_names = [y[0] for y in generator_n_i]
