@@ -31,8 +31,8 @@ def readMatFile(automatic=False):
     basis = np.array(sio.loadmat(basis_file)['basis']).T
     #
     # Orthogonalize basis: QR decomposition, Q part is a (partial) unitary
-    # Q, R = np.linalg.qr(basis)
-    # basis = Q
+    Q, R = np.linalg.qr(basis)
+    basis = Q
     
     
     # Generates a list where each element is the result of loadmap(generator_files[i])
@@ -54,7 +54,7 @@ def readMatFile(automatic=False):
     # Create list where each list element is of the form [ gen_name, gen_image],
     # where gen_image is an np.array.
     #
-    generator_n_i = list(map(lambda x: [list(x)[0], np.array(x[list(x)[0]])], generators_long))
+    generator_n_i = list(map(lambda x: [list(x)[-1], np.array(x[list(x)[-1]])], generators_long))
 
     # now create a list of names and list of images separately
     gen_names = [y[0] for y in generator_n_i]
