@@ -19,11 +19,15 @@ global_dim = len(rep_dict['basis'][0])
 # print(" ")
 # print(len(rep_dict['gen_images'][0]))
 
+rep_time = time.time()
+#
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,genImages=rep_dict['gen_images'], 
                              density=(delta,k), q=q)
-
 # in this automatic test we look at S6 which is finite
 repr.set_groupOrder('finite')
+#
+erep_time = time.time()
+print("Time constructing rep : ", erep_time - rep_time)
                 
 # some ad-hoc number to make sure things converge             
 t_surplus = 100
@@ -31,9 +35,9 @@ t_surplus = 100
 # probability of false positive (by default set to 10^-7)
 p_error = 0.0000001
 
-start_time = time.time()
+cert_time = time.time()
 
 if cert.subrep_tester(repr, rep_dict['basis'], t_surplus, p_error, prnt=True):
-    end_time = time.time()
+    ecert_time = time.time()
     print("Irreducible!\n")
-    print("Computation Time: ", end_time-start_time)
+    print("Time certifying: ", ecert_time-cert_time)
