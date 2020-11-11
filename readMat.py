@@ -33,7 +33,7 @@ def readMatFile(automatic=False):
     # Orthogonalize basis: QR decomposition, Q part is a (partial) unitary
     Q, R = np.linalg.qr(basis.T)
     basis = Q.T
-    print("basis :\n",basis,"\nbasis element :\n",basis[0],"\n")
+    # print("basis :\n",basis,"\nbasis element :\n",basis[0],"\n")
     
     # Generates a list where each element is the result of loadmap(generator_files[i])
     # for different values of i. Each entry is a dictionary.
