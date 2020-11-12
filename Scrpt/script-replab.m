@@ -12,9 +12,9 @@ W  = s5.wreathProduct(s3)
 % Set generators
 % gen1 = [2 1 3 4 5 6 7];
 % gen2 = [2 3 4 5 6 7 1];
-% gens = W.generators
-% 
-% % create rep:
+gens = W.generators;
+
+% create rep:
 % rep = W.primitiveRep(s3.naturalRep)
 % % complexify (if it is real, for example):
 % rep = rep.complexification;
