@@ -15,9 +15,9 @@ W  = s5.wreathProduct(s3)
 gens = W.generators;
 
 % create rep:
-rep = W.primitiveRep(s3.naturalRep)
+rep = W.primitiveRep(s3.naturalRep);
 % complexify (if it is real, for example):
-rep = rep.complexification;
+rep = rep.complexification
 % Generators in that rep:
 % cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
 % transposition = rep.image([2 1 3 4 5 6 7]);
@@ -25,8 +25,8 @@ rep = rep.complexification;
 % Save generator images
 i = 1 %indexing of generators starts with 1
 while i < W.nGenerators+1
-  save -v7 [mat2str(i) ".mat"] rep.image(W.generators{i})
-  i = i+1
+  save -v7 [mat2str(i) ".mat"] rep.image(W.generators{i});
+  i = i+1;
 endwhile
 % decompose rep:
 dec = rep.decomposition.nice;
