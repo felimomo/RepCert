@@ -26,7 +26,8 @@ rep = rep.complexification
 i = 1 %indexing of generators starts with 1
 while i < W.nGenerators+1
   im = rep.image(W.generators{i});
-  save -v7 [mat2str(i) ".mat"] im
+  fname = [mat2str(i) ".mat"]
+  save -v7 fname im;
   i = i+1;
 endwhile
 % decompose rep:
