@@ -3,23 +3,23 @@ cd ../replab-0.9.0;
 replab_init;
 
 % create a group:
-s6 = replab.S(6);
+s6 = replab.S(7);
 % or
 % s3 = replab.S(3)
 % W = s3.wreathProduct(s6)
 %
 % Set generators
-gen1 = [2 1 3 4 5 6];
-gen2 = [2 3 4 5 6 1];
+gen1 = [2 1 3 4 5 6 7];
+gen2 = [2 3 4 5 6 7 1];
 
 % create rep:
-nat = s6.naturalRep;
+nat = s7.naturalRep;
 rep = kron(nat,kron(nat,kron(nat,nat)))
 % complexify (if it is real, for example):
 rep = rep.complexification;
 % Generators in that rep:
-cyclic_perm   = rep.image([2 3 4 5 6 1]);
-transposition = rep.image([2 1 3 4 5 6]);
+cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
+transposition = rep.image([2 1 3 4 5 6 7]);
 
 % decompose rep:
 dec = rep.decomposition.nice;
