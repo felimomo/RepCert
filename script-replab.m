@@ -1,4 +1,4 @@
-cd ../../replab-0.9.0;
+cd ../replab-0.9.0;
 
 replab_init;
 
@@ -43,4 +43,4 @@ save -v7 basis.mat basis
 % save -v7 transposition.mat transposition
 
 % back to previous position
-cd ../RepCert/Scrpt/
+cd ../RepCert

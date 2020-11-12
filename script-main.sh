@@ -9,22 +9,19 @@
 #
 #
 # First, clean all input files that might interfere:
-cd ../InFiles/
-rm *.mat
-cd Scrpt/
+rm InFiles/*.mat
 #
 # Now run replab:
 octave script-replab.m
 echo "Replab script done."
 #
 # Now move the .mat files:
-mv ../../replab-0.9.0/*.mat ../InFiles/
+mv ../replab-0.9.0/*.mat InFiles/
 echo "Moving files done."
 #
 # Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
-touch ../InFiles/CayleyDiameter.txt
-echo "11*(2**5)" >> ../InFiles/CayleyDiameter.txt
+touch InFiles/CayleyDiameter.txt
+echo "11*(2**5)" >> InFiles/CayleyDiameter.txt
 #
 # Finally, run the auto repcert run:
-cd ..
 python3 autorun.py
