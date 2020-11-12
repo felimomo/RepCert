@@ -1,4 +1,6 @@
 # Written to be at Replab/RepCert/
+# where Replab/replab-0.9.0/ contains
+# RepLab source code.
 #
 # runs first the replab_script to create a random
 # rep and irr. subrep. Moves the files to InFiles,
@@ -15,7 +17,7 @@ echo "Replab script done."
 #
 # Now move the .mat files:
 mv ../replab-0.9.0/*.mat InFiles/
-echo "Miving files done."
+echo "Moving files done."
 #
 # Finally, run the auto repcert run:
 python3 auto_run.py
