@@ -1,4 +1,4 @@
-cd ../replab-0.9.0;
+cd ../../replab-0.9.0;
 
 replab_init;
 
@@ -41,3 +41,6 @@ basis = randirrep.basis;
 save -v7 basis.mat basis
 % save -v7 cyclic_perm.mat cyclic_perm
 % save -v7 transposition.mat transposition
+
+% back to previous position
+cd ../RepCert/Scrpt/
