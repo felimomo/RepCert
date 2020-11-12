@@ -1,4 +1,4 @@
-# Written to be at Replab/RepCert/Scrpt
+# Written to be at Replab/RepCert/Scrpt (and run from there)
 # where Replab/replab-0.9.0/ contains
 # RepLab source code.
 #
@@ -16,7 +16,7 @@ octave script-replab.m
 echo "Replab script done."
 #
 # Now move the .mat files:
-mv ../../replab-0.9.0/*.mat InFiles/
+mv ../../replab-0.9.0/*.mat ../InFiles/
 echo "Moving files done."
 #
 # Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
