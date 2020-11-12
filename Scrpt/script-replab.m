@@ -2,16 +2,16 @@ cd ../../replab-0.9.0;
 
 replab_init;
 
-% % create a group:
-% % s7 = replab.S(7);
-% % or
-% s5 = replab.S(5)
-% s3 = replab.S(3)
-% W  = s5.wreathProduct(s3)
-% %
-% % Set generators
-% % gen1 = [2 1 3 4 5 6 7];
-% % gen2 = [2 3 4 5 6 7 1];
+% create a group:
+% s7 = replab.S(7);
+% or
+s5 = replab.S(5)
+s3 = replab.S(3)
+W  = s5.wreathProduct(s3)
+%
+% Set generators
+% gen1 = [2 1 3 4 5 6 7];
+% gen2 = [2 3 4 5 6 7 1];
 % gens = W.generators
 % 
 % % create rep:
