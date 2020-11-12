@@ -24,8 +24,8 @@ rep = rep.complexification;
 
 % Save generator images
 i = 1 %indexing of generators starts with 1
-while i < G.nGenerators+1
-  save -v7 [mat2str(i) ".mat"] rep.image(G.generators{i})
+while i < W.nGenerators+1
+  save -v7 [mat2str(i) ".mat"] rep.image(W.generators{i})
   i = i+1
 endwhile
 % decompose rep:
