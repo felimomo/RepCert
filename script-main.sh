@@ -20,6 +20,7 @@ mv ../replab-0.9.0/*.mat InFiles/
 echo "Moving files done."
 #
 # Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
+rm InFiles/CayleyDiameter.txt
 touch InFiles/CayleyDiameter.txt
 echo "11*(2**5)" >> InFiles/CayleyDiameter.txt
 less InFiles/CayleyDiameter.txt

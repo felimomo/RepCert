@@ -86,7 +86,9 @@ def inputWellBehaved(automatic=False):
         #
         # CayleyDiam.txt should just contain a single thing: the Cayley diameter
         with open('InFiles/CayleyDiam.txt') as f:
-            cayDiam = eval(f.readline())
+            s = f.readline()
+            print(s)
+            cayDiam = eval(s)
         return (0, cayDiam), 0
     
     
