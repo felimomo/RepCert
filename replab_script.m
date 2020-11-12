@@ -3,7 +3,7 @@ cd ../replab-0.9.0;
 replab_init;
 
 % create a group:
-s6 = replab.S(7);
+s7 = replab.S(7);
 % or
 % s3 = replab.S(3)
 % W = s3.wreathProduct(s6)
