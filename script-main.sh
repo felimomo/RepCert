@@ -23,7 +23,7 @@ echo "Moving files done."
 rm InFiles/CayleyDiam.txt
 touch InFiles/CayleyDiam.txt
 echo "11*(2**5)" >> InFiles/CayleyDiam.txt
-less InFiles/CayleyDiam.txt
+# less InFiles/CayleyDiam.txt
 #
 # Finally, run the auto repcert run:
 python3 autorun.py
