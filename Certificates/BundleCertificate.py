@@ -25,16 +25,17 @@ def best_invariance_certificate(repr,basis):
     return epsilon
     
 def minimum_t(repr):
-    t_min = 0.5 * math.log(repr.dimension-1) 
-    t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
-    t_min = int(t_min)
     if hasattr(repr, 'order'):
         # in practice the above value of t_min seems too large for small finite groups.
         # replace it by an ad-hoc value of t_min here, given by twice the Cayley diam.
-        # t_min = 2*repr.density[1]
+        # return 2*repr.density[1]
         
         # nah, let's try something outrageous
-        t_min = math.ceil(0.5*repr.density[1])
+        return math.ceil(0.5*repr.density[1])
+        
+    t_min = 0.5 * math.log(repr.dimension-1) 
+    t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
+    t_min = int(t_min)
     return t_min
     
 def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
