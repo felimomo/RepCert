@@ -42,7 +42,9 @@ p_error = 0.0000001
 
 cert_time = time.time()
 
-if cert.subrep_tester(repr, rep_dict['basis'], t_surplus, p_error, prnt=True):
+certif = cert.subrep_tester(repr, rep_dict['basis'], t_surplus, p_error, prnt=True)
+
+if certif:
     ecert_time = time.time()
     print("Irreducible!\n")
     print("Time certifying: ", ecert_time-cert_time)
