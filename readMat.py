@@ -85,7 +85,7 @@ def inputWellBehaved(automatic=False):
         # CayDiam(Sn)xCayDiam(Sm)^n.
         #
         # CayleyDiam.txt should just contain a single thing: the Cayley diameter
-        with open('InFiles/CayleyDiam.txt') as f:
+        with open('InFiles/CayleyDiam.txt', "w+") as f:
             cayDiam = eval(f.readline())
         return (0, cayDiam), 0
     
