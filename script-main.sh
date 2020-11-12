@@ -22,6 +22,7 @@ echo "Moving files done."
 # Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
 touch InFiles/CayleyDiameter.txt
 echo "11*(2**5)" >> InFiles/CayleyDiameter.txt
+less InFiles/CayleyDiameter.txt
 #
 # Finally, run the auto repcert run:
 python3 autorun.py
