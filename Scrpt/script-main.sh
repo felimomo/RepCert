@@ -9,7 +9,9 @@
 #
 #
 # First, clean all input files that might interfere:
-rm ../InFiles/*.mat
+cd ../InFiles/
+rm *.mat
+cd Scrpt/
 #
 # Now run replab:
 octave script-replab.m
