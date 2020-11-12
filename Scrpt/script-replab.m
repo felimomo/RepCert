@@ -5,8 +5,8 @@ replab_init;
 % create a group:
 % s7 = replab.S(7);
 % or
-s5 = replab.S(5)
-s3 = replab.S(3)
+s5 = replab.S(5);
+s3 = replab.S(3);
 W  = s5.wreathProduct(s3)
 %
 % Set generators
@@ -15,12 +15,12 @@ W  = s5.wreathProduct(s3)
 gens = W.generators;
 
 % create rep:
-% rep = W.primitiveRep(s3.naturalRep)
-% % complexify (if it is real, for example):
-% rep = rep.complexification;
-% % Generators in that rep:
-% % cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
-% % transposition = rep.image([2 1 3 4 5 6 7]);
+rep = W.primitiveRep(s3.naturalRep)
+% complexify (if it is real, for example):
+rep = rep.complexification;
+% Generators in that rep:
+% cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
+% transposition = rep.image([2 1 3 4 5 6 7]);
 % 
 % % Save generator images
 % i = 1 %indexing of generators starts with 1
