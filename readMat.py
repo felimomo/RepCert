@@ -11,11 +11,16 @@ def readMatFile(automatic=False):
     # the order of the list gen_names matches the order of the list gen_images.
     #
     # If automatic==True, I fix the generator file and basis file names to a standard.
+    #
+    # Non-automatic mode doesn't work yet.
     
     if automatic==True:
         basis_file = 'InFiles/basis.mat'
+        generator_files = ['InFiles/gen_ims.mat'] # -> contains array with generator images
+        # Old ways:
+        #
         # generator_files = ['InFiles/cyclic_perm.mat', 'InFiles/transposition.mat']
-        generator_files = [x.path for x in os.scandir('InFiles') if x.path.endswith('.mat') and x.name != 'basis.mat']
+        # generator_files = [x.path for x in os.scandir('InFiles') if x.path.endswith('.mat') and x.name != 'basis.mat']
     else:
         basis_file = 'InFiles/'+input('Basis file (.mat format): ')
         generator_file_names = input('Generator files (.mat format, one generator per file, file names separated by a space): ').split()
@@ -37,10 +42,15 @@ def readMatFile(automatic=False):
     basis = Q.T
     # print("basis :\n",basis,"\nbasis element :\n",basis[0],"\n")
     
+    generators_long = sio.loadmat('gen_ims.mat')['gen_ims'] #-> loadmat gives dictionary, 
+                                                            #   entry 'gen_ims' is the images
+    gen_ims = [gen_im for gen_im in generators_long[0]]
+    gen_names = [str(i) for i in range(len(gen_ims))]
+    
     # Generates a list where each element is the result of loadmap(generator_files[i])
     # for different values of i. Each entry is a dictionary.
     #
-    generators_long = list(map(sio.loadmat,generator_files))
+    # generators_long = list(map(sio.loadmat,generator_files))
     # print(generators_long) #--> the generator image is the FIRST element of dictionary!
     
     # Only the last entry of the dictionary is important to us. First we collect the
@@ -56,14 +66,14 @@ def readMatFile(automatic=False):
     # Create list where each list element is of the form [ gen_name, gen_image],
     # where gen_image is an np.array.
     #
-    generator_n_i = list(map(lambda x: [list(x)[-1], np.array(x[list(x)[-1]])], generators_long))
+    # generator_n_i = list(map(lambda x: [list(x)[-1], np.array(x[list(x)[-1]])], generators_long))
 
     # now create a list of names and list of images separately
-    gen_names = [y[0] for y in generator_n_i]
-    gen_images = [y[1] for y in generator_n_i]
+    # gen_names = [y[0] for y in generator_n_i]
+    # gen_images = [y[1] for y in generator_n_i]
     # print(len(gen_images[0]), len(gen_images[1]), len(basis[0]))
     
-    full = {'basis':basis, 'gen_names':gen_names, 'gen_images':gen_images}
+    full = {'basis':basis, 'gen_names':gen_names, 'gen_images':gen_ims}
 
     return full
     
@@ -87,7 +97,7 @@ def inputWellBehaved(automatic=False):
         # CayleyDiam.txt should just contain a single thing: the Cayley diameter
         with open('InFiles/CayleyDiam.txt') as f:
             s = f.readline()
-            print(s)
+            # print(s)
             cayDiam = eval(s)
         return (0, cayDiam), 0
     

@@ -22,12 +22,11 @@ rep = rep.complexification
 % cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
 % transposition = rep.image([2 1 3 4 5 6 7]);
 
-% Save generator images
-i = 1 %indexing of generators starts with 1
+% Generator images
+i = 1; %indexing of generators starts with 1
+gen_ims = {};
 while i < W.nGenerators+1
-  im = rep.image(W.generators{i});
-  fname = [mat2str(i) ".mat"]
-  save -v7 fname im;
+  gen_ims{i} = rep.image(W.generators{i});
   i = i+1;
 endwhile
 % decompose rep:
@@ -38,10 +37,8 @@ randirrep = randcomp.irrep(randi(randcomp.nIrreps));
 % basis for irrep:
 basis = randirrep.basis;
 
-% save basis file: (v7 is used so scipy can read them being octave outputs)
+% save files: (v7 is used so scipy can read them being octave outputs)
 save -v7 basis.mat basis
+save -v7 gen_ims.mat
 % save -v7 cyclic_perm.mat cyclic_perm
 % save -v7 transposition.mat transposition
-
-% back to previous position
-cd ../RepCert
