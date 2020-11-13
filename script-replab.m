@@ -17,7 +17,7 @@ gens = W.generators;
 
 % create rep:
 % rep = W.primitiveRep(s6.naturalRep);
-W = kron(W.naturalRep,kron(W.naturalRep,kron(W.naturalRep,W.naturalRep)))
+rep = kron(W.naturalRep,kron(W.naturalRep,kron(W.naturalRep,W.naturalRep)))
 % complexify (if it is real, for example):
 rep = rep.complexification
 % Generators in that rep:
