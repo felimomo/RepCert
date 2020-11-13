@@ -7,7 +7,7 @@ replab_init;
 % or
 s6 = replab.S(6);
 s2 = replab.S(2);
-W  = s2.wreathProduct(s7)
+W  = s2.wreathProduct(s6)
 %
 % Set generators
 % gen1 = [2 1 3 4 5 6 7];
