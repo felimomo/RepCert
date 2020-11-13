@@ -14,6 +14,8 @@ def readMatFile(automatic=False):
     #
     # Non-automatic mode doesn't work yet.
     
+    generators_file=''; basis_file=''
+    
     if automatic==True:
         basis_file = 'InFiles/basis.mat'
         generators_file = 'InFiles/gen_ims.mat' # -> contains array with generator images
