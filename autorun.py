@@ -28,9 +28,11 @@ rep_time = time.time()
 #
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,genImages=rep_dict['gen_images'], 
                              density=(delta,k), q=q)
-# in this automatic test we look at S6 which is finite
-repr.set_groupOrder('finite')
-#
+# When we look at a finite group:
+# repr.set_groupOrder('finite')
+# When we look at a Lie group:
+repr.make_Lie()
+
 erep_time = time.time()
 print("Time constructing rep : ", erep_time - rep_time)
                 

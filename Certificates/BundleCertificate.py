@@ -3,7 +3,7 @@ from Certificates import InvarianceCertificate as inv
 from Certificates.Tools import rwalk, lin
 import math
 import numpy as np
-
+import itertools as itr
 
 def best_invariance_certificate(repr,basis):
 
@@ -32,7 +32,6 @@ def minimum_t(repr):
         
         # nah, let's try something outrageous
         return math.ceil(0.5*repr.density[1])
-        
     t_min = 0.5 * math.log(repr.dimension-1) 
     t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
     t_min = int(t_min)
@@ -46,9 +45,16 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     
     if repr.dimension==1:
         return True
-    
+        
     t_min = int(minimum_t(repr))
     t_max = int(t_min + t_surplus)
+    t_range = range(t_min,t_max+1)
+    
+    # ad-hoc mish-mash for continuous groups to escape the huge t values
+    #
+    # Tries a bunch of small values of t and if that fails, goes to t_min.
+    if repr.Lie:
+        t_range = itr.chain(range(1,10), range(100,110), range(500,510), range(1000,1010), range(t_min,t_min+t_surplus))
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,basis)
@@ -63,7 +69,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
         return False
     
     #Irreducibility test:
-    for t in range(t_min,t_max+1):
+    for t in t_range:
         if irr.irr_cert(repr,basis,t,epsilon,error_p):
             return True
     return False

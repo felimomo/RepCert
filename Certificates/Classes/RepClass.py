@@ -30,12 +30,24 @@ class generators:
     
 
 class rep_by_generators(generators):
+    # properties:
+    #   - dimension
+    #   - nGens
+    #   - Images (dictionary {generator:image}
+    #   - generatorList
+    #   - density = (delta, k)
+    #   - q = q-boundedness of rep
+    #   - order = order of group
+    #   - Lie = boolean saying if group is a continuous Lie group (cannot have order in that case)
+    #           -> initialized to False by default, needs self.make_Lie to change this
+    
     #representation defined by map from generators to images
     def __init__(self, dimension, generatorSet = [], genImages = [], **kwargs):
         self.dimension = dimension #dimension of representation
         self.nGens = len(generatorSet) #number of generators
         self.Images = dict()
         self.generatorList = []
+        self.Lie = False 
         
         #keyword args are:  
         #                   density = tuple (delta,k) s.t. generator set is (delta,k)-dense in group,
@@ -76,6 +88,10 @@ class rep_by_generators(generators):
         self.order = ord
         # for finite groups.
         # could be an actual number, or simply 'finite'
+    
+    def make_Lie(self):
+        assert not hasattr(self,'order'), "Continuous groups cannot have order."
+        self.Lie = True
         
 
         
