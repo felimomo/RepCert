@@ -5,10 +5,10 @@ replab_init;
 % create a group:
 % s7 = replab.S(7);
 % or
-s8 = replab.S(8);
+s7 = replab.S(7);
 % s2 = replab.S(2);
 % W  = s2.wreathProduct(s6)
-W = s8
+W = s7
 %
 % Set generators
 % gen1 = [2 1 3 4 5 6 7];
