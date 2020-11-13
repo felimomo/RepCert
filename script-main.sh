@@ -24,7 +24,7 @@ echo "Moving files done."
 # Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
 rm InFiles/CayleyDiam.txt
 touch InFiles/CayleyDiam.txt
-echo "1*(18**2)" >> InFiles/CayleyDiam.txt
+echo "35" >> InFiles/CayleyDiam.txt
 # less InFiles/CayleyDiam.txt
 #
 # Finally, run the auto repcert run:
