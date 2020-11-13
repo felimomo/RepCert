@@ -69,9 +69,9 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
         return False
         
     
+    print(list(t_range))
     #Irreducibility test:
     for t in list(t_range):
-        print(t,end=" ")
         if irr.irr_cert(repr,basis,t,epsilon,error_p):
             return True
     return False
