@@ -5,7 +5,7 @@ replab_init;
 % create a group:
 % s7 = replab.S(7);
 % or
-U  = replab.U(4);
+U  = replab.U(3);
 s3 = replab.S(3);
 % s2 = replab.S(2);
 % W  = s2.wreathProduct(s6)
@@ -18,7 +18,7 @@ W = s3.wreathProduct(U)
 
 % create rep:
 % rep = W.primitiveRep(s6.naturalRep);
-rep = W.primitiveRep(U.definingRep)
+rep = W.primitiveRep(kron(U.definingRep,U.definingRep))
 % complexify (if it is real, for example):
 % rep = rep.complexification %-> already complex for unitary group
 % Generators in that rep:
@@ -35,7 +35,7 @@ rep = W.primitiveRep(U.definingRep)
 % Now sample two extra elements to generate S3 Wreath U4. In fact,
 % sample three extra elements, just to be sure (2 random elements might
 % not quite generate S4 with high prob, because S3 is not too large).    ==> 18 generators (symmetrize set: 36 in total)
-i = 1; generators = {}, gen_ims={};
+i = 1; generators = {}; gen_ims={};
 while i < 37
   generators{i} = W.sample;
   generators{i+1} = W.inverse(generators{i});
