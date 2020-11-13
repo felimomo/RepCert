@@ -28,7 +28,7 @@ def readMatFile(automatic=False):
         generator_file_names = input('Generator files (.mat format, one generator per file, file names separated by a space): ').split()
         generators_file = ['InFiles/'+name for name in generator_file_names]
 
-    assert all((name[-4:]=='.mat' for name in generators_file+[basis_file])), 'Files must be .mat!'
+    assert all((name[-4:]=='.mat' for name in [generators_file, basis_file])), 'Files must be .mat!'
 
     # Generates np.array such that each subarray is a basis element (the .T is
     # needed because replab outputs the basis using columns for basis elements,
