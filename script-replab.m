@@ -41,7 +41,7 @@ while i < 37
   generators{i+1} = W.inverse(generators{i});
   gen_ims{i} = rep.image(generators{i});
   gen_ims{i+1} = rep.image(generators{i+1});
-  i = i+2
+  i = i+2;
 endwhile
 
 % Generator images

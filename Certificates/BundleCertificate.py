@@ -54,7 +54,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     #
     # Tries a bunch of small values of t and if that fails, goes to t_min.
     if repr.Lie:
-        t_range = itr.chain(range(1,10), range(100,110), range(500,510), range(1000,1010), range(t_min,t_min+t_surplus))
+        t_range = itr.chain(range(1,10), range(100,110), range(500,510), range(1000,1010))
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,basis)
@@ -62,7 +62,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
         dim = len(basis)
         print("Invariant at precision ",epsilon)
         print("Minimal rand walk length = ", 2*t_min)
-        print("Max number of samples required for irreducibility: ", rwalk.number_samples(repr,len(basis),epsilon,error_p,t_max))
+        # print("Max number of samples required for irreducibility: ", rwalk.number_samples(repr,len(basis),epsilon,error_p,t_max))
         print("Dimension of irrep being tested = ", dim)
         
     if epsilon==1:
