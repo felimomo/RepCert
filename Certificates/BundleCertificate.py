@@ -50,19 +50,20 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     t_max = int(t_min + t_surplus)
     t_range = range(t_min,t_max+1)
     
-    # ad-hoc mish-mash for continuous groups to escape the huge t values
+    # ad-hoc mish-mash for continuous groups to escape the huge t values [not needed right now]
     #
     # Tries a bunch of small values of t and if that fails, goes to t_min.
-    if repr.Lie:
-        t_range = itr.chain(range(10,50), range(100,200), range(500,600), range(1000,1100))    
+    # if repr.Lie:
+    #     t_max = 1100
+    #     t_range = itr.chain(range(10,50), range(100,200), range(500,600), range(1000,t_max))    
 
     #Invariance test:
     epsilon = best_invariance_certificate(repr,basis)
     if prnt:
         dim = len(basis)
         print("Invariant at precision ",epsilon)
-        # print("Minimal rand walk length = ", 2*t_min)
-        print("Max number of samples required for irreducibility: ", rwalk.number_samples(repr,len(basis),epsilon,error_p,1100))
+        print("Minimal rand walk length = ", 2*t_min)
+        print("Max number of samples required for irreducibility: ", rwalk.number_samples(repr,len(basis),epsilon,error_p,t_max))
         print("Dimension of irrep being tested = ", dim)
         
     if epsilon==1:

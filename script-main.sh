@@ -24,7 +24,12 @@ echo "Moving files done."
 # Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
 rm InFiles/CayleyDiam.txt
 touch InFiles/CayleyDiam.txt
-echo "(10**(-10), 2* 10**(2*2))" >> InFiles/CayleyDiam.txt #uff that's bad, well let's see
+#
+# k(Sn wreath U(2)) = (finite diam) + n*log(epsilon^-1)
+#   -> second term is the diameter of U(2) x ... x U(2) [n times]
+#   -> first produce element of Sn, then produce one element of each U(2) 
+#   -> U(2)^n is normal subgroup, so doing Sn before or after doesn't matter
+echo "(10**(-10), 2 + 3*(10**2))" >> InFiles/CayleyDiam.txt 
 # less InFiles/CayleyDiam.txt
 #
 # Finally, run the auto repcert run:

@@ -33,7 +33,6 @@ def irr_cert(repr,basis,t,epsilon,error_p):
         # I use a non-predetermined value of m.
         # 
         # If et >=2, then theta >=1 and so E will never be < 2(1-theta) =< 0.
-        print("waaaah!")
         return False 
 
     if dim==1:
