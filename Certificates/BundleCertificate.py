@@ -67,6 +67,8 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
         
     if epsilon==1:
         return False
+        
+    print("here!")
     
     #Irreducibility test:
     for t in t_range:
