@@ -102,8 +102,8 @@ def inputWellBehaved(automatic=False):
             s = f.readline()
             # print(s)
             # cayDiam = eval(s)
-            density = eval(s)
-        return density, 1
+            well_b = eval(s)
+        return well_b
     
     
     delta = eval(input("delta density parameter: "))

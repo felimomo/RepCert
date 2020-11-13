@@ -29,7 +29,7 @@ touch InFiles/CayleyDiam.txt
 #   -> second term is the diameter of U(2) x ... x U(2) [n times]
 #   -> first produce element of Sn, then produce one element of each U(2) 
 #   -> U(2)^n is normal subgroup, so doing Sn before or after doesn't matter
-echo "(10**(-10), 2 + 3*(10**2))" >> InFiles/CayleyDiam.txt 
+echo "(10**(-10), 2 + 3*(10**2)), 2" >> InFiles/CayleyDiam.txt 
 # less InFiles/CayleyDiam.txt
 #
 # Finally, run the auto repcert run:
