@@ -25,10 +25,12 @@ def best_invariance_certificate(repr,basis):
     return epsilon
     
 def minimum_t(repr):
-    if hasattr(repr, 'order'):
+    if hasattr(repr, 'order') or repr.Lie:
         # in practice the above value of t_min seems too large for small finite groups.
         # replace it by an ad-hoc value of t_min here, given by twice the Cayley diam.
         # return 2*repr.density[1]
+        #
+        # Also use it for Lie groups, what the hell.
         
         # nah, let's try something outrageous
         return math.ceil(0.5*repr.density[1])
