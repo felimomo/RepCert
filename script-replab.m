@@ -37,9 +37,10 @@ rep = W.primitiveRep(U.definingRep)
 % not quite generate S4 with high prob, because S3 is not too large).    ==> 18 generators (symmetrize set: 36 in total)
 i = 1; generators = {}, gen_ims={};
 while i < 37
-  g = W.sample
+  g = W.sample;
   generators{i} = g;
-  generators{i+1} = g.inverse;
+  ginv = g.inverse;
+  generators{i+1} = ginv;
   gen_ims{i} = rep.image(generators{i});
   gen_ims{i+1} = rep.image(generators{i+1});
   i = i+2
