@@ -50,11 +50,14 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     t_max = int(t_min + t_surplus)
     t_range = range(t_min,t_max+1)
     
+    print(list(t_range))
+    
     # ad-hoc mish-mash for continuous groups to escape the huge t values
     #
     # Tries a bunch of small values of t and if that fails, goes to t_min.
     if repr.Lie:
         t_range = itr.chain(range(10,50), range(100,200), range(500,600), range(1000,1100))
+        print(list(t_range))
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,basis)
