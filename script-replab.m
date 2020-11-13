@@ -5,9 +5,9 @@ replab_init;
 % create a group:
 % s7 = replab.S(7);
 % or
-s4 = replab.S(4);
-s3 = replab.S(3);
-W  = s4.wreathProduct(s3)
+s7 = replab.S(7);
+s2 = replab.S(2);
+W  = s2.wreathProduct(s7)
 %
 % Set generators
 % gen1 = [2 1 3 4 5 6 7];
@@ -15,7 +15,7 @@ W  = s4.wreathProduct(s3)
 gens = W.generators;
 
 % create rep:
-rep = W.primitiveRep(s3.naturalRep);
+rep = W.primitiveRep(s7.naturalRep);
 % complexify (if it is real, for example):
 rep = rep.complexification
 % Generators in that rep:
