@@ -30,7 +30,7 @@ while i < W.nGenerators+1
   i = i+1;
 endwhile
 % decompose rep:
-dec = rep.decomposition.nice;
+dec = rep.decomposition.nice
 % sample random subrep: (first random isotypic component, then random irrep)
 randcomp  = dec.component(randi(dec.nComponents));
 randirrep = randcomp.irrep(randi(randcomp.nIrreps));
