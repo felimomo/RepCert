@@ -1,0 +1,20 @@
+Run certificate on random irreducible subrepresentations (obtained using RepLAB)
+of the primitive rep of S5 \wr S3 obtained from the natural rep of S3. 
+
+In the language of replab: G = s5.wreathProduct(s3), rep = G.primitiveRep(s3.naturalRep).
+The global dimension is 243, the Cayley diameter is 11 * 2^5 = 352. I'm using the
+'super-short walk' ad-hoc formula, where the 2t_min is chosen to be the Cay Diam, and
+t_max = t_min + 100.
+
+Decomposition = C(80) + C(80) + C(40) + C(32) + C(10) + C(1)p
+
+IrrD = irrep dimension, Samp = max number of samples needed, Cert = did the full certificate work?
+Inv = precision of invariance certificate, CertTime = time needed for certificates.
+
+IrrD  Samp    Inv   CertTime      Cert
+--------------------------------------
+10    51577   e-9   43s           Yes
+10    51577   e-9   41s           Yes
+32    528157  e-9   648s  (10m)   Yes
+40    825246  e-9   1265s (20m)   Yes
+80    3300985 e-9   ??            ??  

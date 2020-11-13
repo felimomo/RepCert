@@ -1,0 +1,19 @@
+Run certificate on random irreducible subrepresentations (obtained using RepLAB)
+of the primitive rep of S4 \wr U(2) obtained from the tensor square UxU rep of U(2). 
+
+The global dimension is 256, the density is (10**(-10), 7 + 4*(10**2) = 407), q=2. I'm using the
+'super-short walk' of length k, where k =302.
+
+Decomposition = C(108) + C(81) + C(54) + C(12) + C(1)
+
+IrrD = irrep dimension, Samp = maximum number of samples needed, Cert = did the full certificate work?
+Inv = precision of invariance certificate, CertTime = time needed for certificates.
+
+IrrD  Samp    Inv   CertTime      Cert
+--------------------------------------
+9     41778   e-8   33s           Yes
+9     41778   e-8   33s           Yes
+9     41778   e-8   35s           Yes
+12    74272   e-8   91s     (2m)  Yes
+12    74272   e-8   97s     (2m)  Yes
+54    1504011 e-8   

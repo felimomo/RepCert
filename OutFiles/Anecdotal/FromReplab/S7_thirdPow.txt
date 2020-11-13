@@ -1,0 +1,30 @@
+Run certificate on random irreducible subrepresentations (obtained using RepLAB)
+of the third tensor power of the natural rep of S7. 
+
+In the language of replab: G = s7, rep = kron(s7.naturalRep, kron(s7.naturalRep, s7.naturalRep)).
+The global dimension is 343, the Cayley diameter is 25. I'm using the
+'super-short walk' ad-hoc formula, where the 2t_min is chosen to be the Cay Diam, and
+t_max = t_min + 100.
+
+Decomposition = I(2)xC(35) + C(20) + I(6)xC(15) + I(6)xC(14) + C(14)
+              + I(10)xC(6) + I(5)xC(1)
+
+IrrD = irrep dimension, Samp = max number of samples needed, Cert = did the full certificate work?
+Inv = precision of invariance certificate, CertTime = time needed for certificates.
+
+IrrD  Samp    Inv   CertTime      Cert
+--------------------------------------
+6     18568   e-10  1s            Yes
+6     18568   e-10  1s            Yes
+14    101092  e-10  6s            Yes
+14    101092  e-10  6s            Yes
+14    101092  e-10  7s            Yes
+14    101092  e-10  7s            Yes
+14    101092  e-10  8s            Yes
+15    116050  e-10  9s            Yes
+20    206311  e-10  15s           Yes
+20    206311  e-10  15s           Yes
+20    206311  e-10  16s           Yes
+35    631829  e-10  64s (1m)      Yes
+35    631829  e-10  65s (1m)      Yes
+35    631829  e-10  66s (1m)      Yes
