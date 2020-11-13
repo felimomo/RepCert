@@ -24,7 +24,7 @@ echo "Moving files done."
 # Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
 rm InFiles/CayleyDiam.txt
 touch InFiles/CayleyDiam.txt
-echo "(10**(-9), 2* 9**(2*2))" >> InFiles/CayleyDiam.txt #uff that's bad, well let's see
+echo "(0.5*10**(-9), 2* (9*(1+math.log(2)))**(2*2))" >> InFiles/CayleyDiam.txt #uff that's bad, well let's see
 # less InFiles/CayleyDiam.txt
 #
 # Finally, run the auto repcert run:
