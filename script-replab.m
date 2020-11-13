@@ -5,9 +5,9 @@ replab_init;
 % create a group:
 % s7 = replab.S(7);
 % or
-s5 = replab.S(5);
+s4 = replab.S(4);
 s3 = replab.S(3);
-W  = s5.wreathProduct(s3)
+W  = s4.wreathProduct(s3)
 %
 % Set generators
 % gen1 = [2 1 3 4 5 6 7];
