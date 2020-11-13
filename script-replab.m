@@ -18,7 +18,7 @@ W = s3.wreathProduct(U)
 
 % create rep:
 % rep = W.primitiveRep(s6.naturalRep);
-rep = W.primitiveRep(kron(U.definingRep,kron(U.definingRep,U.definingRep.conj)))
+rep = W.primitiveRep(kron(U.definingRep,U.definingRep.conj))
 % complexify (if it is real, for example):
 % rep = rep.complexification %-> already complex for unitary group
 % Generators in that rep:
