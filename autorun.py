@@ -22,7 +22,7 @@ global_dim = len(rep_dict['basis'][0])
 # print(len(rep_dict['gen_images'][0]))
 #
 eread_time = time.time()
-print("time reading .mat files: ", eread_time - read_time)
+print("Time reading .mat files: ", eread_time - read_time)
 
 rep_time = time.time()
 #
