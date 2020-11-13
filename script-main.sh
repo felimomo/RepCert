@@ -21,7 +21,7 @@ mv ../replab-0.9.0/basis.mat InFiles/
 mv ../replab-0.9.0/gen_ims.mat InFiles/
 echo "Moving files done."
 #
-# Write CayleyDiameter.txt file (right now it's S5 \wreath S3).
+# Write CayleyDiam.txt file.
 rm InFiles/CayleyDiam.txt
 touch InFiles/CayleyDiam.txt
 #
