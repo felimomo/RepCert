@@ -16,7 +16,7 @@ def readMatFile(automatic=False):
     
     if automatic==True:
         basis_file = 'InFiles/basis.mat'
-        generator_files = ['InFiles/gen_ims.mat'] # -> contains array with generator images
+        generators_file = 'InFiles/gen_ims.mat' # -> contains array with generator images
         # Old ways:
         #
         # generator_files = ['InFiles/cyclic_perm.mat', 'InFiles/transposition.mat']
@@ -42,7 +42,7 @@ def readMatFile(automatic=False):
     basis = Q.T
     # print("basis :\n",basis,"\nbasis element :\n",basis[0],"\n")
     
-    generators_long = sio.loadmat('gen_ims.mat')['gen_ims'] #-> loadmat gives dictionary, 
+    generators_long = sio.loadmat(generators_file)['gen_ims'] #-> loadmat gives dictionary, 
                                                             #   entry 'gen_ims' is the images
     gen_ims = [gen_im for gen_im in generators_long[0]]
     gen_names = [str(i) for i in range(len(gen_ims))]
