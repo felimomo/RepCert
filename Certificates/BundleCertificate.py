@@ -54,7 +54,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     #
     # Tries a bunch of small values of t and if that fails, goes to t_min.
     if repr.Lie:
-        t_range = itr.chain(range(1,10), range(100,110), range(500,510), range(1000,1010))
+        t_range = itr.chain(range(1,10), range(100,110), range(500,550), range(1000,1010))
     
     #Invariance test:
     epsilon = best_invariance_certificate(repr,basis)
