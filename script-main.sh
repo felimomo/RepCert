@@ -25,12 +25,12 @@ echo "Moving files done."
 rm InFiles/CayleyDiam.txt
 touch InFiles/CayleyDiam.txt
 #
-# k(Sn wreath U(2)) = (finite diam) + n*log^2(epsilon^-1)
-#   -> second term is the diameter of U(2) x ... x U(2) [n times]
+# k(Sn wreath U) = (Sn diam) + n*{log^2(epsilon^-1) or (U diam)}
+#   -> second term is the diameter of U x ... x U [n times]
 #   -> first produce element of Sn, then produce one element of each U(2) 
-#   -> U(2)^n is normal subgroup, so doing Sn before or after doesn't matter
-#   -> log^2 term is Solovay-Kitaev (assume constant = 1 for the random generator set)
-echo "(0, 71), 0" >> InFiles/CayleyDiam.txt 
+#   -> U^n is normal subgroup, so doing Sn before or after doesn't matter
+#   -> log^2 term is Solovay-Kitaev for U=U(2) (assume constant = 1 for the random generator set)
+echo "(0, 2+3*18), 0" >> InFiles/CayleyDiam.txt 
 # less InFiles/CayleyDiam.txt
 #
 # Finally, run the auto repcert run:
