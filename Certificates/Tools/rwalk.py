@@ -16,7 +16,7 @@ def repRandWalkEstimator(repr,m,t):
     est = (repRandWalk(repr,t) * m**(-1) for i in range(m))
     return sum(est)
     
-def number_samples(repr,dim,epsilon,error_p,t,extra_factor=16):
+def number_samples(repr,dim,epsilon,error_p,t,extra_factor=4):
     minimum = 2*math.log(error_p**(-1))
     dt = const.dt(repr,epsilon,2*t)
     minimum*= dim**2 + dt #Minimum m such that irr_cert doesnt abort
