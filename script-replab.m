@@ -5,9 +5,9 @@ replab_init;
 % create a group:
 % U  = replab.S(3);
 % Sn = replab.S(6);
-Parties = replab.S(2);
-Settings= replab.S(4);
-Outcomes= replab.S(2);
+Parties = replab.S(3);
+Settings= replab.S(3);
+Outcomes= replab.S(3);
 X = Settings.wreathProduct(Outcomes);
 W = Parties.wreathProduct(X);
 % W = Sn.wreathProduct(U)
@@ -20,8 +20,8 @@ W = Parties.wreathProduct(X);
 
 % Cayley diam calculation for (Sa wr Sb wr Sc, X := Sb wr Sc):
 % 
-% diam(X) = diam(Sb) + b*diam(Sc) = 7 + 4*1 = 11
-% diam(W) = diam(Sa) + a*diam(X) = 1 + 2*11 = 23
+% diam(X) = diam(Sb) + b*diam(Sc) = 2 + 3*2 = 8
+% diam(W) = diam(Sa) + a*diam(X) = 2 + 3*8 = 26
 
 % create rep:
 Xrep= X.imprimitiveRep(Outcomes.naturalRep);
