@@ -30,7 +30,7 @@ touch InFiles/CayleyDiam.txt
 #   -> first produce element of Sn, then produce one element of each U(2) 
 #   -> U^n is normal subgroup, so doing Sn before or after doesn't matter
 #   -> log^2 term is Solovay-Kitaev for U=U(2) (assume constant = 1 for the random generator set)
-echo "(0, 11), 0" >> InFiles/CayleyDiam.txt 
+echo "(0, 17), 0" >> InFiles/CayleyDiam.txt 
 # less InFiles/CayleyDiam.txt
 #
 # Finally, run the auto repcert run:

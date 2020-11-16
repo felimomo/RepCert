@@ -5,9 +5,9 @@ replab_init;
 % create a group:
 % U  = replab.S(3);
 % Sn = replab.S(6);
-Parties = replab.S(2);
-Outcomes= replab.S(2);
+Parties = replab.S(3);
 Settings= replab.S(3);
+Outcomes= replab.S(2);
 X = Settings.wreathProduct(Outcomes);
 W = Parties.wreathProduct(X);
 % W = Sn.wreathProduct(U)
@@ -18,10 +18,10 @@ W = Parties.wreathProduct(X);
 % gen2 = [2 3 4 5 6 7 1];
 % gens = W.generators;
 
-% Cayley diam calculation for the I3322 symmetry (S2 wr S3 wr S2):
+% Cayley diam calculation for (Sa wr Sb wr Sc, X := Sb wr Sc):
 % 
-% diam(X) = 2 + 3*1
-% diam(W) = 1 + 2*diam(X) = 1 + 2(2+3) = 11
+% diam(X) = diam(Sb) + b*diam(Sc) = 2 + 3*1 = 5
+% diam(W) = diam(Sa) + a*diam(X) = 2 + 3*5 = 17
 
 % create rep:
 Xrep= X.imprimitiveRep(Outcomes.naturalRep);
