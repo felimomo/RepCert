@@ -50,7 +50,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
         
     t_min = int(minimum_t(repr))
     t_max = int(t_min + t_surplus)
-    t_range = range(t_min,t_max+1)
+    t_range = itr.chain(range(10,20),range(t_min,t_max+1))
     
     # ad-hoc mish-mash for continuous groups to escape the huge t values [not needed right now]
     #
