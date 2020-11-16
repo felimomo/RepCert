@@ -6,7 +6,7 @@ replab_init;
 % s7 = replab.S(7);
 % or
 U  = replab.S(3);
-Sn = replab.S(5);
+Sn = replab.S(6);
 % s2 = replab.S(2);
 W = Sn.wreathProduct(U)
 % W = Sn
