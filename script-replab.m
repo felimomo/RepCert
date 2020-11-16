@@ -5,8 +5,8 @@ replab_init;
 % create a group:
 % U  = replab.S(3);
 % Sn = replab.S(6);
-Parties = replab.S(3);
-Settings= replab.S(3);
+Parties = replab.S(2);
+Settings= replab.S(4);
 Outcomes= replab.S(2);
 X = Settings.wreathProduct(Outcomes);
 W = Parties.wreathProduct(X);
@@ -20,17 +20,14 @@ W = Parties.wreathProduct(X);
 
 % Cayley diam calculation for (Sa wr Sb wr Sc, X := Sb wr Sc):
 % 
-% diam(X) = diam(Sb) + b*diam(Sc) = 2 + 3*1 = 5
-% diam(W) = diam(Sa) + a*diam(X) = 2 + 3*5 = 17
+% diam(X) = diam(Sb) + b*diam(Sc) = 7 + 4*1 = 11
+% diam(W) = diam(Sa) + a*diam(X) = 1 + 2*11 = 23
 
 % create rep:
 Xrep= X.imprimitiveRep(Outcomes.naturalRep);
 rep = W.primitiveRep(Xrep);
 % complexify (if it is real):
 rep = rep.complexification
-% Generators in that rep:
-% cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
-% transposition = rep.image([2 1 3 4 5 6 7]);
 
 % Simultaneously sample generators and set their images:
 %
