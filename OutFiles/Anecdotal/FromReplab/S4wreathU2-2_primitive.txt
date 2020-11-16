@@ -16,4 +16,4 @@ IrrD  Samp    Inv   CertTime      Cert
 9     41778   e-8   35s           Yes
 12    74272   e-8   91s     (2m)  Yes
 12    74272   e-8   97s     (2m)  Yes
-54    1504011 e-8   
+54    1504011 e-8   4080s (1h8m)  Yes

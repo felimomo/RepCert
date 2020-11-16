@@ -18,4 +18,4 @@ IrrD  Samp    Inv   CertTime      Cert
 16    132039  e-8   134s    (2m)  Yes
 48    1188354 e-8   2242s   (38m) Yes
 64    2112631 e-8   5476s (1h30m) Yes
-96    4753419 e-8   
+96    4753419 e-8   ?

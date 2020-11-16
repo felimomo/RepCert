@@ -6,10 +6,10 @@ replab_init;
 % s7 = replab.S(7);
 % or
 U  = replab.U(2);
-s4 = replab.S(4);
+s5 = replab.S(5);
 % s2 = replab.S(2);
 % W  = s2.wreathProduct(s6)
-W = s4.wreathProduct(U)
+W = s5.wreathProduct(U)
 %
 % Set generators:
 % gen1 = [2 1 3 4 5 6 7];
@@ -27,16 +27,16 @@ rep = W.primitiveRep(kron(U.definingRep,U.definingRep))
 
 % Simultaneously sample generators and set their images:
 %
-% U4 has a generating set with 3 elements (Hi, Pi, pi/8).
+% U2 has a generating set with 3 elements (Hi, Pi, pi/8).
 % => prob(5 rand elements of U4 generate U4) = 1. 
 % 
-% => 12 random elements generate U2 x U2 x U2 x U2. 
+% => 15 random elements generate U2 x U2 x U2 x U2 x U2. 
 % 
-% Now sample two extra elements to generate S3 Wreath U4. In fact,
-% sample three extra elements, just to be sure (2 random elements might
-% not quite generate S4 with high prob, because S3 is not too large).    ==> 12 generators (symmetrize set: 24 in total)
+% Now sample two extra elements to generate S3 Wreath U4. 
+% ==> 17 generators (symmetrize set: 34 in total)
+
 i = 1; generators = {}; gen_ims={};
-while i < 32
+while i < 35
   generators{i} = W.sample;
   generators{i+1} = W.inverse(generators{i});
   gen_ims{i} = rep.image(generators{i});
