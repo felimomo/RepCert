@@ -3,12 +3,14 @@ cd ../replab-0.9.0;
 replab_init;
 
 % create a group:
-% s7 = replab.S(7);
-% or
-U  = replab.S(3);
-Sn = replab.S(6);
-% s2 = replab.S(2);
-W = Sn.wreathProduct(U)
+% U  = replab.S(3);
+% Sn = replab.S(6);
+Parties = replab.S(2);
+Outcomes= replab.S(2);
+Settings= replab.S(3);
+X = Settings.wreathProduct(Outcomes);
+W = Parties.wreathProduct(X);
+% W = Sn.wreathProduct(U)
 % W = Sn
 %
 % Set generators:
@@ -16,10 +18,15 @@ W = Sn.wreathProduct(U)
 % gen2 = [2 3 4 5 6 7 1];
 % gens = W.generators;
 
+% Cayley diam calculation for the I3322 symmetry (S2 wr S3 wr S2):
+% 
+% diam(X) = 2 + 3*1
+% diam(W) = 1 + 2*diam(X) = 1 + 2(2+3) = 11
+
 % create rep:
-% rep = kron(W.naturalRep,kron(W.naturalRep,W.naturalRep));
-rep = W.primitiveRep(U.naturalRep);
-% complexify (if it is real, for example):
+Xrep= X.imprimitiveRep(Outcomes.naturalRep);
+rep = W.primitiveRep(Xrep);
+% complexify (if it is real):
 rep = rep.complexification
 % Generators in that rep:
 % cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
