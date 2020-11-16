@@ -6,7 +6,7 @@ replab_init;
 % s7 = replab.S(7);
 % or
 % U  = replab.S(3);
-Sn = replab.S(10);
+Sn = replab.S(9);
 % s2 = replab.S(2);
 % W = Sn.wreathProduct(U)
 W = Sn
@@ -28,7 +28,7 @@ rep = rep.complexification
 % Simultaneously sample generators and set their images:
 %
 % if U has u generators and Sn has 2 generators, then the total number of generators
-% is n*u + 2.
+% is n*u + 2. (For Sn \wr U.)
 
 i = 1; 
 % generators = {}; 
