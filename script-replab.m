@@ -5,11 +5,11 @@ replab_init;
 % create a group:
 % s7 = replab.S(7);
 % or
-U  = replab.U(2);
-s5 = replab.S(5);
+U  = replab.S(3);
+Sn = replab.S(5);
 % s2 = replab.S(2);
 % W  = s2.wreathProduct(s6)
-W = s5.wreathProduct(U)
+W = Sn.wreathProduct(U)
 %
 % Set generators:
 % gen1 = [2 1 3 4 5 6 7];
@@ -18,7 +18,7 @@ W = s5.wreathProduct(U)
 
 % create rep:
 % rep = W.primitiveRep(s6.naturalRep);
-rep = W.primitiveRep(kron(U.definingRep,U.definingRep))
+rep = W.primitiveRep(U.naturalRep)
 % complexify (if it is real, for example):
 % rep = rep.complexification %-> already complex for unitary group
 % Generators in that rep:
@@ -27,21 +27,17 @@ rep = W.primitiveRep(kron(U.definingRep,U.definingRep))
 
 % Simultaneously sample generators and set their images:
 %
-% U2 has a generating set with 3 elements (Hi, Pi, pi/8).
-% => prob(5 rand elements of U4 generate U4) = 1. 
-% 
-% => 15 random elements generate U2 x U2 x U2 x U2 x U2. 
-% 
-% Now sample two extra elements to generate S3 Wreath U4. 
-% ==> 17 generators (symmetrize set: 34 in total)
+% if U has u generators and Sn has 2 generators, then the total number of generators
+% is n*u + 2.
 
-i = 1; generators = {}; gen_ims={};
-while i < 35
-  generators{i} = W.sample;
-  generators{i+1} = W.inverse(generators{i});
+i = 1; 
+% generators = {}; 
+gen_ims={};
+while i < W.nGenerators+1
+  % generators{i} = W.sample;
+  % generators{i+1} = W.inverse(generators{i});
   gen_ims{i} = rep.image(generators{i});
-  gen_ims{i+1} = rep.image(generators{i+1});
-  i = i+2;
+  i = i;
 endwhile
 
 % Generator images
