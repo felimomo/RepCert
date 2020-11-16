@@ -36,7 +36,7 @@ gen_ims={};
 while i < W.nGenerators+1
   % generators{i} = W.sample;
   % generators{i+1} = W.inverse(generators{i});
-  gen_ims{i} = rep.image(generators{i});
+  gen_ims{i} = rep.image(W.generators{i});
   i = i;
 endwhile
 
