@@ -18,9 +18,9 @@ W = Sn.wreathProduct(U)
 
 % create rep:
 % rep = W.primitiveRep(s6.naturalRep);
-rep = W.primitiveRep(U.naturalRep)
+rep = W.primitiveRep(U.naturalRep);
 % complexify (if it is real, for example):
-% rep = rep.complexification %-> already complex for unitary group
+rep = rep.complexification
 % Generators in that rep:
 % cyclic_perm   = rep.image([2 3 4 5 6 7 1]);
 % transposition = rep.image([2 1 3 4 5 6 7]);
