@@ -5,7 +5,7 @@ replab_init;
 % create a group:
 % s7 = replab.S(7);
 % or
-U  = replab.S(7);
+U  = replab.S(8);
 Sn = replab.S(3);
 % s2 = replab.S(2);
 W = Sn.wreathProduct(U)
