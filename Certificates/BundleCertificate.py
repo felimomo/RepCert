@@ -28,7 +28,7 @@ def restrict_to_subrep(repr,basis):
     # restricts repr to a subrepresentation on the space spanned
     # by basis.
 
-    new_ims = [restrict(im,basis) for im in repr.image_list()] # new rep images of generators
+    new_ims = [lin.restrict(im,basis) for im in repr.image_list()] # new rep images of generators
     dim = len(basis) # new dimension
     new_repr = rep.rep_by_generators(dim, repr.generatorList, new_ims, density = repr.density, q = repr.q)
     return new_repr
