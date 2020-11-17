@@ -24,6 +24,14 @@ def best_invariance_certificate(repr,basis):
         epsilon = 10**(-x)
     return epsilon
     
+def restrict_to_subrep(repr,basis):
+    # restricts repr to a subrepresentation on the space spanned
+    # by basis.
+
+    new_ims = [restrict(im,basis) for im in repr.image_list()] # new rep images of generators
+    dim = len(basis) # new dimension
+    new_repr = rep.rep_by_generators(dim, repr.generatorList, new_ims, density = repr.density, q = repr.q)
+    return new_repr
 
 def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     # Run certificate with rand walks with values of t from minimum_t(repr)
@@ -53,7 +61,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     if epsilon==1:
         return False
         
-    subrep = lin.restrict_to_subrep(repr,basis)
+    subrep = restrict_to_subrep(repr,basis)
     
     #Irreducibility test:
     for t in t_range:

@@ -84,14 +84,7 @@ def restrict(mat,basis):
     #restrict matrix mat to the subspace spanned by basis
     return np.array([as_lincomb(mat.dot(basis_elem),basis) for basis_elem in basis]).transpose()    
 
-def restrict_to_subrep(repr,basis):
-    # restricts repr to a subrepresentation on the space spanned
-    # by basis.
 
-    new_ims = [restrict(im,basis) for im in repr.image_list()] # new rep images of generators
-    dim = len(basis) # new dimension
-    new_repr = rep.rep_by_generators(dim, repr.generatorList, new_ims, density = repr.density, q = repr.q)
-    return new_repr
 
     
 
