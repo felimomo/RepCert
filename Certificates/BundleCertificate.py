@@ -68,7 +68,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     for t in t_range:
         print(t, end="\r")
         if irr.irr_cert(subrep,t,epsilon,error_p):
-            # print("Needed random walk length: ", 2*t)
+            print("Needed random walk length: ", 2*t)
             return True
     return False
     
