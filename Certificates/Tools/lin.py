@@ -27,7 +27,7 @@ def isprojector(pi,machine_eps):
 #
 
 def single_row_mat(vec):
-    return np.array([[comp for comp in vec]])
+    return np.array([vec])
 
 def ketbra(vec):
     # takes a vector and produces a projector onto its span
@@ -36,6 +36,7 @@ def ketbra(vec):
     return mat_v.conjugate().transpose().dot(mat_v)   # column*row = | > < |
     
 def braket(v1,v2):
+    # returns < v1|v2 >
     mat_v1 = single_row_mat(v1).conjugate()
     mat_v2 = single_row_mat(v2).transpose()
     return mat_v1.dot(mat_v2)[0][0]
