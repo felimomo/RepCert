@@ -1,5 +1,9 @@
 import numpy as np
 
+#
+# Basic linear algebra:
+#
+
 def commutator(A,B):
     assert all([a==b for a in np.shape(A) for b in np.shape(B)]),'Matrices of different dimension in commutator.'
     return A.dot(B)-B.dot(A)
@@ -17,6 +21,10 @@ def isprojector(pi,machine_eps):
     n = len(pi)
     #true if all the entries of pi differed by at most machine_eps from a projector
     return all([entry < n*machine_eps*(2+machine_eps) for entry in diffList])
+
+#
+# Basis to projector:
+#
 
 def single_row_mat(vec):
     return np.array([[comp for comp in vec]])
@@ -55,6 +63,9 @@ def toproj(basis):
     
     return sum((ketbra(elem) for elem in basis))
     
+#    
+# Restricting representations:    
+#
     
 def as_lincomb(vec, basis, thr=10**(-12)):
     # Decomposes vector as linear combination of basis elements.
@@ -72,6 +83,15 @@ def as_lincomb(vec, basis, thr=10**(-12)):
 def restrict(mat,basis):
     #restrict matrix mat to the subspace spanned by basis
     return np.array([as_lincomb(mat.dot(basis_elem),basis) for basis_elem in basis]).transpose()    
+
+def restrict_to_subrep(repr,basis):
+    # restricts repr to a subrepresentation on the space spanned
+    # by basis.
+
+    new_ims = [restrict(im,basis) for im in repr.image_list()] # new rep images of generators
+    dim = len(basis) # new dimension
+    new_repr = rep.rep_by_generators(dim, repr.generatorList, new_ims, density = repr.density, q = repr.q)
+    return new_repr
 
     
 

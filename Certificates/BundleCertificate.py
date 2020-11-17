@@ -24,21 +24,7 @@ def best_invariance_certificate(repr,basis):
         epsilon = 10**(-x)
     return epsilon
     
-def minimum_t(repr):
-    if hasattr(repr, 'order') or repr.Lie:
-        # in practice the above value of t_min seems too large for small finite groups.
-        # replace it by an ad-hoc value of t_min here, given by twice the Cayley diam.
-        # return 2*repr.density[1]
-        #
-        # Also use it for Lie groups, what the hell.
-        
-        # nah, let's try something outrageous
-        return math.ceil(0.5*repr.density[1])
-    t_min = 0.5 * math.log(repr.dimension-1) 
-    t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
-    t_min = int(t_min)
-    return t_min
-    
+
 def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     # Run certificate with rand walks with values of t from minimum_t(repr)
     # to minimum_t(repr)+t_surplus.
@@ -48,16 +34,12 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     if repr.dimension==1:
         return True
         
-    t_min = int(minimum_t(repr))
+    t_min = int(rwalk.minimum_t(repr))
     t_max = int(t_min + t_surplus)
-    t_range = itr.chain(range(10,20),range(t_min,t_max+1))
+    t_range = itr.chain(range(1,5),range(t_min,t_max+1))
     
     # ad-hoc mish-mash for continuous groups to escape the huge t values [not needed right now]
-    #
-    # Tries a bunch of small values of t and if that fails, goes to t_min.
-    # if repr.Lie:
-    #     t_max = 1100
-    #     t_range = itr.chain(range(10,50), range(100,200), range(500,600), range(1000,t_max))    
+
 
     #Invariance test:
     epsilon = best_invariance_certificate(repr,basis)
@@ -71,12 +53,13 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
     if epsilon==1:
         return False
         
+    subrep = lin.restrict_to_subrep(repr,basis)
     
     #Irreducibility test:
     for t in t_range:
         print(t, end="\r")
-        if irr.irr_cert(repr,basis,t,epsilon,error_p):
-            print("Needed random walk length: ", 2*t)
+        if irr.irr_cert(subrep,t,epsilon,error_p):
+            # print("Needed random walk length: ", 2*t)
             return True
     return False
     
