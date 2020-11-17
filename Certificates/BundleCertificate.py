@@ -1,6 +1,7 @@
 from Certificates import IrreducibilityCertificate as irr
 from Certificates import InvarianceCertificate as inv
 from Certificates.Tools import rwalk, lin
+from Certificates.Classes import RepClass as rep
 import math
 import numpy as np
 import itertools as itr
