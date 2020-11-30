@@ -13,6 +13,7 @@ rep_dict = readMat.readMatFile(automatic=True)
 generatorSet = list(map(lambda x: rep.group_element(name=x), rep_dict['gen_names']))
 
 # user inputs representation parameters ( (delta,k)-density and q-boundedness: see paper).
+# readMat.writeWellBehaved() # in the NPA case will write the CayleyDiam.txt file
 (delta,k), q = readMat.inputWellBehaved(automatic=True)
 
 # dimension containing the space: just measure # of components of the first basis vector

@@ -79,7 +79,16 @@ def readMatFile(automatic=False):
     full = {'basis':basis, 'gen_names':gen_names, 'gen_images':gen_ims}
 
     return full
-    
+
+def writeWellBehaved():
+    x = dict()
+    if os.path.isfile('InFiles/cay.mat'):
+        x = sio.loadmat('InFiles/cay.mat')
+        with open('InFiles/CayleyDiam.txt','w+') as fl:
+            cay = eval(x['cay'][0])
+            fl.write(f'(0,{cay}),0')
+            # Here we only work with finite groups
+        
     
 def inputWellBehaved(automatic=False):
     # user inputs the well-behaved parameters (denisty (delta,k) and q-boundedness).
