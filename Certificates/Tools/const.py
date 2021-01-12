@@ -1,7 +1,7 @@
 import numpy as np
 
 #
-# What follows are the constants as defined on section V.B of the paper
+# What follows are the constants as defined on sections TBD of the paper
 #
 
 def c1(repr,epsilon):

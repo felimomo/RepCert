@@ -1,7 +1,51 @@
-from Certificates.Tools import lin, const, rwalk
+from Certificates.Tools import lin, const, rwalk, checks
 import Certificates.Classes.RepClass as rep
 import numpy as np
 import math
+
+def inv_cert(repr,proj,epsilon,error_p=10**(-7),setting='promise'):
+    #
+    # Two options for setting: 'promise' or 'fixed'. Will toggle
+    # between Alg. XX and Alg. YY in paper arXiv:------
+    #
+    # repr = representation object, proj = projector to be tested,
+    # epsilon = precision of certificate (eps-close to an invar. proj.)
+    # error_p = threshhold prob of false positive (only relevant 
+    # for setting='promise'.)
+    #
+    if setting=='promise':
+        return promise_inv(repr,proj,epsilon,error_p)
+    if setting=='fixed':
+        return fixed_inv(repr,proj,epsilon)
+    else:
+        print("Invalid setting for invariance certificate.\n")
+        return 1
+    
+    
+
+# Promise setting (probabilistic)
+#
+# For generator set S with promise, S was obtained in the following way:
+#   1. Sample 12 ceiling[ ln(2/error_p) + 2 ln(dim) ] many elements gi Haar randomly 
+#   2. Set S = { gi, gi^-1 }
+#
+
+def avgComm(repr,proj):
+    ...
+    
+def promise_inv(repr,proj,epsilon,error_p):
+    ...
+
+
+
+
+
+# Deterministic certificate
+#
+# For FIXED generator set S, with parameters k, delta, q:
+#   - rho is q-bounded unitary rep
+#   - S is (delta,k)-dense in G
+#
 
 def largestComm_in_Gens(repr,proj):
     #largest commutator with the reps
@@ -32,7 +76,7 @@ def quality(repr,proj,eps):
     partialResult*= math.pi * math.sqrt(2**(-1))
     return partialResult
     
-def inv_cert(repr,proj,epsilon):
+def fixed_inv(repr,proj,epsilon):
     #invariance certificate: is proj close to being invariant in Frob norm?
     
     eps = 2**(-52) #eps=machine epsilon = largest gap in [1,2) between floats (here use double precision).

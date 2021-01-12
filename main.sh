@@ -39,7 +39,13 @@ if ! test -f "$FILE"; then
   #   -> first produce element of Sn, then produce one element of each U(2) 
   #   -> U^n is normal subgroup, so doing Sn before or after doesn't matter
   #   -> log^2 term is Solovay-Kitaev for U=U(2) (assume constant = 1 for the random generator set)
-  echo "(0, 35), 0" >> InFiles/CayleyDiam.txt 
+  #
+  # q-boundedness: dim*r, where dim is the dimension, r is the maximum weight length.
+  #     -> max w length UxU =< 2*max w length U (all extremal weights have same
+  #       length --they're Weyl rotations of each other--, one such extremal
+  #       weight is the highest weight = tensor product of the two higest weights).
+  #
+  echo "(10**(-10), 2+3*100), 2*" >> InFiles/CayleyDiam.txt 
 fi
 #
 # Finally, run the auto repcert run:
