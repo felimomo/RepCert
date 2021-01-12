@@ -4,6 +4,13 @@ import numpy as np
 # What follows are the constants as defined on sections TBD of the paper
 #
 
+def fk(repr,k,projnorm,fl,x):
+    #
+    # evaluates function f_k(x) as defined in arXiv:-----
+    prefactor   = math.pi*math.sqrt(int(projnorm)/2)
+    parenthesis = 2**(-k)*projnorm + k*x + 4*k*repr.dim*fl*(1+repr.dim*fl)
+    return prefactor * parenthesis
+
 def c1(repr,epsilon):
     fl = 2**(-52)
     x = 2*(epsilon+repr.dimension*fl)*(1+epsilon+repr.dimension*fl)

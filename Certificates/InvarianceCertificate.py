@@ -3,7 +3,7 @@ import Certificates.Classes.RepClass as rep
 import numpy as np
 import math
 
-def inv_cert(repr,proj,epsilon,error_p=10**(-7),setting='promise'):
+def inv_cert(repr,proj,epsilon,error_p=10**(-7),fl=2**(-52),setting='promise'):
     #
     # Two options for setting: 'promise' or 'fixed'. Will toggle
     # between Alg. XX and Alg. YY in paper arXiv:------
@@ -12,9 +12,11 @@ def inv_cert(repr,proj,epsilon,error_p=10**(-7),setting='promise'):
     # epsilon = precision of certificate (eps-close to an invar. proj.)
     # error_p = threshhold prob of false positive (only relevant 
     # for setting='promise'.)
+    # fl = precision to which the rep images and proj are defined (default
+    # is fl = double precision)
     #
     if setting=='promise':
-        return promise_inv(repr,proj,epsilon,error_p)
+        return promise_inv(repr,proj,epsilon,error_p,fl)
     if setting=='fixed':
         return fixed_inv(repr,proj,epsilon)
     else:
@@ -30,12 +32,23 @@ def inv_cert(repr,proj,epsilon,error_p=10**(-7),setting='promise'):
 #   2. Set S = { gi, gi^-1 }
 #
 
-def avgComm(repr,proj):
-    ...
+def avg_comm(repr,proj):
+    c=0
+    size = len(repr.image_list())
+    for im in repr.image_list():
+        c += np.linalg.norm(lin.commutator(im,proj)) / size
+    return c
     
-def promise_inv(repr,proj,epsilon,error_p):
-    ...
-
+def promise_inv(repr,proj,epsilon,error_p,fl):
+    #
+    # invariance certificate in the 'promise' setting.
+    c = avg_comm(repr,proj)
+    numerator = math.log(2)*np.linalg.norm(proj)
+    denominator = c + 4*repr.dim*fl + 4*(repr.dim*fl)**2
+    k = math.ceil(math.log(numerator/denominator,2))
+    if const.fk(repr,k,projnorm,fl,c):
+        return True
+    return False
 
 
 
