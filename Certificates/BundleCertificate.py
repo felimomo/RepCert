@@ -13,7 +13,7 @@ def best_invariance_certificate(repr,basis,error_p=10**(-7),
     # (compare line 1, Alg III.2 in paper)
     if not checks.checkParams(len(repr.generatorList),error_p,repr.dimension):
         return False
-
+    
     # Create projector to feed the invariance certificate
     proj = lin.toproj(basis)
     
@@ -51,13 +51,11 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False,setting='promise'):
         
     t_min = int(rwalk.minimum_t(repr,setting))
     t_max = int(t_min + t_surplus)
-    t_range = range(t_min,t_max+1)
-    
-    # ad-hoc mish-mash for continuous groups to escape the huge t values [not needed right now]
-
-
+        
     #Invariance test:
     epsilon = best_invariance_certificate(repr,basis)
+    
+    # printing inv. cert. and relevant parameters for irr. cert.:
     if prnt:
         dim = len(basis)
         print("Invariant at precision ",epsilon)
@@ -71,7 +69,7 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False,setting='promise'):
     subrep = restrict_to_subrep(repr,basis)
     
     #Irreducibility test:
-    for t in t_range:
+    for t in range(t_min,t_max+1):
         print(t, end="\r")
         if irr.irr_cert(subrep,t,epsilon,error_p):
             print("Needed random walk length: ", 2*t)
