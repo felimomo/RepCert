@@ -25,12 +25,19 @@ def repRandWalkEstimator(repr,m,t):
 #
     
 def number_samples(repr,dim,epsilon,error_p,t,extra_factor=4):
+    
     minimum = 2*math.log(error_p**(-1))
     dt = const.dt(repr,epsilon,2*t)
-    minimum*= dim**2 + dt #Minimum m such that irr_cert doesnt abort
-    return int(extra_factor*minimum)
+    minimum*= dim**2 + dt # Minimum m such that irr_cert doesnt abort
+    return 16*int(extra_factor*minimum) # extra 16 factor for false positives (Prop. 5)
     
-def minimum_t(repr):
+def minimum_t(repr,setting='promise'):
+    if setting=='promise':
+        return 2+math.log(repr.dimension,2)
+        
+        
+    # else, setting == 'fixed' and I use a cheap trick:
+    
     if hasattr(repr, 'order') or repr.Lie:
         # in practice the above value of t_min seems too large for small finite groups.
         # replace it by an ad-hoc value of t_min here, given by twice the Cayley diam.
@@ -40,6 +47,9 @@ def minimum_t(repr):
         
         # nah, let's try something outrageous
         return math.ceil(0.5*repr.density[1])
+        
+    # The true bound for 'fixed' setting, which gets horrible quickly
+    
     t_min = 0.5 * math.log(repr.dimension-1) 
     t_min*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
     t_min = int(t_min)
