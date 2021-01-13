@@ -6,7 +6,8 @@ import math
 import numpy as np
 import itertools as itr
 
-def best_invariance_certificate(repr,basis):
+def best_invariance_certificate(repr,basis,error_p=10**(-7),
+                                fl=2**(-52),setting='promise'):
 
     # Create projector to feed the invariance certificate
     proj = lin.toproj(basis)
@@ -16,11 +17,11 @@ def best_invariance_certificate(repr,basis):
     smallest_exponent = 25
     epsilon = 10**(-largest_exponent)
     
-    if not inv.inv_cert(repr,proj,epsilon):
+    if not inv.inv_cert(repr,proj,epsilon,error_p,fl,setting):
         return 1
         
     for x in range(largest_exponent+1,smallest_exponent+1):
-        if not inv.inv_cert(repr,proj,10**(-x)):
+        if not inv.inv_cert(repr,proj,10**(-x),error_p,fl,setting):
             return epsilon
         epsilon = 10**(-x)
     return epsilon
@@ -34,7 +35,7 @@ def restrict_to_subrep(repr,basis):
     new_repr = rep.rep_by_generators(dim, repr.generatorList, new_ims, density = repr.density, q = repr.q)
     return new_repr
 
-def subrep_tester(repr,basis,t_surplus,error_p,prnt=False):
+def subrep_tester(repr,basis,t_surplus,error_p,prnt=False,setting='promise'):
     # Run certificate with rand walks with values of t from minimum_t(repr)
     # to minimum_t(repr)+t_surplus.
     # 
