@@ -28,7 +28,7 @@ def inv_cert(repr,proj,epsilon,error_p=10**(-7),fl=2**(-52),setting='promise'):
 # Promise setting (probabilistic)
 #
 # For generator set S with promise, S was obtained in the following way:
-#   1. Sample 12 ceiling[ ln(2/error_p) + 2 ln(dim) ] many elements gi Haar randomly 
+#   1. Sample 12 ceiling[ ln(2/error_p) + 2 ln(dim) ] many elements {gi} Haar randomly 
 #   2. Set S = { gi, gi^-1 }
 #
 

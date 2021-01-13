@@ -1,6 +1,6 @@
 from Certificates import IrreducibilityCertificate as irr
 from Certificates import InvarianceCertificate as inv
-from Certificates.Tools import rwalk, lin
+from Certificates.Tools import rwalk, lin, checks
 from Certificates.Classes import RepClass as rep
 import math
 import numpy as np
@@ -8,6 +8,11 @@ import itertools as itr
 
 def best_invariance_certificate(repr,basis,error_p=10**(-7),
                                 fl=2**(-52),setting='promise'):
+                                
+    # If setting = 'promise', check if there are enough generators 
+    # (compare line 1, Alg III.2 in paper)
+    if not checks.checkParams(len(repr.generatorList),error_p,repr.dimension):
+        return False
 
     # Create projector to feed the invariance certificate
     proj = lin.toproj(basis)

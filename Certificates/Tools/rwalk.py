@@ -33,7 +33,7 @@ def number_samples(repr,dim,epsilon,error_p,t):
     
 def minimum_t(repr,setting='promise'):
     if setting=='promise':
-        return 2+math.log(repr.dimension,2)
+        return 2+int(math.log(repr.dimension,2))
         
         
     # else, setting == 'fixed' and I use a cheap trick:
