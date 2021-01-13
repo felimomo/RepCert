@@ -44,9 +44,9 @@ def subrep_tester(repr,basis,t_surplus,error_p,prnt=False,setting='promise'):
     if repr.dimension==1:
         return True
         
-    t_min = int(rwalk.minimum_t(repr))
+    t_min = int(rwalk.minimum_t(repr,setting))
     t_max = int(t_min + t_surplus)
-    t_range = itr.chain(range(1,5),range(t_min,t_max+1))
+    t_range = range(t_min,t_max+1)
     
     # ad-hoc mish-mash for continuous groups to escape the huge t values [not needed right now]
 

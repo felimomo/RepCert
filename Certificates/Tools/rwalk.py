@@ -24,7 +24,7 @@ def repRandWalkEstimator(repr,m,t):
 # Random walk parameter values m and t:
 #
     
-def number_samples(repr,dim,epsilon,error_p,t,extra_factor=4):
+def number_samples(repr,dim,epsilon,error_p,t):
     
     minimum = 2*math.log(error_p**(-1))
     dt = const.dt(repr,epsilon,2*t)
