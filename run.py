@@ -16,11 +16,13 @@ dis.run_intro()
 setting = input("Setting = ")
 
 # error bound on matrix coefficients of rep:
-fl = eval(input("Error bound on rep. matrix and basis coefficients = "))
+# fl = eval(input("Error bound on rep. matrix and basis coefficients = "))
+fl = 2**(-52) # temporarily
 
 # probability of false positive (by default set to 10^-7)
 thresh = eval(input("Threshold false positive rate = "))
-conf   = eval(input("Confidence parameter (approximate f. negative rate) = "))
+# conf   = eval(input("Confidence parameter (approximate f. negative rate) = "))
+conf = 2*thresh # temporarily
 assert thresh < conf, "Error: confidence parameter must be larger than false positive threshold."
 
 # invariance precision:

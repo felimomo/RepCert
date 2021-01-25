@@ -33,14 +33,14 @@ def inv_cert(repr,proj,epsilon,error_p=10**(-7),fl=2**(-52),setting='promise'):
 #
 
 def avg_comm(repr,proj):
-    comms = (lin.commutator(im,proj) for im in repr.image_list)
-    c = np.linalg.norm(sum(comms),ord=2)/len(repr.image_list)
+    comms = (lin.commutator(im,proj) for im in repr.image_list())
+    c = np.linalg.norm(sum(comms),ord=2)/len(repr.image_list())
     return c
     
 def promise_inv(repr,proj,epsilon,error_p,fl):
     #
     # invariance certificate in the 'promise' setting.
-    epsprime = epsilon/(2*math.sqrt(2*int(lin.trace(proj))))
+    epsprime = epsilon/(2*math.sqrt(2.*math.ceil(lin.trace(proj).real)))
     c = avg_comm(repr,proj)
     n = repr.dimension
     f_err = 8*n*fl + 6*(n*fl)**2 + 2*(n*fl)**3
