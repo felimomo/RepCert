@@ -4,9 +4,8 @@ import random
 from Certificates.Tools import lin, const, rwalk
 from Certificates.Classes import RepClass as rep
     
-def irr_cert(repr,t,epsilon,error_p):
+def irr_cert(repr,epsilon,error_p,setting='promise'):
     # Input:    repr    = a representation (RepClass.rep_by_generators) suspected to be irreducible,
-    #           t       = half-length of random walk
     #           epsilon = invariance precision
     #           error_p = threshold probability of false positive
     #
@@ -18,6 +17,7 @@ def irr_cert(repr,t,epsilon,error_p):
     dim = repr.dimension
     if dim==1:
         return True
+    t = rwalk.set_t(repr,setting,t_surplus)
     m = rwalk.number_samples(repr,dim,epsilon,error_p,t)
     et = const.et(repr,epsilon,t,dim)
     dt = const.dt(repr,epsilon,t)

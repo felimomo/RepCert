@@ -50,9 +50,13 @@ class rep_by_generators(generators):
         self.Lie = False 
         
         #keyword args are:  
+        #                   'promise' = True/False. Answer to 'is generator set as in the paper (symmetrized Haar set)?
+        #                       --> If 'promise', then density and q are not necessary for the algorithm.
         #                   density = tuple (delta,k) s.t. generator set is (delta,k)-dense in group,
         #                   q = number s.t. the rep is q-bounded
         
+        # if "setting" in kwargs:
+        #     self.setting = kwargs["setting"]
         if "density" in kwargs:
             assert isinstance(kwargs["density"],tuple) and len(kwargs["density"])==2, "Density parameter is not a 2-tuple."
             self.density = kwargs["density"]
