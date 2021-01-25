@@ -57,6 +57,10 @@ save -v7 gen_ims.mat gen_ims
 
 
 %
+% TBD: multi-partite non-locality symmetry and lie group. 
+
+
+%
 % FINITE GROUP:
 %
 % 
