@@ -1,7 +1,7 @@
-from Certificates.Tools import lin, const, rwalk, checks
-import Certificates.Classes.RepClass as rep
 import numpy as np
 import math
+from Certificates.Tools import lin, const, rwalk, checks
+import Certificates.Classes.RepClass as rep
 
 def inv_cert(repr,proj,epsilon,error_p=10**(-7),fl=2**(-52),setting='promise'):
     #
@@ -43,8 +43,9 @@ def promise_inv(repr,proj,epsilon,error_p,fl):
     #
     # invariance certificate in the 'promise' setting.
     c = avg_comm(repr,proj)
-    numerator = math.log(2)*np.linalg.norm(proj)
-    denominator = c + 4*repr.dim*fl + 4*(repr.dim*fl)**2
+    projnorm = np.linalg.norm(proj)
+    numerator = math.log(2)*projnorm
+    denominator = c + 4*repr.dimension*fl + 4*(repr.dimension*fl)**2
     k = math.ceil(math.log(numerator/denominator,2))
     if const.fk(repr,k,projnorm,fl,c):
         return True

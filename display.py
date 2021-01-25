@@ -21,6 +21,3 @@ setting = 'fixed' else, in which case further parameters are needed to measure h
           well-behaved the generating set is.
 """
     )
-
-def ask_setting():
-    return eval(input("Setting = "))

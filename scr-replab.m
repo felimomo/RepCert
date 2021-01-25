@@ -1,6 +1,60 @@
+% initiate RepLAB in its folder (folder address must be edited in)
 cd ../replab-0.9.0;
-replab_init;
+replab_init
 cd ../RepCert
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% FINITE GROUP EXAMPLES %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Example 1: permutation group, tensor power representation
+
+Sn  = replab.S(6)
+nat = Sn.naturalRep;
+rep = kron(nat,kron(nat,nat)) %4th tensor power of natural rep.
+rep = rep.complexification;
+rep = rep.unitarize;
+
+% decompose
+decomp = rep.decomposition
+
+% select some random irrep
+randcomp  = decomp.component(randi(decomp.nComponents));
+randirrep = randcomp.irrep(randi(randcomp.nIrreps));
+basis = randirrep.basis;
+
+%
+% using p_thr. = 10^-7, notice that basis is a gobla_dim x irrep_dim matrix
+numb_group_samples = ceil(7*8*log(10)+2*log(size(basis)(2)))
+
+% sample random generators
+i = 1; gens = {};
+while i < numb_group_samples
+  g = Sn.sample;
+  gens{i}=g;
+  if g!=Sn.inverse(g)
+    gens{i+1}=Sn.inverse(g);
+    numb_group_samples+=1;
+    i+=1;
+  endif
+  i+=1;
+endwhile
+
+l = size(gens)(2); % gens is a 1 x |gens| matrix
+i = 1;
+gen_ims = {};
+while i < l+1
+  gen_ims{i} = rep.image(gens{i});
+  i+=1;
+endwhile
+
+
+
+% % save files: (v7 is used so scipy can read them being octave outputs)
+save -v7 basis.mat basis
+save -v7 gen_ims.mat gen_ims
+
 
 %
 % FINITE GROUP:
@@ -70,43 +124,43 @@ cd ../RepCert
 
 %
 % LIE GROUP:
-%
-
-% create a group:
-U  = replab.U(3);
-Sn = replab.S(3);
-W = Sn.wreathProduct(U)
-
-% create a rep and decompose it:
-Urep = kron(U.definingRep, U.definingRep);
-Wrep = W.imprimitiveRep(Urep)
-Wdec = Wrep.decomposition.nice
-
-%
-% Sample generators: (UxUxU: Clifford-Phase-gate, Fourier, F_3-generator, Pauli X, and the magic gate, one per copy)
-% So 5*s+2 generators for S(s) wr U(3) 
-%
-nGenBare = 5*3 + 2; % Randomly select gates to get generator set whp.
-nGen = 2*nGenBare;  % Because of symmetrization
-gen_ims = {}; i = 1;
-while i < nGen:
-  gen_ims{i} = Wrep.image(W.sample);
-  gen_ims{i+1} = Wrep.image(W.sample);
-  i = i+2;
-endwhile
-
-
-%
-% Sample random irrep:
-%
-randcomp  = Wdec.component(randi(Wdec.nComponents));
-randirrep = randcomp.irrep(randi(randcomp.nIrreps));
-
-% basis for irrep:
-basis = randirrep.basis;
-
-% save files: (v7 is used so scipy can read them being octave outputs)
-save -v7 basis.mat basis
-save -v7 gen_ims.mat gen_ims
-% save -v7 cyclic_perm.mat cyclic_perm
-% save -v7 transposition.mat transposition
+% %
+% 
+% % create a group:
+% U  = replab.U(3);
+% Sn = replab.S(3);
+% W = Sn.wreathProduct(U)
+% 
+% % create a rep and decompose it:
+% Urep = kron(U.definingRep, U.definingRep);
+% Wrep = W.imprimitiveRep(Urep)
+% Wdec = Wrep.decomposition.nice
+% 
+% %
+% % Sample generators: (UxUxU: Clifford-Phase-gate, Fourier, F_3-generator, Pauli X, and the magic gate, one per copy)
+% % So 5*s+2 generators for S(s) wr U(3) 
+% %
+% nGenBare = 5*3 + 2; % Randomly select gates to get generator set whp.
+% nGen = 2*nGenBare;  % Because of symmetrization
+% gen_ims = {}; i = 1;
+% while i < nGen:
+%   gen_ims{i} = Wrep.image(W.sample);
+%   gen_ims{i+1} = Wrep.image(W.sample);
+%   i = i+2;
+% endwhile
+% 
+% 
+% %
+% % Sample random irrep:
+% %
+% randcomp  = Wdec.component(randi(Wdec.nComponents));
+% randirrep = randcomp.irrep(randi(randcomp.nIrreps));
+% 
+% % basis for irrep:
+% basis = randirrep.basis;
+% 
+% % save files: (v7 is used so scipy can read them being octave outputs)
+% save -v7 basis.mat basis
+% save -v7 gen_ims.mat gen_ims
+% % save -v7 cyclic_perm.mat cyclic_perm
+% % save -v7 transposition.mat transposition
