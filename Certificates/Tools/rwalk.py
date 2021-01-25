@@ -24,7 +24,7 @@ def repRandWalkEstimator(repr,m,t):
 # Random walk parameter values m and t:
 #
     
-def number_samples(repr,dim,epsilon,error_p,conf=2*error_p,t):
+def number_samples(repr,dim,epsilon,error_p,conf=None,t):
     # dim = dimension of subrepresentation being tested
     # error_p = threshold false positive rate
     # conf = confidence parameter (approximate false negative rate)
@@ -32,6 +32,10 @@ def number_samples(repr,dim,epsilon,error_p,conf=2*error_p,t):
     # 2t = length of random walks
     #
     # output = number of random walks sampled
+    
+    if conf is None:
+        # if no confidence parameter is provided, set it to 2*error_p
+        conf = 2*error_p
     
     dimfactor = 2*dim**2
     log1 = math.log( error_p**(-1) )

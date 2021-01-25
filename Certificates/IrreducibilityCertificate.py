@@ -4,29 +4,38 @@ import random
 from Certificates.Tools import lin, const, rwalk
 from Certificates.Classes import RepClass as rep
     
-def irr_cert(repr,epsilon,error_p,setting='promise'):
+def irr_cert(repr,epsilon,thresh,conf,setting='promise'):
     # Input:    repr    = a representation (RepClass.rep_by_generators) suspected to be irreducible,
     #           epsilon = invariance precision
-    #           error_p = threshold probability of false positive
+    #           thresh  = threshold probability of false positive
+    #           conf    = confidence parameter
+    #           setting = 'promise' or 'fixed' (promise = generator set is Haar-sampled and symmetrized)
     #
     # Output:   True/False. 
-    #           If True, repr is irreducible with probability at least error_p.
+    #           If True, repr is irreducible with probability at least thresh.
     #           If False, repr could be either.
 
     # parameters and constants:
     dim = repr.dimension
     if dim==1:
         return True
+    
+    # Random walk parameters #
+    t_surplus = 10 # for now ad-hoc -- only relevant for setting = 'fixed'
+    m = rwalk.number_samples(repr,dim,epsilon,thresh,conf,t)
     t = rwalk.set_t(repr,setting,t_surplus)
-    m = rwalk.number_samples(repr,dim,epsilon,error_p,t)
+    #
+    
+    # other constants $
     et = const.et(repr,epsilon,t,dim)
     dt = const.dt(repr,epsilon,t)
     aux = dim**2+dt
-    aux*= 2*math.log(error_p**(-1))
+    aux*= 2*math.log(thresh**(-1))
+    #
     
     if et >=2 or m <= aux:
         # the condition for m should be trivially satisfied right now, but keep it in case
-        # I use a non-predetermined value of m.
+        # I use a non-predetermined value of m later.
         # 
         # If et >=2, then theta >=1 and so E will never be < 2(1-theta) =< 0.
         return False 
