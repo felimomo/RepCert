@@ -15,18 +15,24 @@ dis.run_intro()
 
 setting = input("Setting = ")
 
-# error bound on matrix coefficients of rep:
-# fl = eval(input("Error bound on rep. matrix and basis coefficients = "))
-fl = 2**(-52) # temporarily
+if input("Use standard choice for quality parameters? (y/n) ") == "y":
+    fl = 2**(-52)
+    thresh = 0.0000001
+    conf   = 0.0000002
+    epsilon = 0.0000000001
 
-# probability of false positive (by default set to 10^-7)
-thresh = eval(input("Threshold false positive rate = "))
-# conf   = eval(input("Confidence parameter (approximate f. negative rate) = "))
-conf = 2*thresh # temporarily
-assert thresh < conf, "Error: confidence parameter must be larger than false positive threshold."
+else:
+    # error bound on matrix coefficients of rep:
+    fl = eval(input("Error bound on rep. matrix and basis coefficients = "))
 
-# invariance precision:
-epsilon = eval(input("Invariance precision (max Frob. distance to invariant proj.) = "))
+    # probability of false positive (by default set to 10^-7)
+    thresh = eval(input("Threshold false positive rate = "))
+    # conf   = eval(input("Confidence parameter (approximate f. negative rate) = "))
+    conf = 2*thresh # temporarily
+    assert thresh < conf, "Error: confidence parameter must be larger than false positive threshold."
+
+    # invariance precision:
+    epsilon = eval(input("Invariance precision (max Frob. distance to invariant proj.) = "))
 
 
 ########################################################################################
