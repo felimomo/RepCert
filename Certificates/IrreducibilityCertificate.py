@@ -22,8 +22,8 @@ def irr_cert(repr,epsilon,thresh,conf,setting='promise'):
     
     # Random walk parameters #
     t_surplus = 10 # for now ad-hoc -- only relevant for setting = 'fixed'
-    m = rwalk.number_samples(repr,dim,epsilon,thresh,t,conf)
     t = rwalk.set_t(repr,setting,t_surplus)
+    m = rwalk.number_samples(repr,dim,epsilon,thresh,t,conf)
     #
     
     # other constants $

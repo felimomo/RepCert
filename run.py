@@ -99,7 +99,6 @@ def restrict_to_subrep(repr,basis,setting='promise'):
     dim = len(basis) # new dimension
     
     if setting=='promise':
-        print("Helloooooo")
         return rep.rep_by_generators(dim, repr.generatorList, new_ims)
     # else:
     #     # setting = 'fixed'
@@ -111,8 +110,8 @@ subrep = restrict_to_subrep(repr,basis)
 print("Restriction to subrep done (in ", time.time()-restr_init, " s)\n")
 
 irr_init = time.time()
-if irr.irr_cert(repr,epsilon,thresh,conf,setting):
-    print("Irreducible!")
+if irr.irr_cert(subrep,epsilon,thresh,conf,setting):
+    print("Irreducible!\n")
     print("(Irr. Cert. time = ", time.time()-irr_init, " s)\n")
 else:
     print("Don't know of irreducible :'(")
