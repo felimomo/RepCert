@@ -21,14 +21,14 @@ if input("Use standard choice for quality parameters? (y/n) ") == "y":
     conf   = 0.0000002
     epsilon = 0.0000000001
     print(f"""
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$
-%%%%%%%%%%%%%%%%%%%%%%%% Standard quality parameter values: %    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$                                                    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% Standard quality parameter values: %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                          
 Error bound on basis/group images (entrywise) = {fl}
 Threshold false positive rate = {thresh}
 Confidence parameter (approx false negative rate) = {conf}
 Precision of invariance test = {epsilon}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 """
     )
 

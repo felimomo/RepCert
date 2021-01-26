@@ -16,7 +16,7 @@ rm InFiles/*.mat
 # octave scr-replab.m
 octave scr-replab.m
 echo "Replab script done."
-mv *.mat InFiles/
+# mv *.mat InFiles/
 #
 # Now move the .mat files (check if cay.mat exists):
 # FILE=../replab-0.9.0/cay.mat
