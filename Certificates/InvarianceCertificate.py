@@ -36,10 +36,10 @@ def averaging(repr,proj):
     avg_conjugated = sum((lin.conjug(im,proj) for im in repr.image_list()))/len(repr.image_list())
     c = np.linalg.norm(avg_conjugated - proj,ord=2)
     
-    #print a few commutator norms
-    from random import choice
-    for i in range(10):
-        print(choice(repr.image_list()), end="\n\n")
+    ## print a few commutator norms
+    # from random import choice
+    # for i in range(10):
+    #     print(choice(repr.image_list()), end="\n\n")
     
     return c
     
