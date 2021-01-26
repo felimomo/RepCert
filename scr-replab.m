@@ -135,13 +135,13 @@ cd ../RepCert
 %% Example 3: symmetry group of the I222-222 scenario
 
 % build group
-Parties = replab.S(3);
-Settings= replab.S(4);
-Outcomes= replab.S(2);
+Parties = replab.S(3); Settings= replab.S(4); Outcomes= replab.S(2);
 X = Settings.wreathProduct(Outcomes);
-W = Parties.wreathProduct(X);
+W = Parties.wreathProduct(X)
 Xrep= X.imprimitiveRep(Outcomes.naturalRep);
 rep = W.primitiveRep(Xrep);
+rep = rep.complexification;
+rep = rep.unitarize
 
 % decompose
 decomp = rep.decomposition
@@ -162,7 +162,8 @@ i = 1; gens = {};
 while i < numb_group_samples
   g = W.sample;
   gens{i}=g;
-  if g!=Sn.inverse(g)
+  % check if g^2 != 1
+  if W.isIdentity(W.composeAll({g,g})) == 0
     gens{i+1}=W.inverse(g);
     numb_group_samples+=1;
     i+=1;
