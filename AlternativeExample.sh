@@ -2,6 +2,11 @@
 #
 #
 
+echo "Running alternative example for RepCert. The set of group images have been Haar sampled and"
+echo "symmetrized, so pick setting='promise' when prompted."
+echo " "
+sleep 2
+
 #
 #
 # Copy the alternative-example files to input location
