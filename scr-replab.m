@@ -68,7 +68,7 @@ cd ../RepCert
 %% Note: it seems replab is not producing a good-quality decomposition here.
 
 % group
-Sn = replab.S(3)
+Sn = replab.S(4)
 nat = Sn.naturalRep;
 
 % big rep
