@@ -21,7 +21,7 @@ EXAMPLES:
 
 Three example decompositions of representations are given in replab-scr.m,
 the script main.sh does the following:
-- executes replab-scr.m to obtain a decomposition and random irrep block of a rep
+- executes replab-scr.m to obtain a decomposition and random irrep block of the example representation
 - executes run.py to certify the subspace (in all the examples, setting = 'promise')
 
 Have fun, and feel free to write me for feedback/questions!
