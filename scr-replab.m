@@ -27,6 +27,7 @@ basis = randirrep.basis;
 %
 % using p_thr. = 10^-7, notice that basis is a gobal_dim x irrep_dim matrix
 numb_group_samples = ceil(7*8*log(10)+2*log(size(basis)(2)))
+subspace_dimension = size(basis)(2)
 
 % sample random generators
 i = 1; gens = {};
