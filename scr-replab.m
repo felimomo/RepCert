@@ -97,10 +97,10 @@ numb_group_samples = ceil(7*8*log(10)+2*log(size(basis)(2)))
 % sample random group elements
 i = 1; gens = {};
 while i < numb_group_samples
-  g = W.sample;
+  g = Sn.sample;
   gens{i}=g;
   if g!=Sn.inverse(g)
-    gens{i+1}=W.inverse(g);
+    gens{i+1}=Sn.inverse(g);
     numb_group_samples+=1;
     i+=1;
   endif
