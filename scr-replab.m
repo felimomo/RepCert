@@ -82,7 +82,8 @@ rand_comp = decomp.component(randi(decomp.nComponents));
 rand_irr2 = rand_comp.irrep(randi(rand_comp.nIrreps));
 
 % actual rep to be decomposed
-rep = kron(rand_irr1, rand_irr2)
+rep = kron(rand_irr1, rand_irr2);
+rep.unitarize
 decomp = rep.decomposition
 
 % basis
@@ -94,6 +95,7 @@ basis = randirrep.basis;
 %          (using p_thr. = 10^-7, notice that basis
 %           is a gobal_dim x irrep_dim matrix)
 numb_group_samples = ceil(7*8*log(10)+2*log(size(basis)(2)))
+subspace_dimension = size(basis)(2)
 
 % sample random group elements
 i = 1; gens = {};
@@ -151,6 +153,7 @@ cd ..
 %%          (using p_thr. = 10^-7, notice that basis
 %%           is a gobal_dim x irrep_dim matrix)
 % numb_group_samples = ceil(7*8*log(10)+2*log(size(basis)(2)))
+% subspace_dimension = size(basis)(2)
 
 %% sample random group elements
 % i = 1; gens = {};
