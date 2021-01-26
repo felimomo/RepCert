@@ -39,7 +39,7 @@ def averaging(repr,proj):
     #print a few commutator norms
     from random import choice
     for i in range(10):
-        print(lin.check_unitary(choice(repr.image_list())), end=", ")
+        print(choice(repr.image_list()), end="\n\n")
     
     return c
     
