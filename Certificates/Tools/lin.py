@@ -8,6 +8,9 @@ def commutator(A,B):
     assert all([a==b for a in np.shape(A) for b in np.shape(B)]),'Matrices of different dimension in commutator.'
     return A.dot(B)-B.dot(A)
     
+def conjug(A,B):
+    return A.dot(B).dot(A.conjugate().transpose())
+    
 def trace(A):
     assert all([len(A) == len(A[i]) for i in range(len(A)) ] ), "Trace needs square matrix arg."
     return sum( [ A[i][i] for i in range(len(A)) ] )

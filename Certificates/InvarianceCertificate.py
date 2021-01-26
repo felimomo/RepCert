@@ -32,9 +32,9 @@ def inv_cert(repr,proj,epsilon,error_p=10**(-7),fl=2**(-52),setting='promise'):
 #   2. Set S = { gi, gi^-1 }
 #
 
-def avg_comm(repr,proj):
-    comms = (lin.commutator(im,proj) for im in repr.image_list())
-    c = np.linalg.norm(sum(comms),ord=2)/len(repr.image_list())
+def averaging(repr,proj):
+    avg_conjugated = sum((lin.conjug(im,proj) for im in repr.image_list()))/len(repr.image_list())
+    c = np.linalg.norm(avg_conjugated - proj,ord=2)
     
     #print a few commutator norms
     from random import choice
