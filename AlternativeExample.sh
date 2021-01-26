@@ -6,7 +6,10 @@ echo " "
 echo "Running alternative example for RepCert. The set of group images have been Haar sampled and"
 echo "symmetrized, so pick Setting = promise when prompted."
 echo " "
-sleep 1.5
+echo "Group = S2 wreath S2 wreath S2 (symmetry of I222,222 scenario)"
+echo " "
+echo " "
+sleep 2
 
 #
 #
