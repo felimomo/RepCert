@@ -1,4 +1,0 @@
-# Generators: (12), (123)
----------------------------
-# Noise Exp(x for noise 10^-x), Frac of correctly recognized irreps
-

@@ -1,7 +1,0 @@
-
-# Group = +s3+
-
-# random walks from t_min to t_min+10
-# samples = 3 * minimum number of samples
-#
-# x, frac : noise strength = 10^-x, frac = fraction of irreps correctly identified
