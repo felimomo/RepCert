@@ -10,8 +10,8 @@ Further input:
 - setting: 'promise' means gen_ims is a symmetrized Haar set, otherwise use 'fixed'
 - entrywise error bound on gen_ims and basis
 - precision for invariance test
-- false positive rate
-- confidence parameter (approx. false negative rate)
+- bound on false positive rate
+- confidence parameter (false negative rate you'd want -- this is only approximate, and must be > false postitive rate)
 
 --> inputs 2-5 referred to as 'quality parameters'
 
