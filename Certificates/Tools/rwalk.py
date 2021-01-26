@@ -61,18 +61,18 @@ def set_t(repr,setting='promise',t_surplus=0):
         
     # else, setting == 'fixed' and I use a cheap trick:
     
-    if hasattr(repr, 'order') or repr.Lie:
+    if hasattr(repr, 'density'):
         # in practice the value of t_min below seems too large for practical
         # purposes. Use k/2 + surplus
         
         return math.ceil(0.5*repr.density[1])+t_surplus
         
     # The true bound for 'fixed' setting, which gets horrible quickly
-    
-    t = 0.5 * math.log(repr.dimension-1) 
-    t*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
-    t = int(t)
-    return t
+    else:
+        t = 0.5 * math.log(repr.dimension-1) 
+        t*= ( -math.log(1-repr.density[1]**(-2) * repr.nGens**(-1)) )**(-1) #minimum t from converse result
+        t = int(t)
+        return t
     
 
     
