@@ -90,7 +90,7 @@ def restrict(mat,basis):
 
 
 def check_unitary(A):
-    fl = 2**(-52)
+    fl = 10**(-9)
     n = len(A)
     return np.linalg.norm(A.dot(A.conjugate().transpose()) - np.eye(n),ord=2) < n*fl
 
