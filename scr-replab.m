@@ -68,11 +68,11 @@ cd ../RepCert
 %% Note: it seems replab is not producing a good-quality decomposition here.
 
 % group
-Sn = replab.S(6)
+Sn = replab.S(3)
 nat = Sn.naturalRep;
 
 % big rep
-bigrep = kron(kron(nat,nat),nat);
+bigrep = kron(nat,nat);
 bigrep = bigrep.complexification;
 bigrep = bigrep.unitarize;
 decomp = bigrep.decomposition;
