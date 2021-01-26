@@ -64,16 +64,18 @@ cd ../RepCert
 
 %
 %% Example 2: somewhat random tensor product of permutation group irreps
+%
+%% Note: it seems replab is not producing a good-quality decomposition here.
 
 % group
 Sn = replab.S(6)
 nat = Sn.naturalRep;
 
 % big rep
-rep = kron(kron(nat,nat),nat);
-rep = rep.complexification;
-rep = rep.unitarize;
-decomp = rep.decomposition;
+bigrep = kron(kron(nat,nat),nat);
+bigrep = bigrep.complexification;
+bigrep = bigrep.unitarize;
+decomp = bigrep.decomposition;
 
 % two random irreps
 rand_comp = decomp.component(randi(decomp.nComponents));
