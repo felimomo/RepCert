@@ -38,8 +38,8 @@ def averaging(repr,proj):
     
     #print a few commutator norms
     from random import choice
-    for i in range(2):
-        print(lin.conjug( choice(repr.image_list()), proj) - proj, end="\n\n")
+    for i in range(10):
+        print(lin.check_unitary(choice(repr.image_list())), end=", ")
     
     return c
     

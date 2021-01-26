@@ -89,6 +89,10 @@ def restrict(mat,basis):
     return np.array([as_lincomb(mat.dot(basis_elem),basis) for basis_elem in basis]).transpose()    
 
 
+def check_unitary(A):
+    fl = 2**(-52)
+    n = len(A)
+    return np.linalg.norm(A.dot(A.conjugate().transpose()) - np.eye(n),ord=2) < n*fl
 
     
 
