@@ -72,7 +72,7 @@ Sn = replab.S(4)
 nat = Sn.naturalRep;
 
 % big rep
-bigrep = nat;
+bigrep = kron(nat,nat);
 bigrep = bigrep.complexification;
 bigrep = bigrep.unitarize;
 decomp = bigrep.decomposition;
