@@ -47,7 +47,7 @@ def promise_inv(repr,proj,epsilon,error_p,fl):
     #
     # invariance certificate in the 'promise' setting.
     epsprime = epsilon/(2*math.sqrt(2.*math.ceil(lin.trace(proj).real)))
-    c = avg_comm(repr,proj)
+    c = averaging(repr,proj)
     n = repr.dimension
     f_err = 8*n*fl + 6*(n*fl)**2 + 2*(n*fl)**3
     print("c = ", c)
