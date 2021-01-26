@@ -50,8 +50,12 @@ def promise_inv(repr,proj,epsilon,error_p,fl):
     c = averaging(repr,proj)
     n = repr.dimension
     f_err = 8*n*fl + 6*(n*fl)**2 + 2*(n*fl)**3
-    print("c = ", c)
-    print("f_err = ",f_err)
+    # 
+    # to compare different sources of numerical noise:
+    # print("c = ", c)
+    # print("f_err = ",f_err)
+    
+    # old:
     # projnorm = np.linalg.norm(proj)
     # numerator = math.log(2)*projnorm
     # denominator = c + 4*repr.dimension*fl + 4*(repr.dimension*fl)**2
