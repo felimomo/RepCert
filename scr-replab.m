@@ -85,7 +85,7 @@ rand_irr2 = rand_comp.irrep(randi(rand_comp.nIrreps));
 
 % actual rep to be decomposed
 rep = kron(rand_irr1, rand_irr2);
-rep.unitarize
+rep = rep.unitarize
 decomp = rep.decomposition
 
 % basis
