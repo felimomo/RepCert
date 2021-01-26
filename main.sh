@@ -3,9 +3,8 @@
 # RepLab source code.
 #
 # runs first the replab_script to create a random
-# rep and irr. subrep. Moves the files to InFiles,
-# and finally runs the auto_run to certify 
-# invariance/irreducibility.
+# rep and irr. subrep. Then runs RepCert to certify
+# the subrep.
 
 echo "RepCert example: decompose a representation with replab, certify random irreducible component."
 echo " "

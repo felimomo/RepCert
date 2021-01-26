@@ -24,6 +24,13 @@ the script main.sh does the following:
 - executes replab-scr.m to obtain a decomposition and random irrep block of the example representation
 - executes run.py to certify the subspace (in all the examples, setting = 'promise')
 
+Important: For the examples to work, check the first lines of replab-scr.m, 
+           you have to direct octave to the location of RepLAB in your computer.
+           Currently, the relative location of the RepCert repo and RepLAB is
+           the following:
+           MotherFolder/RepCert
+	   MotherFolder/replab-0.9.0
+
 Have fun, and feel free to write me for feedback/questions!
 Felipe Montealegre-Mora
 fmonteal@thp.uni-koeln.de
