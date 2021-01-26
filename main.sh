@@ -10,7 +10,7 @@ echo "RepCert example: decompose a representation with replab, certify random ir
 echo " "
 echo "Group images are a symmetrized Haar-sampled set, so the input 'Setting' should be = 'promise'."
 echo " "
-sleep 0.5
+sleep 1.5
 
 #
 #
