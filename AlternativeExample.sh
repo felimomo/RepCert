@@ -5,10 +5,8 @@
 #
 #
 # Copy the alternative-example files to input location
-cp Alt_basis.mat InFiles/
-cp Alt_gen_ims.mat InFiles/
-mv InFiles/Alt_basis.mat basis.mat
-mv InFiles/Alt_gen_ims.mat gen_ims.mat
+cp Alt_basis.mat InFiles/basis.mat
+cp Alt_gen_ims.mat InFiles/gen_ims.mat
 
 #
 # run repcert
