@@ -64,11 +64,7 @@ basis = rep_dict['basis']
 
 # create projector onto subspace:
 proj = lin.toproj(basis)
-#print basis (testing):
-for v in basis:
-    for u in basis:
-        print( v.dot(u.conjugate()), end=", " )
-    print(" ")
+
 # worst-case error on the projector: (modify fl from before)
 fl = 2*dim*(fl + fl**2)
 

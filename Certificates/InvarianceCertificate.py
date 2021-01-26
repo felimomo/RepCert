@@ -35,6 +35,12 @@ def inv_cert(repr,proj,epsilon,error_p=10**(-7),fl=2**(-52),setting='promise'):
 def avg_comm(repr,proj):
     comms = (lin.commutator(im,proj) for im in repr.image_list())
     c = np.linalg.norm(sum(comms),ord=2)/len(repr.image_list())
+    
+    #print a few commutator norms
+    from random import choice
+    for i in range(10):
+        print(np.linalg.norm(lin.commutator( choice(repr.image_list()), proj), ord=2), end=", ")
+    
     return c
     
 def promise_inv(repr,proj,epsilon,error_p,fl):
