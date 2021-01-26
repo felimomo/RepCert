@@ -15,7 +15,8 @@ rm InFiles/*.mat
 # Now run replab:
 # octave scr-replab.m
 octave scr-replab.m
-echo "Replab script done."
+echo "Replab script done.\n"
+echo "Group images are a symmetrized Haar-sampled set."
 # mv *.mat InFiles/
 #
 # Now move the .mat files (check if cay.mat exists):
