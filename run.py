@@ -14,6 +14,7 @@ dis.run_intro()
 ########################################################################################
 
 setting = input("Setting = ")
+fl=0
 
 if input("Use standard choice for quality parameters? (y/n) ") == "y":
     fl = 2**(-52)
@@ -66,7 +67,7 @@ proj = lin.toproj(basis)
 #print basis (testing):
 for v in basis:
     for u in basis:
-        print(sum(v.dot(u.conjugate()))
+        print(sum(v.dot(u.conjugate())))
 # worst-case error on the projector: (modify fl from before)
 fl = 2*dim*(fl + fl**2)
 
