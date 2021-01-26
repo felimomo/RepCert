@@ -19,10 +19,12 @@ To certify a subspace, save the .mat files in InFiles and run 'python3 run.py'
 
 EXAMPLES:
 
-Three example decompositions of representations are given in replab-scr.m,
-the script main.sh does the following:
+The script Example.sh runs an example of decomposing a rep and then certifying some random
+block. This script has a dependency on RepLAB. Specifically, it does the following 
 - executes replab-scr.m to obtain a decomposition and random irrep block of the example representation
 - executes run.py to certify the subspace (in all the examples, setting = 'promise')
+
+Notice that in replab-scr.m you can toggle between three different examples.
 
 Important: For the examples to work, check the first lines of replab-scr.m, 
            you have to direct octave to the location of RepLAB in your computer.
@@ -30,6 +32,14 @@ Important: For the examples to work, check the first lines of replab-scr.m,
            the following:
            MotherFolder/RepCert
 	   MotherFolder/replab-0.9.0
+     
+ALTERNATIVE EXAMPLE (WITHOUT REPLAB DEPENDENCY):
+
+To run an example with no dependency on RepLAB, run AlternativeExample.sh. The subrepresentation
+basis and representation group images it uses are saved as Alt_basis.mat and Alt_gen_ims.mat
+respectively.
+
+
 
 Have fun, and feel free to write me for feedback/questions!
 Felipe Montealegre-Mora
