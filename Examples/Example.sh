@@ -24,7 +24,7 @@ sleep 1.5
 rm InFiles/*.mat
 
 # now run replab script
-octave ForExamples/scr-replab.m
+octave Examples/scr-replab.m
 echo "Replab script done."
 echo " "
 

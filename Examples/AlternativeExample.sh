@@ -20,8 +20,8 @@ sleep 2
 #
 #
 # Copy the alternative-example files to input location
-cp ForExamples/Alt_basis.mat InFiles/basis.mat
-cp ForExamples/Alt_gen_ims.mat InFiles/gen_ims.mat
+cp Examples/Alt_basis.mat InFiles/basis.mat
+cp Examples/Alt_gen_ims.mat InFiles/gen_ims.mat
 
 #
 # run repcert
