@@ -14,7 +14,7 @@ Further input:
 3- precision for invariance test
 4- bound on false positive rate
 5- confidence parameter (false negative rate you'd want -- this is only approximate, and must 
-  be > false postitive rate)
+   be > false postitive rate)
 
 --> inputs 2-5 referred to as 'quality parameters' in the code interface.
 
