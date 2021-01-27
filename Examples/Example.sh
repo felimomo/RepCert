@@ -8,7 +8,7 @@
 
 # make sure you start in /RepCert
 current_dir=${PWD##*/}
-if[ "$current_dir" = "Examples"]; then
+if [ "$current_dir" = "Examples" ]; then
   cd ..
 fi
 
