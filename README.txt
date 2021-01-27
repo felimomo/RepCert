@@ -1,4 +1,4 @@
-RepCert: a Python 3 method to certify compact group representations.
+RepCert: a Python 3 method to certify compact group representation decompositions.
 
 Input:
 - InFiles/gen_ims.mat where an array of matrix images for a set of group elements is saved
