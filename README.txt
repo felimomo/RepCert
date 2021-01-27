@@ -1,4 +1,5 @@
-RepCert: a Python 3 method to certify compact group representation decompositions.
+RepCert: a Python 3 method to certify that a subspace is an irreducible subrepresentation
+         of compact group representation.
 
 Input:
 - InFiles/gen_ims.mat where an array of matrix images for a set of group elements is saved
