@@ -5,6 +5,7 @@
 # runs first the replab_script to create a random
 # rep and irr. subrep. Then runs RepCert to certify
 # the subrep.
+cd ..
 
 echo "RepCert example: decompose a representation with replab, certify random irreducible component."
 echo " "

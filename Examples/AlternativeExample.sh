@@ -1,6 +1,7 @@
 # Alternative example (without dependency on replab)
 #
 #
+cd ..
 
 echo " "
 echo "Running alternative example for RepCert. The set of group images have been Haar sampled and"
