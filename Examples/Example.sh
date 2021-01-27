@@ -30,4 +30,4 @@ echo " "
 
 #
 # run repcert
-python3 run.py
+python3 RunRepCert.py

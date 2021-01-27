@@ -2,7 +2,8 @@ RepCert: a Python 3 method to certify compact group representations.
 
 Input:
 - InFiles/gen_ims.mat where an array of matrix images for a set of group elements is saved
-- InFiles/basis.mat where a basis (a matrix of column basis elements) for the tested subspace is saved
+- InFiles/basis.mat where a basis (a matrix of column basis elements) for the tested subspace 
+  is saved
 
 Note: for octave, use save -v7 as done in the scr-replab.m script.
 
@@ -11,17 +12,20 @@ Further input:
 - entrywise error bound on gen_ims and basis
 - precision for invariance test
 - bound on false positive rate
-- confidence parameter (false negative rate you'd want -- this is only approximate, and must be > false postitive rate)
+- confidence parameter (false negative rate you'd want -- this is only approximate, and must 
+  be > false postitive rate)
 
 --> inputs 2-5 referred to as 'quality parameters'
 
-To certify a subspace, save the .mat files in InFiles and run 'python3 run.py'
+To certify a subspace, save the .mat files in InFiles and run 'python3 RunRepCert.py'
 
 EXAMPLES:
 
-The script Example.sh runs an example of decomposing a rep and then certifying some random
+Example bash scripts are provided in the RepCert/Examples. The script Example.sh runs 
+an  example of decomposing a representation using RepLAB and then certifying some random
 block. This script has a dependency on RepLAB. Specifically, it does the following 
-- executes replab-scr.m to obtain a decomposition and random irrep block of the example representation
+- executes replab-scr.m to obtain a decomposition and random irrep block of the example 
+  representation
 - executes run.py to certify the subspace (in all the examples, setting = 'promise')
 
 Notice that in replab-scr.m you can toggle between three different examples.
@@ -33,11 +37,11 @@ Important: For the examples to work, check the first lines of replab-scr.m,
            MotherFolder/RepCert
 	   MotherFolder/replab-0.9.0
      
-ALTERNATIVE EXAMPLE (WITHOUT REPLAB DEPENDENCY):
+For RepLAB, visit https://replab.github.io/replab/
 
-To run an example with no dependency on RepLAB, run AlternativeExample.sh. The subrepresentation
-basis and representation group images it uses are saved as Alt_basis.mat and Alt_gen_ims.mat
-respectively.
+If you don't have RepLAB, you can run AlternativeExample.sh. This example uses the files 
+Alt_basis.mat and Alt_gen_ims.mat as input (no need to move these files to the input 
+subdirectory, the script does that).
 
 
 

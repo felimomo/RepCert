@@ -25,4 +25,4 @@ cp Examples/Alt_gen_ims.mat InFiles/gen_ims.mat
 
 #
 # run repcert
-python3 run.py
+python3 RunRepCert.py
