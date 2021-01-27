@@ -5,7 +5,12 @@
 # runs first the replab_script to create a random
 # rep and irr. subrep. Then runs RepCert to certify
 # the subrep.
-cd ..
+
+# make sure you start in /RepCert
+current_dir=${PWD##*/}
+if[ "$current_dir" = "Examples"]; then
+  cd ..
+fi
 
 echo "RepCert example: decompose a representation with replab, certify random irreducible component."
 echo " "

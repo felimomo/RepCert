@@ -1,7 +1,12 @@
 # Alternative example (without dependency on replab)
 #
 #
-cd ..
+
+# make sure you start in /RepCert
+current_dir=${PWD##*/}
+if[ "$current_dir" = "Examples"]; then
+  cd ..
+fi
 
 echo " "
 echo "Running alternative example for RepCert. The set of group images have been Haar sampled and"
