@@ -10,9 +10,13 @@ cd ../RepCert
 %
 %% Example 1: permutation group, tensor power representation
 % 
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % disp("Permutation group example.")
 % disp(" ")
 % disp("Group = S8, rep: 4-th tensor power of the natural representation.")
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % disp(" ")
 % 
 % Sn  = replab.S(8)
@@ -72,7 +76,12 @@ cd ../RepCert
 %
 %% Note: it seems replab is not producing a good-quality decomposition here.
 % 
+% disp(" ")
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % disp("Product of two random S4 irreps.")
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+% disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % disp(" ")
 % 
 % % group
@@ -142,11 +151,14 @@ cd ../RepCert
 %
 %% Example 3: symmetry group of the I444-222 scenario (3 parties, 4 measurements, 2 outcomes)
 
+disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("Symmetry of the Bell scenario with 3 parties, 4 measurement settings and 2 outcomes.")
 disp(" ")
 disp("Group = S3 wr S4 wr S2, rep: primitive of the (S4 wr S2)-imprimitive rep.")
+disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp(" ")
-
 % build group
 Parties = replab.S(3); Settings= replab.S(4); Outcomes= replab.S(2);
 X = Settings.wreathProduct(Outcomes);
