@@ -1,6 +1,5 @@
 import time
 import readMat
-import display as dis
 from Certificates.Tools import rwalk, lin
 from Certificates import InvarianceCertificate as inv
 from Certificates import IrreducibilityCertificate as irr
