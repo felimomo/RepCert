@@ -25,9 +25,9 @@ EXAMPLES:
 Example bash scripts are provided in the RepCert/Examples. The script Example.sh runs 
 an  example of decomposing a representation using RepLAB and then certifying some random
 block. This script has a dependency on RepLAB. Specifically, it does the following 
-- executes replab-scr.m to obtain a decomposition and random irrep block of the example 
-  representation
-- executes run.py to certify the subspace (in all the examples, setting = 'promise')
+- executes Examples/replab-scr.m to obtain a decomposition and random irrep block of the 
+  example representation
+- executes RunRepCert.py to certify the subspace (in all the examples, setting = 'promise')
 
 Notice that in replab-scr.m you can toggle between three different examples.
 
