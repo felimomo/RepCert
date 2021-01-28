@@ -31,12 +31,13 @@ block. This script has a dependency on RepLAB. Specifically, it does the followi
 
 Notice that in replab-scr.m you can toggle between three different examples.
 
-Important: For the examples to work, check the first lines of replab-scr.m, 
+Important: For Example.sh to work, check the first lines of replab-scr.m ---there 
            you have to direct octave to the location of RepLAB in your computer.
            Currently, the relative location of the RepCert repo and RepLAB is
            the following:
-           MotherFolder/RepCert
-	   MotherFolder/replab-0.9.0
+               MotherFolder/
+	           RepCert
+	           replab-0.9.0
      
 For RepLAB, visit https://replab.github.io/replab/
 
