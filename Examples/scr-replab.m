@@ -10,6 +10,11 @@ cd ../RepCert
 %
 %% Example 1: permutation group, tensor power representation
 % 
+% disp("Permutation group example.")
+% disp(" ")
+% disp("Group = S8, rep: 4-th tensor power of the natural representation.")
+% disp(" ")
+% 
 % Sn  = replab.S(8)
 % nat = Sn.naturalRep;
 % rep = kron(nat,kron(nat,nat)) %4th tensor power of natural rep.
@@ -66,6 +71,9 @@ cd ../RepCert
 %% Example 2: somewhat random tensor product of permutation group irreps
 %
 %% Note: it seems replab is not producing a good-quality decomposition here.
+% 
+% disp("Product of two random S4 irreps.")
+% disp(" ")
 % 
 % % group
 % Sn = replab.S(4)
@@ -132,7 +140,12 @@ cd ../RepCert
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %
-%% Example 3: symmetry group of the I222-222 scenario
+%% Example 3: symmetry group of the I444-222 scenario (3 parties, 4 measurements, 2 outcomes)
+
+disp("Symmetry of the Bell scenario with 3 parties, 4 measurement settings and 2 outcomes.")
+disp(" ")
+disp("Group = S3 wr S4 wr S2, rep: primitive of the (S4 wr S2)-imprimitive rep.")
+disp(" ")
 
 % build group
 Parties = replab.S(3); Settings= replab.S(4); Outcomes= replab.S(2);

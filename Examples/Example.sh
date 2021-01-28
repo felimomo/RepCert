@@ -12,20 +12,24 @@ if [ "$current_dir" = "Examples" ]; then
   cd ..
 fi
 
+echo " "
 echo "RepCert example: decompose a representation with replab, certify random irreducible component."
 echo " "
 echo "Group images are a symmetrized Haar-sampled set, so the input 'Setting' should be = 'promise'."
 echo " "
-sleep 1.5
+sleep 2.5
 
 #
 #
 # First, clean all input files that might interfere:
 rm InFiles/*.mat
 
+echo "Starting RepLAB."
+echo " "
+
 # now run replab script
 octave Examples/scr-replab.m
-echo "Replab script done."
+echo "RepLAB script done."
 echo " "
 
 #
