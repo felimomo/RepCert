@@ -35,7 +35,7 @@ Important: For Example.sh to work, check the first lines of replab-scr.m ---ther
            you have to direct octave to the location of RepLAB in your computer.
            Currently, the relative location of the RepCert repo and RepLAB is
            the following:
-               MotherFolder/
+           MotherFolder/
 	           RepCert
 	           replab-0.9.0
      
