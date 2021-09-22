@@ -1,5 +1,5 @@
 import time
-import readMa_ForTests as read
+import readMat_ForTests as read
 from Certificates.Tools import rwalk, lin
 from Certificates import InvarianceCertificate as inv
 from Certificates import IrreducibilityCertificate as irr
