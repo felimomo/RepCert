@@ -6,19 +6,18 @@ Input:
 - InFiles/basis.mat where a basis (a matrix of column basis elements) for the tested subspace 
   is saved
 
-Note: for octave, use save -v7 as done in the scr-replab.m script.
-
 Further input:
 1- setting: 'promise' means gen_ims is a symmetrized Haar set, otherwise use 'fixed'
 2- entrywise error bound on gen_ims and basis
 3- precision for invariance test
 4- bound on false positive rate
-5- confidence parameter (false negative rate you'd want -- this is only approximate, and must 
+5- confidence parameter (false negative rate you'd want -- this is only approximate and must 
    be > false postitive rate)
 
 --> inputs 2-5 referred to as 'quality parameters' in the code interface.
 
 To certify a subspace, save the .mat files in InFiles and run 'python3 RunRepCert.py'
+Note: for octave, use save -v7 as done in the scr-replab.m script.
 
 EXAMPLES:
 
