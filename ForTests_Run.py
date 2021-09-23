@@ -44,7 +44,7 @@ def restrict_to_subrep(repr,basis,setting='promise'):
 
 setting = input("Setting = ")
 flo=0
-GroupName="S2wrS2wrS4"
+GroupName="S2wrS2wrS5"
 
 if input("Use standard choice for quality parameters? (y/n) ") == "y":
     flo = 2**(-52)
@@ -96,7 +96,7 @@ print("global dim = ", global_dim)
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,
                              genImages=rep_dict['gen_images'])
 
-file=open(r"benchmark_"+GroupName,"a")
+file=open(r"benchmark_"+GroupName+".txt","a")
 file.write(r"# Benchmark results for G = "+GroupName+"\n")
 file.write(f"""# Parameters:
 # Global dimension = {global_dim}

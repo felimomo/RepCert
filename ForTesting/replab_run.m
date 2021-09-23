@@ -41,7 +41,7 @@ while i < decomp.nComponents+1
     if (d > dmax)
       dmax=d;
     endif
-    fname = strcat('d','_',int2str(i),'_',int2str(j),'.mat');
+    fname = strcat(int2str(d),'_',int2str(i),'_',int2str(j),'.mat');
     save("-v7",fname,"basis")
     j+=1;
   endwhile
