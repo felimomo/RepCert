@@ -44,9 +44,9 @@ def restrict_to_subrep(repr,basis,setting='promise'):
 
 setting = input("Setting = ")
 flo=0 # just to have it be global, set it more specifically later
-a,b='3','4'
+a,b,c='2','2','5'
 # GroupName=f"S{a}wrS{b}wrS{c}"
-GroupName=f"S{a}wrS{b}"
+GroupName=f"S{a}wrS{b}wrS{c}"
 
 if input("Use standard choice for quality parameters? (y/n) ") == "y":
     flo = 2**(-52)
