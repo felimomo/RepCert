@@ -44,7 +44,8 @@ def restrict_to_subrep(repr,basis,setting='promise'):
 
 setting = input("Setting = ")
 flo=0
-GroupName="S2wrS2wrS5"
+a,b,c='2','2','5'
+GroupName=f"S{a}wrS{b}wrS{c}"
 
 if input("Use standard choice for quality parameters? (y/n) ") == "y":
     flo = 2**(-52)
@@ -96,7 +97,7 @@ print("global dim = ", global_dim)
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,
                              genImages=rep_dict['gen_images'])
 
-file=open(r"benchmark_"+GroupName+".txt","a")
+file=open(GroupName+"_benchmark.txt","a")
 file.write(r"# Benchmark results for G = "+GroupName+"\n")
 file.write(f"""# Parameters:
 # Global dimension = {global_dim}
@@ -106,12 +107,12 @@ file.write(f"""# Parameters:
 # Threshold false positive rate = {thresh}
 # Confidence parameter (approx false negative rate) = {conf}\n
 """)
-file.write(r"# Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert?\n")
+file.write(r"# (a,b,c) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? \n")
 
 
 for basis in bases:
     dim = len(basis)
-    file.write(f"{global_dim}"+" & "+f"{dim}"+" & ")
+    file.write(f"({a},{b},{c}) & {global_dim} & {dim} & ")
     if dim < 200:
         #only look at small enough reps
         # create projector onto subspace:
@@ -139,7 +140,7 @@ for basis in bases:
         inv_init = time.time()
         InvCert=inv.inv_cert(repr,proj,epsilon,thresh,fl,setting)
         InvTime = time.time()-inv_init
-        file.write(f"{InvTime}"[0:4]+" & ")
+        file.write(f"{InvTime}"[0:5]+" & ")
         if InvCert:
             print("Invariant!")
             print("(Inv. Cert. time = ", InvTime, " s)\n")
@@ -157,16 +158,16 @@ for basis in bases:
             subrep = restrict_to_subrep(repr,basis)
             restr_time = time.time()-restr_init
             print("Restriction to subrep done (in ", restr_time, " s)\n")
-            file.write(f"{restr_time}"[0:4]+" & ")
+            file.write(f"{restr_time}"[0:5]+" & ")
 
             irr_init = time.time()
             if irr.irr_cert(subrep,epsilon,thresh,conf,setting):
                 irr_time = time.time()-irr_init
-                file.write(f"{irr_time} "[0:4]+" & Yes\n")
+                file.write(f"{irr_time} "[0:5]+" & Yes\n")
                 print("Irreducible!")
                 print("(Irr. Cert. time = ", irr_time, " s)\n")
             else:
-                file.write(f"{irr_time} "[0:4]+" & No\n")
+                file.write(f"{irr_time} "[0:5]+" & No\n")
                 print("Don't know of irreducible :'(")
 
 

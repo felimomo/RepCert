@@ -1,18 +1,14 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-cd ../RepCert/ForTesting/S2wrS2wrS5;
+mkdir ../RepCert/ForTesting/S2wrS2wrS3;
+cd ../RepCert/ForTesting/S2wrS2wrS3;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-disp("Symmetry of the Bell scenario with 3 parties, 4 measurement settings and 2 outcomes.")
-disp(" ")
-disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-disp(" ")
 % build group
-Parties = replab.S(5) 
+Parties = replab.S(3) 
 Settings= replab.S(2) 
 Outcomes= replab.S(2)
 % wreath product is the other way around in replab: G wr H is written H.wreathProduct(G)
