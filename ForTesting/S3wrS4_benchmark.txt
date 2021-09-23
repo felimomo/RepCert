@@ -1,0 +1,25 @@
+# Benchmark results for G = S3wrS4
+# Parameters:
+# Global dimension = 81
+# Numb. generators = 257
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-08
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# (a,b,c) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+# Benchmark results for G = S3wrS4
+# Parameters:
+# Global dimension = 81
+# Numb. generators = 257
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-08
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# (a,b) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+(3,4) & 81 & 16 & 0.026 & 3.029 & 9.769 & Yes
+(3,4) & 81 & 32 & 0.026 & 21.50 & 49.00 & Yes
+(3,4) & 81 & 1 & 0.012 & 0.004 & 2.145 & Yes
+(3,4) & 81 & 24 & 0.026 & 9.626 & 26.49 & Yes
+(3,4) & 81 & 8 & 0.025 & 0.548 & 2.018 & Yes
