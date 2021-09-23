@@ -1,7 +1,7 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-cd ../RepCert/ForTesting/S3wrS3wrS2;
+cd ../RepCert/ForTesting/S3wrS3wrS3;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -13,9 +13,9 @@ disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp(" ")
 % build group
-Parties = replab.S(3); Settings= replab.S(3); Outcomes= replab.S(2);
-X = Settings.wreathProduct(Outcomes);
-W = Parties.wreathProduct(X)
+Parties = replab.S(3); Settings= replab.S(3); Outcomes= replab.S(3);
+X = Settings.wreathProduct(Parties);
+W = Outcomes.wreathProduct(X)
 Xrep= X.imprimitiveRep(Outcomes.naturalRep);
 rep = W.primitiveRep(Xrep);
 rep = rep.complexification;
