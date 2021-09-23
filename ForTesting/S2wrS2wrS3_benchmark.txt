@@ -1,0 +1,19 @@
+# Benchmark results for G = S2wrS2wrS3
+# Parameters:
+# Global dimension = 64
+# Numb. generators = 254
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-08
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# (a,b,c) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? \n(2,2,3) & 64 & 6 & 0.018 & 0.282 & 1.087 & Yes
+(2,2,3) & 64 & 3 & 0.017 & 0.041 & 0.227 & Yes
+(2,2,3) & 64 & 12 & 0.017 & 1.296 & 5.220 & Yes
+(2,2,3) & 64 & 8 & 0.017 & 0.491 & 1.988 & Yes
+(2,2,3) & 64 & 1 & 0.025 & 0.007 & 1.668 & Yes
+(2,2,3) & 64 & 1 & 0.010 & 0.003 & 1.430 & Yes
+(2,2,3) & 64 & 3 & 0.026 & 0.042 & 0.225 & Yes
+(2,2,3) & 64 & 12 & 0.017 & 1.209 & 5.231 & Yes
+(2,2,3) & 64 & 6 & 0.017 & 0.198 & 1.084 & Yes
+(2,2,3) & 64 & 12 & 0.018 & 1.312 & 5.256 & Yes

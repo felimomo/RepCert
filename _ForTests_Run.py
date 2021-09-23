@@ -44,7 +44,7 @@ def restrict_to_subrep(repr,basis,setting='promise'):
 
 setting = input("Setting = ")
 flo=0
-a,b,c='2','2','3'
+a,b,c='3','3','3'
 GroupName=f"S{a}wrS{b}wrS{c}"
 
 if input("Use standard choice for quality parameters? (y/n) ") == "y":
@@ -107,7 +107,7 @@ file.write(f"""# Parameters:
 # Threshold false positive rate = {thresh}
 # Confidence parameter (approx false negative rate) = {conf}\n
 """)
-file.write(r"# (a,b,c) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? \n")
+file.write("# (a,b,c) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? \n")
 
 
 for basis in bases:

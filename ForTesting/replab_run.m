@@ -1,16 +1,16 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-mkdir ../RepCert/ForTesting/S2wrS2wrS3;
-cd ../RepCert/ForTesting/S2wrS2wrS3;
+mkdir ../RepCert/ForTesting/S3wrS3wrS3;
+cd ../RepCert/ForTesting/S3wrS3wrS3;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % build group
 Parties = replab.S(3) 
-Settings= replab.S(2) 
-Outcomes= replab.S(2)
+Settings= replab.S(3) 
+Outcomes= replab.S(3)
 % wreath product is the other way around in replab: G wr H is written H.wreathProduct(G)
 % e.g. notice that in the "CH CHSH symmetry" paper of Denis, the representation starts
 % with "imprimitive rep of the natural rep of S_outcomes."
