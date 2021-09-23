@@ -106,7 +106,7 @@ file.write(f"""# Parameters:
 # Threshold false positive rate = {thresh}
 # Confidence parameter (approx false negative rate) = {conf}\n
 """)
-file.write(r"# IrrD & Inv. Time & Restr. Time & Cert. Time & Cert?")
+file.write(r"# IrrD & Inv. Time & Restr. Time & Cert. Time & Cert?\n")
 
 
 for basis in bases:
