@@ -102,7 +102,6 @@ file.write(f"""# Parameters:
 # Global dimension = {global_dim}
 # Numb. generators = {len(generatorSet)}
 # Error bound on basis/group images (entrywise) = {flo}
-# Repr. Mat./Projector coefficient error bound = {fl}
 # Precision of invariance test = {epsilon}
 # Threshold false positive rate = {thresh}
 # Confidence parameter (approx false negative rate) = {conf}\n
