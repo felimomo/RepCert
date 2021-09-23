@@ -19,6 +19,7 @@ W = Parties.wreathProduct(X)
 Xrep= X.imprimitiveRep(Outcomes.naturalRep);
 % rep= X.primitiveRep(Outcomes.naturalRep);%for double products
 rep = W.primitiveRep(Xrep);
+
 rep = rep.complexification;
 rep = rep.unitarize
 
