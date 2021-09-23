@@ -96,13 +96,27 @@ print("global dim = ", global_dim)
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,
                              genImages=rep_dict['gen_images'])
 
+file=open(r"benchmark_"+GroupName,"a")
+file.write(r"# Benchmark results for G = "+GroupName+"\n")
+file.write(f"""# Parameters:
+# Global dimension = {global_dim}
+# Numb. generators = {len(generatorSet)}
+# Error bound on basis/group images (entrywise) = {flo}
+# Repr. Mat./Projector coefficient error bound = {fl}
+# Precision of invariance test = {epsilon}
+# Threshold false positive rate = {thresh}
+# Confidence parameter (approx false negative rate) = {conf}\n
+""")
+file.write(r"# IrrD & Inv. Time & Restr. Time & Cert. Time & Cert?")
+
+
 for basis in bases:
     dim = len(basis)
+    file.write(f"{dim}"+" & ")
     if dim < 200:
         #only look at small enough reps
         # create projector onto subspace:
         proj = lin.toproj(basis)
-        # print(basis)
 
         # worst-case error on the projector: (modify flo from before)
         fl = 2*dim*(flo + flo**2)
@@ -124,9 +138,12 @@ for basis in bases:
         ##################################################################################
 
         inv_init = time.time()
-        if inv.inv_cert(repr,proj,epsilon,thresh,fl,setting):
+        InvCert=inv.inv_cert(repr,proj,epsilon,thresh,fl,setting)
+        InvTime = time.time()-inv_init
+        file.write(f"{InvTime}"[0:4]+" & ")
+        if InvCert:
             print("Invariant!")
-            print("(Inv. Cert. time = ", time.time()-inv_init, " s)\n")
+            print("(Inv. Cert. time = ", InvTime, " s)\n")
         else:
             print("Don't know if invariant :(\n")
             # import sys
@@ -135,23 +152,26 @@ for basis in bases:
         ##################################################################################
         ########################### Irreducibility Certificate: ##########################
         ##################################################################################
+        if InvCert:  
+            # subrepresentation on which random walk happens:
+            restr_init = time.time()
+            subrep = restrict_to_subrep(repr,basis)
+            restr_time = time.time()-restr_init
+            print("Restriction to subrep done (in ", restr_time, " s)\n")
+            file.write(f"{restr_time}"[0:4]+" & ")
 
-        irr_init = time.time()  
-
-        # subrepresentation on which random walk happens:
-        restr_init = time.time()
-        subrep = restrict_to_subrep(repr,basis)
-        print("Restriction to subrep done (in ", time.time()-restr_init, " s)\n")
-
-        irr_init = time.time()
-        if irr.irr_cert(subrep,epsilon,thresh,conf,setting):
-            print("Irreducible!")
-            print("(Irr. Cert. time = ", time.time()-irr_init, " s)\n")
-        else:
-            print("Don't know of irreducible :'(")
+            irr_init = time.time()
+            if irr.irr_cert(subrep,epsilon,thresh,conf,setting):
+                irr_time = time.time()-irr_init
+                file.write(f"{irr_time} "[0:4]+" & Yes\n")
+                print("Irreducible!")
+                print("(Irr. Cert. time = ", irr_time, " s)\n")
+            else:
+                file.write(f"{irr_time} "[0:4]+" & No\n")
+                print("Don't know of irreducible :'(")
 
 
-
+file.close()
 
 
 
