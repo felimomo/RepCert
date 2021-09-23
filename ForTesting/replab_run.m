@@ -1,19 +1,19 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-cd ../RepCert/ForTesting/S3wrS3wrS3;
+cd ../RepCert/ForTesting/S2wrS4wrS3;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("Symmetry of the Bell scenario with 3 parties, 4 measurement settings and 2 outcomes.")
 disp(" ")
-disp("Group = S3 wr S3 wr S2, rep: primitive of the (S4 wr S2)-imprimitive rep.")
+disp("Group = S3 wr S2 wr S3, rep: primitive of the (S4 wr S2)-imprimitive rep.")
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp(" ")
 % build group
-Parties = replab.S(3); Settings= replab.S(3); Outcomes= replab.S(3);
+Parties = replab.S(3); Settings= replab.S(2); Outcomes= replab.S(3);
 X = Settings.wreathProduct(Parties);
 W = Outcomes.wreathProduct(X)
 Xrep= X.imprimitiveRep(Outcomes.naturalRep);
