@@ -106,12 +106,12 @@ file.write(f"""# Parameters:
 # Threshold false positive rate = {thresh}
 # Confidence parameter (approx false negative rate) = {conf}\n
 """)
-file.write(r"# IrrD & Inv. Time & Restr. Time & Cert. Time & Cert?\n")
+file.write(r"# Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert?\n")
 
 
 for basis in bases:
     dim = len(basis)
-    file.write(f"{dim}"+" & ")
+    file.write(f"{global_dim}"+" & "+f"{dim}"+" & ")
     if dim < 200:
         #only look at small enough reps
         # create projector onto subspace:
