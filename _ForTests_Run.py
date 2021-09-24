@@ -52,7 +52,7 @@ if input("Use standard choice for quality parameters? (y/n) ") == "y":
     flo = 2**(-52)
     thresh = 0.0000001
     conf   = 0.0000002
-    epsilon = 0.00000001
+    epsilon = 0.0000001
     print(f"""
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Standard quality parameter values: %%%%%%%%%%
