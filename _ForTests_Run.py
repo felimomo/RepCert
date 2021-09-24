@@ -98,7 +98,7 @@ print("global dim = ", global_dim)
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,
                              genImages=rep_dict['gen_images'])
 
-file=open(GroupName+"_benchmark.txt","a")
+file=open(GroupName+"_benchmark_extra_data.txt","a")
 file.write(r"# Benchmark results for G = "+GroupName+"\n")
 file.write(f"""# Parameters:
 # Global dimension = {global_dim}
@@ -114,7 +114,7 @@ file.write("# (a,b) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Ce
 for basis in bases:
     dim = len(basis)
     file.write(f"({a},{b}) & {global_dim} & {dim} & ")
-    if dim < 200:
+    if dim ==120:
         #only look at small enough reps
         # create projector onto subspace:
         proj = lin.toproj(basis)
