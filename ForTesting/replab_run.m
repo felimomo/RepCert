@@ -1,8 +1,8 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-mkdir ../RepCert/ForTesting/S4wrS4;
-cd ../RepCert/ForTesting/S4wrS4;
+mkdir ../RepCert/ForTesting/S5;
+cd ../RepCert/ForTesting/S5;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
