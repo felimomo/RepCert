@@ -1,8 +1,8 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-mkdir ../RepCert/ForTesting/S5;
-cd ../RepCert/ForTesting/S5;
+mkdir ../RepCert/ForTesting/S10;
+cd ../RepCert/ForTesting/S10;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -23,7 +23,7 @@ disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % For single permutation group:
 % 
-W = replab.S(5)
+W = replab.S(10)
 nat = W.naturalRep;
 rep = kron(nat,kron(nat,nat))
 
