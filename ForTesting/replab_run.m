@@ -1,16 +1,16 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-mkdir ../RepCert/ForTesting/S10wrS10;
-cd ../RepCert/ForTesting/S10wrS10;
+mkdir ../RepCert/ForTesting/S4wrS4;
+cd ../RepCert/ForTesting/S4wrS4;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % build group
 % Parties = replab.S(5) 
-Settings= replab.S(10) 
-Outcomes= replab.S(10)
+Settings= replab.S(4) 
+Outcomes= replab.S(4)
 % wreath product is the other way around in replab: G wr H is written H.wreathProduct(G)
 % e.g. notice that in the "CH CHSH symmetry" paper of Denis, the representation starts
 % with "imprimitive rep of the natural rep of S_outcomes."
@@ -18,7 +18,7 @@ Outcomes= replab.S(10)
 % W = Parties.wreathProduct(X)
 W = Settings.wreathProduct(Outcomes) %for double products
 % Xrep= X.imprimitiveRep(Outcomes.naturalRep);
-rep= W.imprimitiveRep(Outcomes.naturalRep);%for double products
+rep= W.primitiveRep(Outcomes.naturalRep);%for double products
 % rep = W.primitiveRep(Xrep);
 
 rep = rep.complexification;
