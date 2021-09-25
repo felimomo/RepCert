@@ -44,7 +44,7 @@ def restrict_to_subrep(repr,basis,setting='promise'):
 
 setting = input("Setting = ")
 flo=0 # just to have it be global, set it more specifically later
-a,b='2','7'
+a,b='4','4'
 # GroupName=f"S{a}wrS{b}wrS{c}"
 GroupName=f"S{a}wrS{b}"
 
