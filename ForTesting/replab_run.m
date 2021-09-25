@@ -9,17 +9,23 @@ disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % build group
 % Parties = replab.S(5) 
-Settings= replab.S(4) 
-Outcomes= replab.S(4)
+% Settings= replab.S(4) 
+% Outcomes= replab.S(4)
 % wreath product is the other way around in replab: G wr H is written H.wreathProduct(G)
 % e.g. notice that in the "CH CHSH symmetry" paper of Denis, the representation starts
 % with "imprimitive rep of the natural rep of S_outcomes."
 % X = Settings.wreathProduct(Outcomes);
 % W = Parties.wreathProduct(X)
-W = Settings.wreathProduct(Outcomes) %for double products
+% W = Settings.wreathProduct(Outcomes) %for double products
 % Xrep= X.imprimitiveRep(Outcomes.naturalRep);
-rep= W.primitiveRep(Outcomes.naturalRep);%for double products
+% rep= W.primitiveRep(Outcomes.naturalRep);%for double products
 % rep = W.primitiveRep(Xrep);
+
+% For single permutation group:
+% 
+W = replab.S(5)
+nat = W.naturalRep;
+rep = kron(nat,kron(nat,nat))
 
 rep = rep.complexification;
 rep = rep.unitarize
