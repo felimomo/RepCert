@@ -114,7 +114,7 @@ file.write("# (a,b) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Ce
 for basis in bases:
     dim = len(basis)
     file.write(f"({a},{b}) & {global_dim} & {dim} & ")
-    if dim<150:
+    if dim<1000:
         #only look at small enough reps
         # create projector onto subspace:
         proj = lin.toproj(basis)
@@ -153,7 +153,7 @@ for basis in bases:
         ##################################################################################
         ########################### Irreducibility Certificate: ##########################
         ##################################################################################
-        if InvCert:  
+        if InvCert and dim<150:  
             # subrepresentation on which random walk happens:
             restr_init = time.time()
             subrep = restrict_to_subrep(repr,basis)
