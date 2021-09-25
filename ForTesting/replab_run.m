@@ -1,24 +1,25 @@
 % initiate RepLAB in its folder (folder address must be edited in)
 cd ../../replab-0.9.0;
 replab_init
-mkdir ../RepCert/ForTesting/S2wrS2wrS5;
-cd ../RepCert/ForTesting/S2wrS2wrS5;
+mkdir ../RepCert/ForTesting/S4wrS4;
+cd ../RepCert/ForTesting/S4wrS4;
 
 
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 disp("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 % build group
-Parties = replab.S(5) 
-Settings= replab.S(2) 
-Outcomes= replab.S(2)
+% Parties = replab.S(5) 
+Settings= replab.S(4) 
+Outcomes= replab.S(4)
 % wreath product is the other way around in replab: G wr H is written H.wreathProduct(G)
 % e.g. notice that in the "CH CHSH symmetry" paper of Denis, the representation starts
 % with "imprimitive rep of the natural rep of S_outcomes."
-X = Settings.wreathProduct(Outcomes);
-W = Parties.wreathProduct(X)
-Xrep= X.imprimitiveRep(Outcomes.naturalRep);
-% rep= X.primitiveRep(Outcomes.naturalRep);%for double products
-rep = W.primitiveRep(Xrep);
+% X = Settings.wreathProduct(Outcomes);
+% W = Parties.wreathProduct(X)
+W = Settings.wreathProduct(Outcomes) %for double products
+% Xrep= X.imprimitiveRep(Outcomes.naturalRep);
+rep= X.primitiveRep(Outcomes.naturalRep);%for double products
+% rep = W.primitiveRep(Xrep);
 
 rep = rep.complexification;
 rep = rep.unitarize
@@ -49,7 +50,7 @@ endwhile
 % compute size of random set to be symmetrized 
 %          (using p_thr. = 10^-7, notice that basis
 %           is a gobal_dim x irrep_dim matrix)
-numb_group_samples = ceil(7*8*log(10)+2*log(dmax))
+numb_group_samples = ceil(7*8*log(10)+2*log(rep.dimension))
 
 % sample random group elements
 i = 1; gens = {};

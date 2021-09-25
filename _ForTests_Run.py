@@ -52,7 +52,7 @@ if input("Use standard choice for quality parameters? (y/n) ") == "y":
     flo = 2**(-52)
     thresh = 0.0000001
     conf   = 0.0000002
-    epsilon = 0.0000001
+    epsilon = 0.00000001
     print(f"""
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Standard quality parameter values: %%%%%%%%%%
@@ -98,7 +98,7 @@ print("global dim = ", global_dim)
 repr = rep.rep_by_generators(dimension=global_dim,generatorSet=generatorSet,
                              genImages=rep_dict['gen_images'])
 
-file=open(GroupName+"_benchmark_extra_data.txt","a")
+file=open(GroupName+"_benchmark.txt","a")
 file.write(r"# Benchmark results for G = "+GroupName+"\n")
 file.write(f"""# Parameters:
 # Global dimension = {global_dim}
@@ -114,7 +114,7 @@ file.write("# (a,b) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Ce
 for basis in bases:
     dim = len(basis)
     file.write(f"({a},{b}) & {global_dim} & {dim} & ")
-    if dim ==120:
+    if dim<150:
         #only look at small enough reps
         # create projector onto subspace:
         proj = lin.toproj(basis)
@@ -170,8 +170,11 @@ for basis in bases:
             else:
                 file.write(f"{irr_time} "[0:5]+" & No\n")
                 print("Don't know of irreducible :'(")
+        else:
+            file.write("\n")
 
-
+    else:
+        file.write("\n")
 file.close()
 
 
