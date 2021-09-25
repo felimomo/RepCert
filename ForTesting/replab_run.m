@@ -18,7 +18,7 @@ Outcomes= replab.S(4)
 % W = Parties.wreathProduct(X)
 W = Settings.wreathProduct(Outcomes) %for double products
 % Xrep= X.imprimitiveRep(Outcomes.naturalRep);
-rep= X.primitiveRep(Outcomes.naturalRep);%for double products
+rep= W.primitiveRep(Outcomes.naturalRep);%for double products
 % rep = W.primitiveRep(Xrep);
 
 rep = rep.complexification;
