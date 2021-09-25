@@ -44,7 +44,7 @@ def restrict_to_subrep(repr,basis,setting='promise'):
 
 setting = input("Setting = ")
 flo=0 # just to have it be global, set it more specifically later
-a,b='4','4'
+a,b='3','6'
 # GroupName=f"S{a}wrS{b}wrS{c}"
 GroupName=f"S{a}wrS{b}"
 
@@ -52,7 +52,7 @@ if input("Use standard choice for quality parameters? (y/n) ") == "y":
     flo = 2**(-52)
     thresh = 0.0000001
     conf   = 0.0000002
-    epsilon = 0.00000001
+    epsilon = 0.0000001
     print(f"""
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% Standard quality parameter values: %%%%%%%%%%
@@ -114,7 +114,7 @@ file.write("# (a,b) & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Ce
 for basis in bases:
     dim = len(basis)
     file.write(f"({a},{b}) & {global_dim} & {dim} & ")
-    if dim<1000:
+    if dim>150:
         #only look at small enough reps
         # create projector onto subspace:
         proj = lin.toproj(basis)
