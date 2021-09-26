@@ -1,0 +1,51 @@
+# Benchmark results for G = S9
+# Parameters:
+# Global dimension = 729
+# Numb. generators = 284
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-07
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# a & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+9 & 729 & 105 & 7.747 & 1362. & # Benchmark results for G = S9
+# Parameters:
+# Global dimension = 729
+# Numb. generators = 284
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-08
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# a & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+9 & 729 & 105 & 11.92 & 1457. & 2005. & Yes
+9 & 729 & 8 & 11.91 & 2.983 & 2.255 & Yes
+9 & 729 & 27 & 11.92 & 33.70 & 37.90 & Yes
+9 & 729 & 56 & 11.88 & 242.0 & 237.9 & Yes
+9 & 729 & 27 & 11.91 & 33.82 & 37.91 & Yes
+9 & 729 & 27 & 11.88 & 33.74 & 37.67 & Yes
+9 & 729 & 8 & 12.15 & 2.914 & 2.259 & Yes
+9 & 729 & 28 & 12.05 & 37.30 & 41.13 & Yes
+9 & 729 & 28 & 12.02 & 36.07 & 41.21 & Yes
+9 & 729 & 28 & 12.09 & 36.71 & 41.09 & Yes
+9 & 729 & 1 & 12.16 & 0.256 & 2.622 & Yes
+9 & 729 & 8 & 12.02 & 2.801 & 2.251 & Yes
+9 & 729 & 1 & 12.10 & 0.254 & 2.145 & Yes
+9 & 729 & 28 & 11.93 & 36.76 & 41.27 & Yes
+9 & 729 & 8 & 11.96 & 2.987 & 2.239 & Yes
+9 & 729 & 27 & 11.93 & 33.41 & 37.95 & Yes
+9 & 729 & 1 & 3.277 & 0.054 & 3.337 & Yes
+9 & 729 & 105 & 12.01 & 1459. & 2039. & Yes
+9 & 729 & 27 & 11.95 & 33.37 & 38.17 & Yes
+9 & 729 & 1 & 11.90 & 0.338 & 2.384 & Yes
+9 & 729 & 8 & 11.88 & 2.920 & 2.250 & Yes
+9 & 729 & 8 & 12.01 & 3.147 & 2.229 & Yes
+9 & 729 & 1 & 11.91 & 0.251 & 1.907 & Yes
+9 & 729 & 8 & 11.89 & 3.055 & 2.261 & Yes
+9 & 729 & 28 & 11.90 & 36.83 & 41.26 & Yes
+9 & 729 & 8 & 11.92 & 3.070 & 2.232 & Yes
+9 & 729 & 48 & 11.89 & 163.0 & 163.4 & Yes
+9 & 729 & 27 & 11.90 & 33.61 & 38.17 & Yes
+9 & 729 & 8 & 12.05 & 2.924 & 2.236 & Yes
+9 & 729 & 8 & 11.95 & 2.964 & 2.275 & Yes
+9 & 729 & 28 & 12.12 & 36.48 & 40.96 & Yes

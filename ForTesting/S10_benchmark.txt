@@ -1,0 +1,62 @@
+# Benchmark results for G = S10
+# Parameters:
+# Global dimension = 1000
+# Numb. generators = 284
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-08
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# a & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+10 & 1000 & 9 & # Benchmark results for G = S10
+# Parameters:
+# Global dimension = 1000
+# Numb. generators = 284
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-08
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# a & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+10 & 1000 & 9 & 19.67 & 5.402 & 3.161 & Yes
+10 & 1000 & 36 & 19.74 & # Benchmark results for G = S10
+# Parameters:
+# Global dimension = 1000
+# Numb. generators = 284
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-08
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# a & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+10 & 1000 & 9 & 19.75 & 5.464 & 3.098 & Yes
+10 & 1000 & 36 & 19.60 & 88.05 & 76.61 & Yes
+10 & 1000 & 36 & 19.77 & 87.93 & 75.29 & Yes
+10 & 1000 & 75 & 20.02 & 640.4 & 566.8 & Yes
+10 & 1000 & 160 & 19.86 & 
+10 & 1000 & 35 & 19.71 & 79.96 & 70.79 & Yes
+10 & 1000 & 9 & 20.04 & 5.389 & 3.112 & Yes
+10 & 1000 & 35 & 19.78 & 81.16 & 71.74 & Yes
+10 & 1000 & 1 & 19.82 & 0.443 & 2.384 & Yes
+10 & 1000 & 1 & 20.23 & 0.458 & 2.145 & Yes
+10 & 1000 & 36 & 19.89 & 85.58 & 75.46 & Yes
+10 & 1000 & 9 & 19.89 & 5.440 & 3.191 & Yes
+10 & 1000 & 9 & 20.02 & 5.299 & 3.152 & Yes
+10 & 1000 & 35 & 19.85 & 79.53 & 72.15 & Yes
+10 & 1000 & 35 & 20.05 & 80.76 & 71.19 & Yes
+10 & 1000 & 9 & 19.84 & 5.460 & 3.169 & Yes
+10 & 1000 & 1 & 5.341 & 0.069 & 2.384 & Yes
+10 & 1000 & 35 & 19.81 & 81.08 & 72.19 & Yes
+10 & 1000 & 9 & 19.81 & 5.363 & 3.230 & Yes
+10 & 1000 & 9 & 19.91 & 5.341 & 3.249 & Yes
+10 & 1000 & 9 & 19.97 & 5.350 & 3.184 & Yes
+10 & 1000 & 84 & 19.84 & 880.7 & 770.6 & Yes
+10 & 1000 & 1 & 19.72 & 0.447 & 2.384 & Yes
+10 & 1000 & 36 & 19.70 & 87.47 & 76.85 & Yes
+10 & 1000 & 35 & 20.07 & 81.81 & 72.19 & Yes
+10 & 1000 & 9 & 19.87 & 5.329 & 3.153 & Yes
+10 & 1000 & 9 & 19.76 & 5.373 & 3.183 & Yes
+10 & 1000 & 1 & 20.04 & 0.455 & 1.907 & Yes
+10 & 1000 & 36 & 19.97 & 87.00 & 75.87 & Yes
+10 & 1000 & 36 & 19.94 & 88.74 & 75.40 & Yes
+10 & 1000 & 160 & 20.05 & 

@@ -1,0 +1,21 @@
+# Benchmark results for G = S10
+# Parameters:
+# Global dimension = 1000
+# Numb. generators = 284
+# Error bound on basis/group images (entrywise) = 2.220446049250313e-16
+# Precision of invariance test = 1e-07
+# Threshold false positive rate = 1e-07
+# Confidence parameter (approx false negative rate) = 2e-07
+
+# a & Gobal D & IrrD & Inv. Time & Restr. Time & Cert. Time & Cert? 
+10 & 1000 & 9 & 28.10 & 5.917 & 3.046 & Yes
+10 & 1000 & 36 & 28.05 & 86.34 & 75.09 & Yes
+10 & 1000 & 36 & 27.94 & 86.42 & 74.66 & Yes
+10 & 1000 & 75 & 27.99 & 622.2 & 576.5 & Yes
+10 & 1000 & 160 & 28.29 & 
+10 & 1000 & 35 & 28.36 & 81.75 & 70.06 & Yes
+10 & 1000 & 9 & 27.98 & 6.046 & 3.153 & Yes
+10 & 1000 & 35 & 28.22 & 81.24 & 70.78 & Yes
+10 & 1000 & 1 & 28.12 & 0.506 & 2.145 & Yes
+10 & 1000 & 1 & 27.95 & 0.518 & 2.145 & Yes
+10 & 1000 & 36 & 29.32 & 87.30 & 
