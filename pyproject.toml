@@ -1,0 +1,8 @@
+[project]
+name = "repcert"
+version = "1.0.0"
+
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+tests = ["pytest", "pytest-cov", "stable_baselines3"]
